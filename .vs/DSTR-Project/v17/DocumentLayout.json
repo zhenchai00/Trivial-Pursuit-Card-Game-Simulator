@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\GIGABYTE\\Documents\\project\\DSTR-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4B69A4E-9357-4886-BB79-C505A6611E67}|DSTR-Project\\DSTR-Project.vcxproj|C:\\Users\\GIGABYTE\\Documents\\project\\DSTR-Project\\DSTR-Project\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{B4B69A4E-9357-4886-BB79-C505A6611E67}|DSTR-Project\\DSTR-Project.vcxproj|C:\\Users\\GIGABYTE\\Documents\\project\\Dstr-Project\\DSTR-Project\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B4B69A4E-9357-4886-BB79-C505A6611E67}|DSTR-Project\\DSTR-Project.vcxproj|solutionrelative:DSTR-Project\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4B69A4E-9357-4886-BB79-C505A6611E67}|DSTR-Project\\DSTR-Project.vcxproj|C:\\Users\\GIGABYTE\\Documents\\project\\Dstr-Project\\DSTR-Project\\SeanHandsome.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B4B69A4E-9357-4886-BB79-C505A6611E67}|DSTR-Project\\DSTR-Project.vcxproj|solutionrelative:DSTR-Project\\SeanHandsome.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SeanHandsome.hpp",
+              "DocumentMoniker": "C:\\Users\\GIGABYTE\\Documents\\project\\DSTR-Project\\DSTR-Project\\SeanHandsome.hpp",
+              "RelativeDocumentMoniker": "DSTR-Project\\SeanHandsome.hpp",
+              "ToolTip": "C:\\Users\\GIGABYTE\\Documents\\project\\DSTR-Project\\DSTR-Project\\SeanHandsome.hpp",
+              "RelativeToolTip": "DSTR-Project\\SeanHandsome.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-15T14:24:02.647Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "DSTR-Project\\Main.cpp",
               "ToolTip": "C:\\Users\\GIGABYTE\\Documents\\project\\DSTR-Project\\DSTR-Project\\Main.cpp",
               "RelativeToolTip": "DSTR-Project\\Main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-15T14:07:31.844Z",
               "EditorCaption": ""
