@@ -9,5 +9,6 @@ int main()
 	cout << "heerooo";
 	cout << "good night";
 	cout << "good morning";
+	cout << "test";
 	return 0;
 }
