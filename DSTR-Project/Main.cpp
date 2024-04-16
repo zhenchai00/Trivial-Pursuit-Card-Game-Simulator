@@ -10,5 +10,6 @@ int main()
 	cout << "good night";
 	cout << "good morning";
 	cout << "test";
+	cout << "test2";
 	return 0;
 }
