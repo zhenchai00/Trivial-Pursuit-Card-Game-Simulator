@@ -12,5 +12,6 @@ int main()
 	cout << "test";
 	cout << "test2";
 	cout << "test3";
+	cout << "test3";
 	return 0;
 }
