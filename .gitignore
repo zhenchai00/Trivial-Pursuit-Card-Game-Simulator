@@ -36,6 +36,7 @@
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+*.sln
 
 [Bb]uild/*
 [Dd]ocs/*
