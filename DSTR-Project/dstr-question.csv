@@ -1,0 +1,268 @@
+Question,Answer
+Arrays can only store elements of the same data type.,True
+Linked lists have constant-time access to any element.,False
+Stacks use the FIFO (First-In, First-Out) principle.,False
+Queues are typically implemented using arrays.,True
+Hash tables guarantee constant-time lookup for any key.,False
+Binary trees can have at most two children per node.,True
+A binary search tree guarantees O(n) time complexity for searching.,False
+Depth-first search always visits all vertices in a graph before backtracking.,False
+Breadth-first search is implemented using recursion.,False
+Dijkstra's algorithm guarantees finding the shortest path in a weighted graph.,True
+Kruskal's algorithm is used to find the shortest path between two nodes in a graph.,False
+Prim's algorithm can only be applied to undirected graphs.,False
+A heap is a type of binary tree.,True
+A heap is always a complete binary tree.,False
+In a max-heap, the parent node is always greater than or equal to its children.,True
+A priority queue is a type of heap.,True
+Depth-first search is typically implemented using a stack.,True
+Breadth-first search is implemented using recursion.,False
+QuickSort is an example of a divide-and-conquer algorithm.,True
+MergeSort has a worst-case time complexity of O(n^2).,False
+BubbleSort is efficient for sorting large datasets.,False
+SelectionSort always performs better than InsertionSort.,False
+RadixSort is a comparison-based sorting algorithm.,False
+Binary search can only be applied to sorted arrays.,True
+A linked list can be used to implement a stack.,True
+A hash table guarantees constant-time insertion and deletion.,False
+Breadth-first search is optimal for finding the shortest path in a weighted graph.,False
+Floyd-Warshall algorithm is used to find the shortest path in a weighted graph with negative edges.,True
+A graph with no cycles is called a tree.,True
+In an undirected graph, each edge is associated with a direction.,False
+A spanning tree of a graph must contain all vertices of the graph.,True
+Bellman-Ford algorithm can handle graphs with negative-weight cycles.,True
+A graph with no cycles is called acyclic.,True
+A directed graph where there is a path from every vertex to every other vertex is called strongly connected.,True
+In a binary search tree, the left child of a node always has a smaller value than the node itself.,True
+In a binary search tree, the right child of a node always has a greater value than the node itself.,True
+A self-balancing binary search tree always has a height of log(n).,False
+AVL trees use rotations to maintain balance.,True
+Red-Black trees guarantee O(1) time complexity for search, insertion, and deletion.,False
+Depth-first search can be used to detect cycles in a graph.,True
+Breadth-first search always finds the shortest path between two nodes in an unweighted graph.,True
+A hash function always produces a unique hash value for each input.,False
+Separate chaining and open addressing are two common collision resolution techniques in hash tables.,True
+A trie is a tree-like data structure used for storing strings.,True
+A trie is efficient for searching prefixes of words.,True
+A suffix tree is used for finding all occurrences of a pattern in a string.,True
+A suffix tree has a space complexity of O(n^2).,False
+A suffix array is an efficient data structure for string searching.,True
+Huffman coding is used for lossless data compression.,True
+Huffman coding guarantees a unique prefix-free code for each character in the input.,True
+Huffman coding is always optimal for any given input.,False
+A graph is a collection of vertices and edges.,True
+A directed graph has edges that are uni-directional.,False
+An undirected graph has edges that are bi-directional.,True
+Graphs can be cyclic or acyclic.,True
+Breadth-first search visits nodes level by level.,True
+Depth-first search explores as far as possible along each branch before backtracking.,True
+A binary search tree is a special type of binary tree.,True
+In a binary search tree, the left subtree of a node contains only nodes with values less than the node's value.,True
+In a binary search tree, the right subtree of a node contains only nodes with values greater than the node's value.,True
+Hash tables are used to implement associative arrays or mappings of key-value pairs.,True
+In a hash table, collisions occur when two different keys hash to the same index.,True
+Collision resolution techniques in hash tables include chaining and open addressing.,True
+Breadth-first search can be used to find the shortest path in an unweighted graph.,True
+Depth-first search can be used to determine whether a graph is connected.,True
+Prim's algorithm is used to find the minimum spanning tree of a graph.,True
+Kruskal's algorithm is used to find the shortest path between two vertices in a graph.,False
+Dijkstra's algorithm can handle graphs with negative edge weights.,False
+A heap is a specialized tree-based data structure.,True
+A heap is always a binary tree.,True
+A heap can be represented using an array.,True
+A heap is typically implemented as a max-heap or a min-heap.,True
+A min-heap has the property that the parent node is always less than or equal to its children.,True
+QuickSort is a stable sorting algorithm.,False
+MergeSort is not stable.,False
+MergeSort is a stable sorting algorithm.,True
+MergeSort has a worst-case time complexity of O(n log n).,True
+MergeSort can be implemented iteratively.,False
+BubbleSort is an adaptive sorting algorithm.,True
+BubbleSort always requires O(n^2) time complexity.,True
+SelectionSort is an in-place sorting algorithm.,True
+SelectionSort has a best-case time complexity of O(n).,True
+RadixSort works by distributing the elements into buckets based on their digits.,True
+RadixSort has a time complexity of O(n log n).,False
+Binary search is a divide-and-conquer algorithm.,True
+Binary search requires the input array to be sorted.,True
+Binary search has a worst-case time complexity of O(n).,False
+Linear search is more efficient than binary search for small datasets.,True
+Linear search has a worst-case time complexity of O(n).,True
+Linear search can be performed on unsorted arrays.,True
+A linked list is a linear data structure.,True
+A linked list can contain duplicate elements.,True
+Singly linked lists have a pointer only to the next node.,True
+Doubly linked lists have pointers to both the next and previous nodes.,True
+Circular linked lists can only be singly linked.,False
+Circular linked lists have no beginning or end.,False
+Stacks follow the Last-In, First-Out (LIFO) principle.,True
+Stacks support constant-time insertion and deletion of elements.,False
+Queues follow the First-In, First-Out (FIFO) principle.,True
+Queues support constant-time insertion and deletion of elements.,False
+A deque (double-ended queue) supports insertion and deletion from both ends.,True
+Hash tables guarantee constant-time search, insertion, and deletion on average.,True
+Hash tables have a worst-case time complexity of O(n).,False
+Depth-first search can be used to find strongly connected components in a graph.,True
+Breadth-first search can be used to find the diameter of a tree.,True
+Dijkstra's algorithm can handle graphs with negative edge weights.,False
+Kruskal's algorithm can handle graphs with negative edge weights.,False
+Prim's algorithm can handle graphs with negative edge weights.,False
+Bellman-Ford algorithm can handle graphs with negative edge weights.,True
+Bellman-Ford algorithm can detect negative-weight cycles in a graph.,True
+Bellman-Ford algorithm always terminates in a finite number of iterations.,True
+Graph traversal algorithms are used to visit all vertices in a graph.,True
+Depth-first search can be implemented iteratively.,True
+Breadth-first search can be implemented recursively.,False
+In a binary heap, the maximum element is always at the root.,True
+In a binary heap, the minimum element is always at the root.,False
+A binary heap can be used to implement a priority queue.,True
+Heapsort is an in-place sorting algorithm.,True
+Heapsort has a worst-case time complexity of O(n log n).,True
+In-place sorting algorithms require only a constant amount of additional space.,True
+A hash function maps input data of arbitrary size to fixed-size values.,True
+A hash function always produces unique hash values for different inputs.,False
+A hash function can produce the same hash value for different inputs, leading to collisions.,True
+Separate chaining resolves collisions by storing collided elements in linked lists.,True
+Open addressing resolves collisions by finding an alternative location in the hash table.,True
+Collision resolution is necessary in hash tables to handle cases where multiple keys hash to the same index.,True
+The load factor of a hash table is the ratio of the number of elements to the number of buckets.,True
+Rehashing is the process of increasing the size of a hash table and reinserting all elements.,True
+RadixSort is suitable for sorting strings.,True
+RadixSort has a time complexity of O(kn), where k is the length of the longest key.,True
+Huffman coding is a lossy compression technique.,False
+Huffman coding produces variable-length codes for input characters.,True
+Huffman coding guarantees the shortest possible code length for each character.,True
+A graph can have multiple spanning trees.,True
+A tree is a connected graph with no cycles.,True
+A forest is a collection of disjoint trees.,True
+Depth-first search can be used to determine whether a graph is acyclic.,True
+Depth-first search can be used to find bridges and articulation points in a graph.,True
+Breadth-first search can be used to find the articulation points of a graph.,False
+A hash table with separate chaining has a worst-case time complexity of O(n).,False
+A hash table with open addressing has a worst-case time complexity of O(n).,False
+Dijkstra's algorithm guarantees finding the shortest path in a graph with negative edge weights.,False
+Kruskal's algorithm guarantees finding the shortest path in a graph with negative edge weights.,False
+Prim's algorithm guarantees finding the shortest path in a graph with negative edge weights.,False
+Bellman-Ford algorithm guarantees finding the shortest path in a graph with negative edge weights.,True
+Breadth-first search always visits all vertices in a graph before backtracking.,False
+Breadth-first search always finds the shortest path between two vertices in a graph.,True
+Breadth-first search can be used to find the minimum spanning tree of a graph.,True
+Breadth-first search can be used to detect cycles in a graph.,False
+Depth-first search always visits all vertices in a graph before backtracking.,False
+Depth-first search always finds the shortest path between two vertices in a graph.,False
+Depth-first search can be used to find the minimum spanning tree of a graph.,True
+Depth-first search can be used to detect cycles in a graph.,True
+A binary tree is a special type of tree where each node has at most two children.,True
+In a binary tree, the left child of a node has a smaller value than the node itself.,False
+In a binary tree, the right child of a node has a greater value than the node itself.,False
+A binary tree can have at most one level of nodes.,False
+A binary tree can be empty.,True
+A binary search tree can have duplicate values.,True
+A binary search tree can have at most two children per node.,True
+A binary search tree guarantees O(n) time complexity for searching.,False
+A binary search tree guarantees O(log n) time complexity for searching.,True
+A binary search tree guarantees O(n log n) time complexity for searching.,False
+A binary search tree guarantees O(1) time complexity for searching.,False
+A binary search tree guarantees O(n) space complexity for insertion and deletion.,True
+A binary search tree guarantees O(log n) space complexity for insertion and deletion.,False
+A binary search tree guarantees O(n log n) space complexity for insertion and deletion.,False
+A binary search tree guarantees O(1) space complexity for insertion and deletion.,False
+A balanced binary search tree has approximately equal numbers of nodes in its left and right subtrees.,True
+A balanced binary search tree always has the same number of nodes in its left and right subtrees.,False
+AVL trees use rotations to maintain balance.,True
+AVL trees guarantee O(log n) time complexity for searching.,True
+AVL trees guarantee O(log n) time complexity for insertion and deletion.,True
+AVL trees guarantee O(1) time complexity for searching.,False
+Red-Black trees guarantee O(log n) time complexity for searching.,True
+Red-Black trees guarantee O(log n) time complexity for insertion and deletion.,True
+Red-Black trees guarantee O(1) time complexity for searching.,False
+Red-Black trees guarantee O(1) time complexity for insertion and deletion.,False
+A hash table guarantees O(1) time complexity for searching.,True
+A hash table guarantees O(1) time complexity for insertion and deletion.,True
+A hash table guarantees O(log n) time complexity for searching.,False
+A hash table guarantees O(log n) time complexity for insertion and deletion.,False
+A hash table guarantees O(n) time complexity for searching.,False
+A hash table guarantees O(n) time complexity for insertion and deletion.,False
+A hash table guarantees O(n log n) time complexity for searching.,False
+A hash table guarantees O(n log n) time complexity for insertion and deletion.,False
+A graph is a collection of nodes and edges.,True
+In a directed graph, edges have a direction.,True
+In an undirected graph, edges have a direction.,False
+In a directed graph, all edges are bi-directional.,False
+In an undirected graph, all edges are uni-directional.,False
+In a directed graph, nodes are connected by directed edges.,True
+In an undirected graph, nodes are connected by undirected edges.,True
+In a directed graph, each edge connects two nodes.,True
+In an undirected graph, each edge connects two nodes.,True
+In a directed graph, edges can have weights.,True
+In an undirected graph, edges can have weights.,True
+In a directed graph, the sum of the indegrees of all nodes is equal to the number of edges.,True
+In an undirected graph, the sum of the degrees of all nodes is equal to twice the number of edges.,True
+In a directed graph, a path exists between every pair of nodes.,False
+In an undirected graph, a path exists between every pair of nodes.,True
+In a directed graph, a cycle exists if and only if there is a back edge during a depth-first search.,True
+In an undirected graph, a cycle exists if and only if there is a back edge during a depth-first search.,True
+In a directed graph, the adjacency matrix is always symmetric.,False
+In an undirected graph, the adjacency matrix is always symmetric.,True
+In a directed graph, the adjacency list is always symmetric.,False
+In an undirected graph, the adjacency list is always symmetric.,True
+In a directed graph, the adjacency matrix represents only one direction of the edges.,True
+In an undirected graph, the adjacency matrix represents only one direction of the edges.,False
+In a directed graph, the adjacency list represents only one direction of the edges.,True
+In an undirected graph, the adjacency list represents only one direction of the edges.,False
+In a directed graph, the shortest path between two nodes is always unique.,False
+In an undirected graph, the shortest path between two nodes is always unique.,True
+In a directed graph, the longest path between two nodes is always unique.,False
+In an undirected graph, the longest path between two nodes is always unique.,True
+In a directed graph, the shortest path between two nodes may not exist.,True
+In an undirected graph, the shortest path between two nodes may not exist.,True
+In a directed graph, the longest path between two nodes may not exist.,True
+In an undirected graph, the longest path between two nodes may not exist.,True
+In a directed graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.,False
+In an undirected graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.,True
+In a directed graph, the longest path between two nodes is always the sum of the weights of the edges in the path.,False
+In an undirected graph, the longest path between two nodes is always the sum of the weights of the edges in the path.,True
+In a directed graph, the shortest path between two nodes is always the minimum number of edges in the path.,True
+In an undirected graph, the shortest path between two nodes is always the minimum number of edges in the path.,True
+In a directed graph, the longest path between two nodes is always the maximum number of edges in the path.,False
+In an undirected graph, the longest path between two nodes is always the maximum number of edges in the path.,False
+In a directed graph, the shortest path between two nodes is always unique.,False
+In an undirected graph, the shortest path between two nodes is always unique.,True
+In a directed graph, the longest path between two nodes is always unique.,False
+In an undirected graph, the longest path between two nodes is always unique.,True
+In a directed graph, the shortest path between two nodes may not exist.,True
+In an undirected graph, the shortest path between two nodes may not exist.,True
+In a directed graph, the longest path between two nodes may not exist.,True
+In an undirected graph, the longest path between two nodes may not exist.,True
+In a directed graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.,False
+In an undirected graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.,True
+In a directed graph, the longest path between two nodes is always the sum of the weights of the edges in the path.,False
+In an undirected graph, the longest path between two nodes is always the sum of the weights of the edges in the path.,True
+In a directed graph, the shortest path between two nodes is always the minimum number of edges in the path.,True
+In an undirected graph, the shortest path between two nodes is always the minimum number of edges in the path.,True
+In a directed graph, the longest path between two nodes is always the maximum number of edges in the path.,False
+In an undirected graph, the longest path between two nodes is always the maximum number of edges in the path.,False
+In a directed graph, the shortest path between two nodes is always unique.,False
+In an undirected graph, the shortest path between two nodes is always unique.,True
+In a directed graph, the longest path between two nodes is always unique.,False
+In an undirected graph, the longest path between two nodes is always unique.,True
+In a directed graph, the shortest path between two nodes may not exist.,True
+In an undirected graph, the shortest path between two nodes may not exist.,True
+In a directed graph, the longest path between two nodes may not exist.,True
+In an undirected graph, the longest path between two nodes may not exist.,True
+In a directed graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.,False
+In an undirected graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.,True
+In a directed graph, the longest path between two nodes is always the sum of the weights of the edges in the path.,False
+In an undirected graph, the longest path between two nodes is always the sum of the weights of the edges in the path.,True
+In a directed graph, the shortest path between two nodes is always the minimum number of edges in the path.,True
+In an undirected graph, the shortest path between two nodes is always the minimum number of edges in the path.,True
+In a directed graph, the longest path between two nodes is always the maximum number of edges in the path.,False
+In an undirected graph, the longest path between two nodes is always the maximum number of edges in the path.,False
+In a directed graph, the shortest path between two nodes is always unique.,False
+In an undirected graph, the shortest path between two nodes is always unique.,True
+In a directed graph, the longest path between two nodes is always unique.,False
+In an undirected graph, the longest path between two nodes is always unique.,True
+In a directed graph, the shortest path between two nodes may not exist.,True
+In an undirected graph, the shortest path between two nodes may not exist.,True
+In a directed graph, the longest path between two nodes may not exist.,True
+In an undirected graph, the longest path between two nodes may not exist.,True
