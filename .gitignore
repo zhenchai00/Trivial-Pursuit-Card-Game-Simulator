@@ -33,6 +33,9 @@
 
 .vs 
 .vscode
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
 
 [Bb]uild/*
 [Dd]ocs/*
