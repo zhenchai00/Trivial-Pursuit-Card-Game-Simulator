@@ -1,0 +1,397 @@
+﻿Arrays can only store elements of the same data type.,TRUE
+Linked lists have constant-time access to any element.,FALSE
+"Stacks use the FIFO (First-In, First-Out) principle.",FALSE
+Queues are typically implemented using arrays.,TRUE
+Hash tables guarantee constant-time lookup for any key.,FALSE
+Binary trees can have at most two children per node.,TRUE
+A binary search tree guarantees O(n) time complexity for searching.,FALSE
+Depth-first search always visits all vertices in a graph before backtracking.,FALSE
+Breadth-first search is implemented using recursion.,FALSE
+Dijkstra's algorithm guarantees finding the shortest path in a weighted graph.,TRUE
+Kruskal's algorithm is used to find the shortest path between two nodes in a graph.,FALSE
+Prim's algorithm can only be applied to undirected graphs.,FALSE
+A heap is a type of binary tree.,TRUE
+A heap is always a complete binary tree.,FALSE
+"In a max-heap, the parent node is always greater than or equal to its children.",TRUE
+A priority queue is a type of heap.,TRUE
+Depth-first search is typically implemented using a stack.,TRUE
+BubbleSort is efficient for sorting large datasets.,FALSE
+SelectionSort always performs better than InsertionSort.,FALSE
+RadixSort is a comparison-based sorting algorithm.,FALSE
+Binary search can only be applied to sorted arrays.,TRUE
+A linked list can be used to implement a stack.,TRUE
+A hash table guarantees constant-time insertion and deletion.,FALSE
+Floyd-Warshall algorithm is used to find the shortest path in a weighted graph with negative edges.,TRUE
+A graph with no cycles is called a tree.,TRUE
+"In an undirected graph, each edge is associated with a direction.",FALSE
+A spanning tree of a graph must contain all vertices of the graph.,TRUE
+Bellman-Ford algorithm can handle graphs with negative-weight cycles.,TRUE
+A graph with no cycles is called acyclic.,TRUE
+A directed graph where there is a path from every vertex to every other vertex is called strongly connected.,TRUE
+"In a binary search tree, the left child of a node always has a smaller value than the node itself.",TRUE
+"In a binary search tree, the right child of a node always has a greater value than the node itself.",TRUE
+A self-balancing binary search tree always has a height of log(n).,FALSE
+AVL trees use rotations to maintain balance.,TRUE
+"Red-Black trees guarantee O(1) time complexity for search, insertion, and deletion.",FALSE
+Depth-first search can be used to detect cycles in a graph.,TRUE
+Breadth-first search always finds the shortest path between two nodes in an unweighted graph.,TRUE
+A hash function always produces a unique hash value for each input.,FALSE
+Separate chaining and open addressing are two common collision resolution techniques in hash tables.,TRUE
+A trie is a tree-like data structure used for storing strings.,TRUE
+A trie is efficient for searching prefixes of words.,TRUE
+A suffix tree is used for finding all occurrences of a pattern in a string.,TRUE
+A suffix tree has a space complexity of O(n^2).,FALSE
+A suffix array is an efficient data structure for string searching.,TRUE
+Huffman coding is used for lossless data compression.,TRUE
+Huffman coding guarantees a unique prefix-free code for each character in the input.,TRUE
+Huffman coding is always optimal for any given input.,FALSE
+A graph is a collection of vertices and edges.,TRUE
+A directed graph has edges that are uni-directional.,FALSE
+An undirected graph has edges that are bi-directional.,TRUE
+Graphs can be cyclic or acyclic.,TRUE
+Breadth-first search visits nodes level by level.,TRUE
+Depth-first search explores as far as possible along each branch before backtracking.,TRUE
+A binary search tree is a special type of binary tree.,TRUE
+"In a binary search tree, the left subtree of a node contains only nodes with values less than the node's value.",TRUE
+"In a binary search tree, the right subtree of a node contains only nodes with values greater than the node's value.",TRUE
+Hash tables are used to implement associative arrays or mappings of key-value pairs.,TRUE
+"In a hash table, collisions occur when two different keys hash to the same index.",TRUE
+Collision resolution techniques in hash tables include chaining and open addressing.,TRUE
+Breadth-first search can be used to find the shortest path in an unweighted graph.,TRUE
+Depth-first search can be used to determine whether a graph is connected.,TRUE
+Prim's algorithm is used to find the minimum spanning tree of a graph.,TRUE
+Kruskal's algorithm is used to find the shortest path between two vertices in a graph.,FALSE
+Dijkstra's algorithm can handle graphs with negative edge weights.,FALSE
+A heap is a specialized tree-based data structure.,TRUE
+A heap is always a binary tree.,TRUE
+A heap can be represented using an array.,TRUE
+A heap is typically implemented as a max-heap or a min-heap.,TRUE
+A min-heap has the property that the parent node is always less than or equal to its children.,TRUE
+QuickSort is a stable sorting algorithm.,FALSE
+MergeSort is not stable.,FALSE
+MergeSort is a stable sorting algorithm.,TRUE
+MergeSort has a worst-case time complexity of O(n log n).,TRUE
+MergeSort can be implemented iteratively.,FALSE
+BubbleSort is an adaptive sorting algorithm.,TRUE
+BubbleSort always requires O(n^2) time complexity.,TRUE
+SelectionSort is an in-place sorting algorithm.,TRUE
+SelectionSort has a best-case time complexity of O(n).,TRUE
+RadixSort works by distributing the elements into buckets based on their digits.,TRUE
+RadixSort has a time complexity of O(n log n).,FALSE
+Binary search is a divide-and-conquer algorithm.,TRUE
+Binary search requires the input array to be sorted.,TRUE
+Binary search has a worst-case time complexity of O(n).,FALSE
+Linear search is more efficient than binary search for small datasets.,TRUE
+Linear search has a worst-case time complexity of O(n).,TRUE
+Linear search can be performed on unsorted arrays.,TRUE
+A linked list is a linear data structure.,TRUE
+A linked list can contain duplicate elements.,TRUE
+Singly linked lists have a pointer only to the next node.,TRUE
+Doubly linked lists have pointers to both the next and previous nodes.,TRUE
+Circular linked lists can only be singly linked.,FALSE
+Circular linked lists have no beginning or end.,FALSE
+"Stacks follow the Last-In, First-Out (LIFO) principle.",TRUE
+Stacks support constant-time insertion and deletion of elements.,FALSE
+"Queues follow the First-In, First-Out (FIFO) principle.",TRUE
+Queues support constant-time insertion and deletion of elements.,FALSE
+A deque (double-ended queue) supports insertion and deletion from both ends.,TRUE
+"Hash tables guarantee constant-time search, insertion, and deletion on average.",TRUE
+Hash tables have a worst-case time complexity of O(n).,FALSE
+Depth-first search can be used to find strongly connected components in a graph.,TRUE
+Breadth-first search can be used to find the diameter of a tree.,TRUE
+Kruskal's algorithm can handle graphs with negative edge weights.,FALSE
+Prim's algorithm can handle graphs with negative edge weights.,FALSE
+Bellman-Ford algorithm can handle graphs with negative edge weights.,TRUE
+Bellman-Ford algorithm can detect negative-weight cycles in a graph.,TRUE
+Bellman-Ford algorithm always terminates in a finite number of iterations.,TRUE
+Graph traversal algorithms are used to visit all vertices in a graph.,TRUE
+Depth-first search can be implemented iteratively.,TRUE
+Breadth-first search can be implemented recursively.,FALSE
+"In a binary heap, the maximum element is always at the root.",TRUE
+"In a binary heap, the minimum element is always at the root.",FALSE
+A binary heap can be used to implement a priority queue.,TRUE
+Heapsort is an in-place sorting algorithm.,TRUE
+Heapsort has a worst-case time complexity of O(n log n).,TRUE
+In-place sorting algorithms require only a constant amount of additional space.,TRUE
+A hash function maps input data of arbitrary size to fixed-size values.,TRUE
+A hash function always produces unique hash values for different inputs.,FALSE
+"A hash function can produce the same hash value for different inputs, leading to collisions.",TRUE
+Separate chaining resolves collisions by storing collided elements in linked lists.,TRUE
+Open addressing resolves collisions by finding an alternative location in the hash table.,TRUE
+Collision resolution is necessary in hash tables to handle cases where multiple keys hash to the same index.,TRUE
+The load factor of a hash table is the ratio of the number of elements to the number of buckets.,TRUE
+Rehashing is the process of increasing the size of a hash table and reinserting all elements.,TRUE
+RadixSort is suitable for sorting strings.,TRUE
+"RadixSort has a time complexity of O(kn), where k is the length of the longest key.",TRUE
+Huffman coding is a lossy compression technique.,FALSE
+Huffman coding produces variable-length codes for input characters.,TRUE
+Huffman coding guarantees the shortest possible code length for each character.,TRUE
+A graph can have multiple spanning trees.,TRUE
+A tree is a connected graph with no cycles.,TRUE
+A forest is a collection of disjoint trees.,TRUE
+Depth-first search can be used to determine whether a graph is acyclic.,TRUE
+Depth-first search can be used to find bridges and articulation points in a graph.,TRUE
+Breadth-first search can be used to find the articulation points of a graph.,FALSE
+A hash table with separate chaining has a worst-case time complexity of O(n).,FALSE
+A hash table with open addressing has a worst-case time complexity of O(n).,FALSE
+Dijkstra's algorithm guarantees finding the shortest path in a graph with negative edge weights.,FALSE
+Kruskal's algorithm guarantees finding the shortest path in a graph with negative edge weights.,FALSE
+Prim's algorithm guarantees finding the shortest path in a graph with negative edge weights.,FALSE
+Bellman-Ford algorithm guarantees finding the shortest path in a graph with negative edge weights.,TRUE
+Breadth-first search always visits all vertices in a graph before backtracking.,FALSE
+Breadth-first search always finds the shortest path between two vertices in a graph.,TRUE
+Breadth-first search can be used to find the minimum spanning tree of a graph.,TRUE
+Breadth-first search can be used to detect cycles in a graph.,FALSE
+Depth-first search always finds the shortest path between two vertices in a graph.,FALSE
+Depth-first search can be used to find the minimum spanning tree of a graph.,TRUE
+A binary tree is a special type of tree where each node has at most two children.,TRUE
+"In a binary tree, the left child of a node has a smaller value than the node itself.",FALSE
+"In a binary tree, the right child of a node has a greater value than the node itself.",FALSE
+A binary tree can have at most one level of nodes.,FALSE
+A binary tree can be empty.,TRUE
+A binary search tree can have duplicate values.,TRUE
+A binary search tree can have at most two children per node.,TRUE
+A binary search tree guarantees O(log n) time complexity for searching.,TRUE
+A binary search tree guarantees O(n log n) time complexity for searching.,FALSE
+A binary search tree guarantees O(1) time complexity for searching.,FALSE
+A binary search tree guarantees O(n) space complexity for insertion and deletion.,TRUE
+A binary search tree guarantees O(log n) space complexity for insertion and deletion.,FALSE
+A binary search tree guarantees O(n log n) space complexity for insertion and deletion.,FALSE
+A binary search tree guarantees O(1) space complexity for insertion and deletion.,FALSE
+A balanced binary search tree has approximately equal numbers of nodes in its left and right subtrees.,TRUE
+A balanced binary search tree always has the same number of nodes in its left and right subtrees.,FALSE
+AVL trees guarantee O(log n) time complexity for searching.,TRUE
+AVL trees guarantee O(log n) time complexity for insertion and deletion.,TRUE
+AVL trees guarantee O(1) time complexity for searching.,FALSE
+Red-Black trees guarantee O(log n) time complexity for searching.,TRUE
+Red-Black trees guarantee O(log n) time complexity for insertion and deletion.,TRUE
+Red-Black trees guarantee O(1) time complexity for searching.,FALSE
+Red-Black trees guarantee O(1) time complexity for insertion and deletion.,FALSE
+A hash table guarantees O(1) time complexity for searching.,TRUE
+A hash table guarantees O(1) time complexity for insertion and deletion.,TRUE
+A hash table guarantees O(log n) time complexity for searching.,FALSE
+A hash table guarantees O(log n) time complexity for insertion and deletion.,FALSE
+A hash table guarantees O(n) time complexity for searching.,FALSE
+A hash table guarantees O(n) time complexity for insertion and deletion.,FALSE
+A hash table guarantees O(n log n) time complexity for searching.,FALSE
+A hash table guarantees O(n log n) time complexity for insertion and deletion.,FALSE
+A graph is a collection of nodes and edges.,TRUE
+"In a directed graph, edges have a direction.",TRUE
+"In an undirected graph, edges have a direction.",FALSE
+"In a directed graph, all edges are bi-directional.",FALSE
+"In an undirected graph, all edges are uni-directional.",FALSE
+"In a directed graph, nodes are connected by directed edges.",TRUE
+"In an undirected graph, nodes are connected by undirected edges.",TRUE
+"In a directed graph, each edge connects two nodes.",TRUE
+"In an undirected graph, each edge connects two nodes.",TRUE
+"In a directed graph, edges can have weights.",TRUE
+"In an undirected graph, edges can have weights.",TRUE
+"In a directed graph, the sum of the indegrees of all nodes is equal to the number of edges.",TRUE
+"In an undirected graph, the sum of the degrees of all nodes is equal to twice the number of edges.",TRUE
+"In a directed graph, a path exists between every pair of nodes.",FALSE
+"In an undirected graph, a path exists between every pair of nodes.",TRUE
+"In a directed graph, a cycle exists if and only if there is a back edge during a depth-first search.",TRUE
+"In an undirected graph, a cycle exists if and only if there is a back edge during a depth-first search.",TRUE
+"In a directed graph, the adjacency matrix is always symmetric.",FALSE
+"In an undirected graph, the adjacency matrix is always symmetric.",TRUE
+"In a directed graph, the adjacency list is always symmetric.",FALSE
+"In an undirected graph, the adjacency list is always symmetric.",TRUE
+"In a directed graph, the adjacency matrix represents only one direction of the edges.",TRUE
+"In an undirected graph, the adjacency matrix represents only one direction of the edges.",FALSE
+"In a directed graph, the adjacency list represents only one direction of the edges.",TRUE
+"In an undirected graph, the adjacency list represents only one direction of the edges.",FALSE
+"In a directed graph, the shortest path between two nodes is always unique.",FALSE
+"In an undirected graph, the shortest path between two nodes is always unique.",TRUE
+"In a directed graph, the longest path between two nodes is always unique.",FALSE
+"In an undirected graph, the longest path between two nodes is always unique.",TRUE
+"In a directed graph, the shortest path between two nodes may not exist.",TRUE
+"In an undirected graph, the shortest path between two nodes may not exist.",TRUE
+"In a directed graph, the longest path between two nodes may not exist.",TRUE
+"In an undirected graph, the longest path between two nodes may not exist.",TRUE
+"In a directed graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.",FALSE
+"In an undirected graph, the shortest path between two nodes is always the sum of the weights of the edges in the path.",TRUE
+"In a directed graph, the longest path between two nodes is always the sum of the weights of the edges in the path.",FALSE
+"In an undirected graph, the longest path between two nodes is always the sum of the weights of the edges in the path.",TRUE
+"In a directed graph, the shortest path between two nodes is always the minimum number of edges in the path.",TRUE
+"In an undirected graph, the shortest path between two nodes is always the minimum number of edges in the path.",TRUE
+"In a directed graph, the longest path between two nodes is always the maximum number of edges in the path.",FALSE
+"In an undirected graph, the longest path between two nodes is always the maximum number of edges in the path.",FALSE
+"A linked list is a sequential collection of elements, where each element points to the next one.",TRUE
+A linked list can only be singly linked.,FALSE
+Singly linked lists require less memory than doubly linked lists.,TRUE
+Doubly linked lists allow traversal in both directions.,TRUE
+Doubly linked lists have a higher memory overhead compared to singly linked lists.,TRUE
+Circular linked lists can only be doubly linked.,FALSE
+Stacks can be implemented using arrays.,TRUE
+Stacks can be implemented using linked lists.,TRUE
+Queues can be implemented using arrays.,TRUE
+Queues can be implemented using linked lists.,TRUE
+Priority queues always remove the element with the highest priority first.,TRUE
+Priority queues are typically implemented using heaps.,TRUE
+"Priority queues have a FIFO (First-In, First-Out) ordering.",FALSE
+Hash tables use a hash function to map keys to values.,TRUE
+Hash tables handle collisions by chaining or open addressing.,TRUE
+Hash tables have a space complexity of O(n).,FALSE
+Trees are hierarchical data structures.,TRUE
+Binary trees have at most three children per node.,FALSE
+"Binary search trees guarantee O(log n) time complexity for search, insertion, and deletion.",TRUE
+"Binary search trees can be unbalanced, leading to worst-case time complexity of O(n).",TRUE
+Balanced binary search trees ensure that the height of the tree remains logarithmic.,TRUE
+AVL trees are a type of balanced binary search tree.,TRUE
+"Red-Black trees guarantee O(log n) time complexity for search, insertion, and deletion.",TRUE
+Red-Black trees ensure that the longest path from the root to any leaf is no more than twice the length of the shortest path.,TRUE
+B-trees are self-balancing search trees.,TRUE
+B-trees are used in databases and file systems.,TRUE
+B-trees have a variable number of children per node.,TRUE
+Graphs consist of vertices and edges.,TRUE
+Directed graphs have edges with a direction.,TRUE
+Undirected graphs have edges without a direction.,TRUE
+Directed graphs can represent relationships like parent-child or cause-effect.,TRUE
+Weighted graphs assign numerical values to edges.,TRUE
+A tree is a connected acyclic graph.,TRUE
+Breadth-first search visits all vertices level by level.,TRUE
+Dijkstra's algorithm finds the shortest path in a weighted graph.,TRUE
+Kruskal's algorithm finds the minimum spanning tree of a graph.,TRUE
+Prim's algorithm finds the minimum spanning tree of a graph.,TRUE
+Topological sorting can be applied to directed acyclic graphs (DAGs).,TRUE
+Floyd-Warshall algorithm finds the shortest paths between all pairs of vertices in a weighted graph.,TRUE
+Huffman coding guarantees a unique prefix-free code for each input character.,TRUE
+Trie is a tree-like data structure used for storing strings.,TRUE
+Trie is efficient for searching prefixes of words.,TRUE
+Suffix tree is used for finding all occurrences of a pattern in a string.,TRUE
+Suffix tree has a space complexity of O(n^2).,FALSE
+Suffix array is an efficient data structure for string searching.,TRUE
+Radix sort is a non-comparison-based sorting algorithm.,TRUE
+Radix sort sorts numbers by processing individual digits.,TRUE
+"Radix sort has a time complexity of O(kn), where k is the length of the longest key.",TRUE
+Radix sort can be used to sort strings lexicographically.,TRUE
+Merge sort is a comparison-based sorting algorithm.,TRUE
+Merge sort is not stable.,FALSE
+Quick sort is a comparison-based sorting algorithm.,TRUE
+Quick sort is not stable.,TRUE
+Insertion sort is efficient for sorting small datasets.,TRUE
+Insertion sort has a worst-case time complexity of O(n^2).,TRUE
+Bubble sort is an adaptive sorting algorithm.,TRUE
+Bubble sort has a time complexity of O(n^2).,TRUE
+Selection sort is an in-place sorting algorithm.,TRUE
+Selection sort has a time complexity of O(n^2).,TRUE
+Linear search is more efficient than binary search for sorted arrays.,FALSE
+Binary search has a worst-case time complexity of O(log n).,TRUE
+Binary search can be implemented iteratively.,TRUE
+Depth-first search can be used to find connected components in a graph.,TRUE
+Breadth-first search can be used to find bridges and articulation points in a graph.,TRUE
+Depth-first search can be used to find the articulation points of a graph.,TRUE
+A trie is a tree-like data structure used primarily for sorting integers.,FALSE
+Tries are commonly used to store strings in a way that allows for fast prefix searches.,TRUE
+Tries can be implemented using linked lists.,FALSE
+Tries are typically used in scenarios where there is a need to store a large number of strings and quickly find if a given string is present.,TRUE
+"Tries have a worst-case space complexity of O(n), where n is the total number of characters in all the strings stored in the trie.",TRUE
+A radix tree is a type of trie where each node stores one character of the key and the branches are ordered alphabetically.,FALSE
+Radix trees are used primarily for efficient storage and retrieval of strings.,TRUE
+Radix trees are also known as compact prefix trees.,TRUE
+"Radix trees have a worst-case time complexity of O(k), where k is the length of the longest key.",TRUE
+Radix trees are particularly efficient when the keys have long common prefixes.,TRUE
+A segment tree is a tree data structure used for storing intervals or segments.,TRUE
+"Segment trees support efficient queries for finding the minimum, maximum, sum, or any associative operation over a range of values.",TRUE
+"Segment trees require O(n log n) time and O(n) space for construction, where n is the number of elements in the input array.",TRUE
+"Segment trees can be used to solve a variety of problems, including range minimum/maximum queries, range sum queries, and finding the number of elements within a range.",TRUE
+Segment trees are well-suited for problems where there is a need to efficiently perform range queries or updates on a static array.,TRUE
+"A Fenwick tree, also known as a Binary Indexed Tree (BIT), is a data structure used to efficiently update and query prefix sums of an array.",TRUE
+"Fenwick trees support efficient updates and queries for prefix sums in O(log n) time complexity, where n is the number of elements in the array.",TRUE
+Fenwick trees require O(n log n) time and O(n) space for construction.,FALSE
+Fenwick trees are particularly useful for problems involving cumulative frequency tables or prefix sum computations.,TRUE
+Fenwick trees use bitwise operations to efficiently represent the tree structure and perform updates and queries.,TRUE
+A suffix tree is a compressed trie containing all the suffixes of the given text as their keys and positions in the text as their values.,TRUE
+Suffix trees are primarily used for solving string matching problems efficiently.,TRUE
+"Suffix trees require O(n^2) space, where n is the length of the text, to store all the suffixes of the text.",FALSE
+Suffix trees can be constructed in linear time using Ukkonen's algorithm.,TRUE
+"Suffix trees can efficiently answer various string-related queries, such as finding the longest common substring or the longest repeated substring.",TRUE
+A hash function is a deterministic function that maps input data of arbitrary size to fixed-size values.,TRUE
+Hash functions ensure that similar inputs produce similar hash values.,TRUE
+"A good hash function minimizes the number of collisions, where different inputs produce the same hash value.",TRUE
+"Hash functions are commonly used in hash tables, cryptographic applications, and data integrity verification.",TRUE
+"Cryptographic hash functions must satisfy properties like pre-image resistance, second pre-image resistance, and collision resistance.",TRUE
+Linear probing is a collision resolution technique used in open addressing hash tables.,TRUE
+Linear probing resolves collisions by placing the collided element in the next available empty slot in the hash table.,TRUE
+"Linear probing can suffer from clustering, where consecutive elements form clusters, leading to degraded performance.",TRUE
+Quadratic probing is a collision resolution technique that uses a quadratic function to find the next available slot when a collision occurs.,TRUE
+Quadratic probing can help mitigate clustering compared to linear probing.,TRUE
+Quadratic probing guarantees that all slots in the hash table will eventually be probed during collision resolution.,TRUE
+Double hashing is a collision resolution technique that uses a secondary hash function to compute the step size for probing.,TRUE
+"Double hashing can ensure that all slots in the hash table are probed, even if there are multiple collisions.",TRUE
+Double hashing requires that the step size computed by the secondary hash function is relatively prime to the size of the hash table.,TRUE
+Chaining is a collision resolution technique that resolves collisions by maintaining a linked list of collided elements at each slot in the hash table.,TRUE
+Chaining can handle a large number of collisions without affecting the performance of hash table operations significantly.,TRUE
+Chaining requires additional memory overhead to store the linked lists at each slot in the hash table.,TRUE
+Bloom filters are space-efficient probabilistic data structures used to test whether an element is a member of a set.,TRUE
+Bloom filters use multiple hash functions and a bit array to represent the set membership.,TRUE
+Bloom filters may produce FALSE positives but never produce FALSE negatives.,TRUE
+Bloom filters can efficiently answer set membership queries with a constant-time complexity.,FALSE
+Binary search trees (BSTs) are a type of binary tree data structure in which each node has at most two children.,TRUE
+"In a binary search tree, the left subtree of a node contains only nodes with keys less than the node's key.",TRUE
+"In a binary search tree, the right subtree of a node contains only nodes with keys greater than the node's key.",TRUE
+"Binary search trees support efficient search, insertion, and deletion operations with an average time complexity of O(log n).",TRUE
+"The height of a binary search tree may vary depending on the order of insertion and deletion operations, leading to different performance characteristics.",TRUE
+"Balanced binary search trees, such as AVL trees and Red-Black trees, ensure that the height of the tree remains logarithmic, providing consistent performance.",TRUE
+"Heap is a specialized tree-based data structure that satisfies the heap property, where the key of each node is greater than or equal to the keys of its children.",TRUE
+Heaps are commonly used to implement priority queues and heap-based algorithms like heap sort and Dijkstra's algorithm.,TRUE
+"Heaps can be implemented as binary heaps, in which each node has at most two children, and the tree is complete.",TRUE
+Heaps support efficient insertion and extraction of the maximum or minimum element with a time complexity of O(log n).,TRUE
+Heap sort is an efficient comparison-based sorting algorithm that uses the heap data structure to sort elements in ascending or descending order.,TRUE
+Heap sort has a time complexity of O(n log n) for both average and worst-case scenarios.,TRUE
+"Heap sort is not a stable sorting algorithm, meaning that the relative order of equal elements may change after sorting.",TRUE
+A priority queue is an abstract data type that supports inserting elements with associated priorities and extracting the element with the highest priority.,TRUE
+"Priority queues can be implemented using various data structures, such as arrays, linked lists, binary heaps, or balanced binary search trees.",TRUE
+Priority queues are often used in algorithms where elements with higher priorities need to be processed before elements with lower priorities.,TRUE
+"The time complexity of extracting the maximum element from a priority queue depends on the underlying implementation, ranging from O(1) to O(log n).",TRUE
+"In a min-heap, the element with the smallest key is always at the root of the heap.",TRUE
+"In a max-heap, the element with the largest key is always at the root of the heap.",TRUE
+A binary heap is a complete binary tree where the key of each node is greater than or equal to the keys of its children in a max-heap or less than or equal to the keys of its children in a min-heap.,TRUE
+Binary heaps are commonly used to implement priority queues due to their efficient insertion and extraction operations.,TRUE
+"Binary heaps can be efficiently represented using arrays, where the parent-child relationships are determined based on the indices of the array elements.",TRUE
+"The height of a binary heap with n elements is logarithmic with respect to n, ensuring efficient performance of heap operations.",TRUE
+Binary heaps can be constructed efficiently from an unsorted array in linear time using a process called heapification or heap building.,TRUE
+"In a binary min-heap, the parent node always has a smaller key than its children nodes.",TRUE
+"In a binary max-heap, the parent node always has a larger key than its children nodes.",TRUE
+"Heapify is a process used to restore the heap property in a binary heap, either bottom-up (sift-up) or top-down (sift-down).",TRUE
+"Heapify operations have a time complexity of O(log n), where n is the number of elements in the heap.",TRUE
+The heapify operation is essential for maintaining the heap property during heap insertion and extraction operations.,TRUE
+"Heapify operations are commonly used in algorithms like heap sort, priority queue implementations, and Dijkstra's algorithm.",TRUE
+Depth-first search (DFS) is a graph traversal algorithm that explores as far as possible along each branch before backtracking.,TRUE
+Depth-first search can be implemented using either recursive or iterative approaches.,TRUE
+"Depth-first search can be used to find connected components, detect cycles, and perform topological sorting in a graph.",TRUE
+Depth-first search may not visit all vertices in a disconnected graph unless called on each vertex separately.,TRUE
+"Breadth-first search (BFS) is a graph traversal algorithm that visits all vertices level by level, starting from a specified source vertex.",TRUE
+Breadth-first search uses a queue data structure to keep track of the vertices to be visited.,TRUE
+Breadth-first search can be used to find the shortest path between two vertices in an unweighted graph.,TRUE
+"Breadth-first search can be used to find the diameter of a tree, the shortest path in a maze, and detect bipartite graphs.",TRUE
+Dijkstra's algorithm is a graph search algorithm that finds the shortest path from a source vertex to all other vertices in a weighted graph with non-negative edge weights.,TRUE
+Dijkstra's algorithm uses a priority queue to greedily select the vertex with the smallest distance from the source vertex at each step.,TRUE
+Dijkstra's algorithm guarantees finding the shortest path in a graph with non-negative edge weights.,TRUE
+Dijkstra's algorithm may not produce correct results when used on graphs with negative edge weights or cycles.,TRUE
+"Kruskal's algorithm is a greedy algorithm used to find the minimum spanning tree of a connected, undirected graph.",TRUE
+Kruskal's algorithm sorts all the edges of the graph in non-decreasing order of their weights and then adds edges to the minimum spanning tree while ensuring that no cycles are formed.,TRUE
+Kruskal's algorithm is particularly efficient for sparse graphs and graphs with edge weights that obey the triangle inequality.,TRUE
+Kruskal's algorithm can handle graphs with both positive and negative edge weights.,TRUE
+"Prim's algorithm is a greedy algorithm used to find the minimum spanning tree of a connected, undirected graph.",TRUE
+Prim's algorithm starts with an arbitrary vertex and repeatedly adds the nearest vertex that is not yet part of the minimum spanning tree.,TRUE
+Prim's algorithm can be implemented using a priority queue or a min-heap data structure to efficiently select the next vertex to be added to the minimum spanning tree.,TRUE
+Prim's algorithm guarantees finding the minimum spanning tree in a graph with non-negative edge weights.,TRUE
+Prim's algorithm may not produce correct results when used on graphs with negative edge weights or cycles.,TRUE
+"Topological sorting is a linear ordering of the vertices of a directed graph such that for every directed edge from vertex u to vertex v, u comes before v in the ordering.",TRUE
+Topological sorting can only be applied to directed acyclic graphs (DAGs).,TRUE
+"Topological sorting is used in various applications, including task scheduling, dependency resolution, and symbolic differentiation.",TRUE
+Topological sorting can be performed using depth-first search (DFS) or Kahn's algorithm in linear time.,TRUE
+Floyd-Warshall algorithm is a dynamic programming algorithm used to find the shortest paths between all pairs of vertices in a weighted graph with positive or negative edge weights.,TRUE
+Floyd-Warshall algorithm uses a matrix representation to store the shortest distances between all pairs of vertices and iteratively updates the distances by considering all intermediate vertices.,TRUE
+Floyd-Warshall algorithm guarantees finding the shortest paths between all pairs of vertices in a graph with non-negative edge weights.,TRUE
+"Floyd-Warshall algorithm has a time complexity of O(V^3), where V is the number of vertices in the graph.",TRUE
+"Huffman coding is a method of lossless data compression that assigns variable-length codes to input characters, with shorter codes assigned to more frequent characters.",TRUE
+"Huffman coding ensures that no code is a prefix of another code, making it uniquely decodable.",TRUE
+"Huffman coding guarantees the optimal prefix-free code for a given set of character frequencies, minimizing the average number of bits required to encode the input data.",TRUE
+"Huffman coding is widely used in data compression algorithms, including JPEG, MP3, and DEFLATE (used in ZIP files).",TRUE
+Ternary search is a divide-and-conquer algorithm used to find the maximum or minimum value of a unimodal function over a given interval.,TRUE
+Ternary search operates by repeatedly dividing the interval into three subintervals and discarding one-third of the search space based on the function values at the endpoints of the subintervals.,TRUE
+"Ternary search requires the function to be unimodal, meaning that it has a single peak (maximum or minimum) within the interval being searched.",TRUE
+"Ternary search has a time complexity of O(log n), where n is the number of iterations or recursive calls required to find the maximum or minimum value within a given tolerance.",TRUE
+Ternary search is particularly useful for finding the optimal solution of a function that is convex or concave over a continuous interval.,TRUE
