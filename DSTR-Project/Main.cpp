@@ -1,5 +1,5 @@
 #include "FileHandler.hpp"
-#include "TriviaPursuitCardGame.hpp"
+#include "qnaArrOfStruct.hpp"
 #include <iostream>
 
 using namespace std;
