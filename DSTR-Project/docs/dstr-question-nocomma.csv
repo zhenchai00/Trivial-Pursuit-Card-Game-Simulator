@@ -1,0 +1,332 @@
+﻿Linear search has a time complexity of O(n).,TRUE
+Binary search trees can have more than two children for each node.,FALSE
+Stacks follow the Last In First Out (LIFO) principle.,TRUE
+Queues follow the Last In First Out (LIFO) principle.,FALSE
+Hash tables guarantee constant-time lookup for any key.,FALSE
+Depth-first search always finds the shortest path in a weighted graph.,FALSE
+Dijkstra's algorithm guarantees finding the shortest path in a graph with negative edge weights.,FALSE
+Priority queues use a First In First Out (FIFO) ordering.,FALSE
+Merge sort is a comparison-based sorting algorithm.,TRUE
+Radix sort sorts numbers by processing individual digits.,TRUE
+Binary trees have at most three children per node.,FALSE
+Tries are primarily used for sorting integers.,FALSE
+A red-black tree ensures balance by performing rotations.,TRUE
+Breadth-first search explores as far as possible along each branch before backtracking.,FALSE
+Bellman-Ford algorithm can handle graphs with negative edge weights.,TRUE
+Huffman coding is a lossy compression technique.,FALSE
+Topological sorting can be applied to graphs with cycles.,FALSE
+Fenwick trees require O(n log n) time for construction.,FALSE
+A suffix tree is used for finding all occurrences of a pattern in a string.,TRUE
+Binary heaps are commonly used to implement priority queues.,TRUE
+A graph can only be represented using adjacency matrices.,FALSE
+Quick sort is a stable sorting algorithm.,FALSE
+Trie is efficient for searching prefixes of words.,TRUE
+Binary search requires the input array to be sorted.,TRUE
+Dijkstra's algorithm uses a priority queue to select the next vertex to explore.,TRUE
+Floyd-Warshall algorithm finds the shortest paths between all pairs of vertices in a graph.,TRUE
+Huffman coding guarantees a unique prefix-free code for each input character.,TRUE
+A tree is a connected graph with no cycles.,TRUE
+Depth-first search can be used to find the articulation points of a graph.,TRUE
+Binary heaps have a space complexity of O(n).,FALSE
+Radix trees are commonly used for storing strings.,TRUE
+Breadth-first search can be used to find bridges and articulation points in a graph.,TRUE
+AVL trees are unbalanced binary search trees.,FALSE
+Selection sort has a time complexity of O(n^2).,TRUE
+Prim's algorithm guarantees finding the minimum spanning tree in a graph with non-negative edge weights.,TRUE
+Binary search trees allow duplicate keys in their structure.,FALSE
+Graph traversal algorithms can be used to detect cycles in a graph.,TRUE
+The load factor of a hash table is the ratio of the number of elements to the number of buckets.,TRUE
+Kruskal's algorithm finds the shortest path in a graph with negative edge weights.,FALSE
+Breadth-first search always visits all vertices in a graph before backtracking.,FALSE
+A binary heap is a complete binary tree.,TRUE
+Huffman coding produces variable-length codes for input characters.,TRUE
+A graph can have multiple spanning trees.,TRUE
+Binary search can only be applied to sorted arrays.,TRUE
+Depth-first search can be implemented iteratively.,TRUE
+A hash function always produces unique hash values for different inputs.,FALSE
+Separate chaining resolves collisions by finding an alternative location in the hash table.,TRUE
+Collision resolution is necessary in hash tables to handle cases where multiple keys hash to the same index.,TRUE
+The height of a binary tree with n nodes is O(log n).,FALSE
+Graph traversal algorithms are used to visit all vertices in a graph.,TRUE
+Linear search is more efficient than binary search for sorted arrays.,FALSE
+Binary search can be implemented recursively.,TRUE
+Radix sort is an in-place sorting algorithm.,FALSE
+Depth-first search can be used to find connected components in a graph.,TRUE
+Depth-first search can be used to detect cycles in a graph.,TRUE
+A hash table with separate chaining has a worst-case time complexity of O(n).,FALSE
+Prim's algorithm uses breadth-first search to find the minimum spanning tree.,FALSE
+Depth-first search always finds the shortest path between two vertices in a graph.,FALSE
+A forest is a connected graph with no cycles.,FALSE
+Radix trees are commonly used for storing integers.,FALSE
+Breadth-first search can be used to find the diameter of a tree.,TRUE
+Huffman coding guarantees the shortest possible code length for each character.,TRUE
+Binary search trees allow traversal in any order.,TRUE
+Kruskal's algorithm guarantees finding the shortest path in a graph with negative edge weights.,FALSE
+A hash table with open addressing has a worst-case time complexity of O(n).,FALSE
+Dijkstra's algorithm uses depth-first search to explore vertices.,FALSE
+Breadth-first search can be used to find the minimum spanning tree of a graph.,TRUE
+Huffman coding is a lossless compression technique.,TRUE
+Topological sorting is only applicable to directed acyclic graphs (DAGs).,TRUE
+Floyd-Warshall algorithm can handle graphs with negative cycles.,TRUE
+Binary heaps guarantee constant-time insertion and deletion of elements.,FALSE
+Binary search trees can be implemented using arrays.,FALSE
+Kruskal's algorithm can handle graphs with negative edge weights.,TRUE
+Breadth-first search can be used to find the shortest path in a graph.,FALSE
+A suffix tree is a compressed trie containing all the suffixes of the given text.,TRUE
+Huffman coding is optimal for all distributions of characters.,FALSE
+Binary search trees guarantee O(log n) time complexity for all operations.,FALSE
+Floyd-Warshall algorithm has a time complexity of O(V^3); where V is the number of vertices.,TRUE
+Prim's algorithm guarantees finding the shortest path between two vertices in a graph.,FALSE
+Breadth-first search can be used to detect cycles in a graph.,TRUE
+A trie is a tree-like data structure used primarily for sorting integers.,FALSE
+Radix trees are particularly efficient when the keys have long common prefixes.,TRUE
+A segment tree is a tree data structure used for storing intervals or segments.,TRUE
+Fenwick trees require O(n log n) time and O(n) space for construction.,FALSE
+Suffix trees can efficiently answer various string-related queries; such as finding the longest common substring.,TRUE
+A hash function is a deterministic function that maps input data of arbitrary size to fixed-size values.,TRUE
+Linear probing resolves collisions by placing the collided element in the next available empty slot in the hash table.,TRUE
+Double hashing requires that the step size computed by the secondary hash function is relatively prime to the size of the hash table.,TRUE
+Bloom filters may produce false positives but never produce false negatives.,TRUE
+In a binary search tree; the right subtree of a node contains only nodes with keys greater than the node's key.,TRUE
+Heap sort is a stable sorting algorithm.,FALSE
+Priority queues can be implemented using various data structures; such as arrays; linked lists; binary heaps; or balanced binary search trees.,TRUE
+Depth-first search can be used to find the shortest path between two vertices in an unweighted graph.,FALSE
+Kruskal's algorithm is a graph search algorithm that finds the shortest path from a source vertex to all other vertices in a weighted graph with non-negative edge weights.,FALSE
+Topological sorting is a linear ordering of the vertices of a directed graph such that for every directed edge from vertex u to vertex v; u comes before v in the ordering.,TRUE
+Floyd-Warshall algorithm is a dynamic programming algorithm used to find the shortest paths between all pairs of vertices in a weighted graph with positive or negative edge weights.,TRUE
+Ternary search is a divide-and-conquer algorithm used to find the maximum or minimum value of a unimodal function over a given interval.,TRUE
+Huffman coding ensures that no code is a prefix of another code; making it uniquely decodable.,TRUE
+Balanced binary search trees; such as AVL trees and Red-Black trees; ensure that the height of the tree remains logarithmic; providing consistent performance.,TRUE
+A binary search tree always has a height of O(n); where n is the number of elements in the tree.,FALSE
+Graphs can only represent relationships between objects; they cannot model hierarchical structures.,FALSE
+Dijkstra's algorithm is an example of a greedy algorithm; as it makes locally optimal choices at each step.,TRUE
+A breadth-first search traversal of a tree will always visit the nodes in sorted order.,FALSE
+A priority queue implemented with a binary heap guarantees O(1) time complexity for both insertion and deletion.,FALSE
+A self-balancing binary search tree; such as AVL tree or Red-Black tree; ensures a worst-case time complexity of O(log n) for search; insert; and delete operations.,TRUE
+The Floyd-Warshall algorithm can handle graphs with negative cycles.,TRUE
+Tries are primarily used for sorting integers in non-decreasing order.,FALSE
+Topological sorting is applicable only to directed graphs without cycles.,TRUE
+The heapify operation in a binary heap has a time complexity of O(log n); where n is the number of elements in the heap.,TRUE
+Hash tables use linked lists to handle collisions.,TRUE
+Breadth-first search can be used to find the shortest path between two vertices in a weighted graph.,FALSE
+Prim's algorithm guarantees finding the shortest path from a source vertex to all other vertices in a weighted graph.,FALSE
+A binary search tree allows duplicate keys in its structure.,TRUE
+Bellman-Ford algorithm has a time complexity of O(V*E); where V is the number of vertices and E is the number of edges in the graph.,TRUE
+In a directed graph; the in-degree of a vertex represents the number of edges entering the vertex.,TRUE
+Quick sort is an example of a stable sorting algorithm.,FALSE
+Fenwick trees are primarily used for range queries and updates in an array.,TRUE
+A suffix tree can efficiently answer queries about the longest common substring of a set of strings.,TRUE
+Binary heaps are always complete binary trees.,TRUE
+A tree with n vertices and n-1 edges is always connected.,TRUE
+Depth-first search can be used to determine the connectivity of a graph.,TRUE
+Binary search can be implemented iteratively.,TRUE
+In a graph; the diameter is the maximum distance between any pair of vertices.,TRUE
+The worst-case time complexity of quick sort is O(n^2).,FALSE
+AVL trees require rotations to maintain balance after insertion and deletion operations.,TRUE
+Huffman coding guarantees the optimal prefix-free code for any set of character frequencies.,TRUE
+Breadth-first search can be used to check if a graph is bipartite.,TRUE
+A suffix array is an alternative data structure to suffix trees for storing all the suffixes of a string.,TRUE
+Graphs can only represent relationships between two objects.,FALSE
+Binary heaps guarantee O(1) time complexity for both insertion and deletion operations.,FALSE
+A segment tree is a type of tree data structure used for storing intervals or segments.,TRUE
+Hash tables always have a fixed size determined at initialization.,FALSE
+Floyd-Warshall algorithm finds the shortest paths between all pairs of vertices in a graph with positive edge weights.,TRUE
+Radix sort has a worst-case time complexity of O(n^2).,FALSE
+A red-black tree is always a balanced binary search tree.,TRUE
+A trie is a tree-like data structure used primarily for searching strings.,TRUE
+Binary search trees can be efficiently implemented using arrays.,FALSE
+Ternary search divides the search space into three parts at each step.,TRUE
+Dijkstra's algorithm can handle graphs with negative edge weights.,FALSE
+Huffman coding is an example of a dynamic programming technique.,FALSE
+A graph is a collection of nodes connected by edges.,TRUE
+AVL trees are guaranteed to be balanced at all times.,TRUE
+A suffix tree requires less space compared to a suffix array for storing all the suffixes of a string.,FALSE
+Priority queues are mainly used to implement stack data structures.,FALSE
+Radix sort has a space complexity of O(n).,TRUE
+Breadth-first search can be used to find the shortest path in an unweighted graph.,TRUE
+The time complexity of binary search is O(n).,FALSE
+A graph is a non-linear data structure.,TRUE
+Kruskal's algorithm finds the longest path in a graph.,FALSE
+Breadth-first search always explores vertices in ascending order of their distance from the source vertex.,FALSE
+Huffman coding is not suitable for lossless data compression.,FALSE
+Binary heaps are always binary search trees.,FALSE
+Floyd-Warshall algorithm can handle graphs with negative edge weights.,TRUE
+Quick sort is an example of a divide-and-conquer algorithm.,TRUE
+A trie is a type of tree data structure.,TRUE
+Kruskal's algorithm requires the graph to be connected.,FALSE
+Dijkstra's algorithm uses breadth-first search to explore vertices.,FALSE
+Binary search trees are always binary trees.,FALSE
+The topological sort of a directed acyclic graph is unique.,FALSE
+In a binary search tree; each node can have at most two children.,TRUE
+Breadth-first search is an example of a depth-first traversal algorithm.,FALSE
+Radix sort is more efficient than quicksort for sorting large arrays with small integer keys.,TRUE
+The time complexity of the radix sort algorithm is O(n log n).,FALSE
+A binary heap is a complete binary tree with the heap property.,TRUE
+A graph with only one vertex is considered to be connected.,TRUE
+Binary search trees can be implemented using linked lists.,TRUE
+Depth-first search can be used to determine if a graph is bipartite.,TRUE
+Huffman coding is used for lossy data compression.,FALSE
+The Bellman-Ford algorithm can detect negative cycles in a graph.,TRUE
+A trie is a data structure used for storing integers.,FALSE
+A suffix tree requires less space compared to a suffix array.,FALSE
+Ternary search is an example of a divide-and-conquer algorithm.,TRUE
+Breadth-first search can be used to find the shortest path between two vertices in an unweighted graph.,TRUE
+Depth-first search can be used to find the shortest path in a graph.,FALSE
+Prim's algorithm can handle graphs with negative edge weights.,FALSE
+Kruskal's algorithm requires that the graph is connected.,FALSE
+Binary heaps are typically used to implement priority queues.,TRUE
+A segment tree can be used to answer range queries on an array efficiently.,TRUE
+Depth-first search can be used to generate a topological ordering of vertices in a directed acyclic graph.,TRUE
+The time complexity of the bubble sort algorithm is O(n log n).,FALSE
+A hash table with linear probing resolves collisions by placing the collided element in the next available slot.,FALSE
+Quick sort has a worst-case time complexity of O(n^2).,TRUE
+A suffix tree is a data structure used to store suffixes of a string.,TRUE
+Fenwick trees are efficient for range sum queries and point updates in an array.,TRUE
+A graph with only one vertex cannot have any edges.,TRUE
+Merge sort is an in-place sorting algorithm.,FALSE
+Dijkstra's algorithm uses breadth-first search to find the shortest path.,FALSE
+Binary search trees can have duplicate keys in their structure.,TRUE
+A hash table with chaining resolves collisions by placing collided elements in separate linked lists.,TRUE
+A suffix array is a compressed representation of a suffix tree.,FALSE
+Binary search can only be applied to arrays.,FALSE
+Fenwick trees have a space complexity of O(n).,TRUE
+The time complexity of heap sort is O(n log n).,TRUE
+A trie is a tree-like data structure used for storing integers.,FALSE
+A connected graph cannot have any bridges.,FALSE
+A binary heap is always a complete binary tree.,TRUE
+Floyd-Warshall algorithm finds the shortest paths between all pairs of vertices in a graph with non-negative edge weights.,TRUE
+A suffix tree can be used to efficiently find all occurrences of a pattern in a string.,TRUE
+Dijkstra's algorithm is an example of a dynamic programming algorithm.,FALSE
+Quick sort is an in-place sorting algorithm.,TRUE
+A graph with only one vertex cannot have any cycles.,TRUE
+AVL trees are always balanced binary search trees.,TRUE
+Radix sort is stable.,FALSE
+Breadth-first search can be used to determine if a graph is connected.,TRUE
+A suffix array is always more space-efficient than a suffix tree.,FALSE
+A graph can have multiple topological orderings.,TRUE
+Binary heaps guarantee O(log n) time complexity for insertion and deletion operations.,FALSE
+A directed graph always has the same number of edges as vertices.,FALSE
+Depth-first search can be used to find the shortest path between two vertices in a weighted graph.,FALSE
+A hash table with separate chaining resolves collisions by placing collided elements in the same bucket.,TRUE
+Prim's algorithm always finds the shortest path between two vertices in a graph.,FALSE
+Binary heaps can be used to implement priority queues efficiently.,TRUE
+A trie is a type of tree data structure used primarily for sorting integers.,FALSE
+Kruskal's algorithm finds the maximum spanning tree in a graph.,FALSE
+A segment tree can be used to perform range minimum queries efficiently.,TRUE
+A trie is a tree-like data structure used for storing strings.,FALSE
+In a binary search tree; the left subtree of a node contains only nodes with keys less than the node's key.,TRUE
+A linked list is a type of linear data structure.,TRUE
+Insertion sort has a time complexity of O(n log n).,FALSE
+Bubble sort is an example of a divide-and-conquer algorithm.,FALSE
+The time complexity of selection sort is O(n^2).,TRUE
+A binary search tree can have at most two children for each node.,TRUE
+A queue follows the First In First Out (FIFO) principle.,TRUE
+Depth-first search always explores vertices in ascending order of their distance from the source vertex.,FALSE
+A hash table with linear probing resolves collisions by placing collided elements in separate linked lists.,FALSE
+A segment tree can be used to perform range sum queries efficiently.,TRUE
+Huffman coding can be used for lossless data compression.,TRUE
+A graph with only one vertex cannot have any bridges.,TRUE
+Is a segment tree a tree data structure used for storing intervals or segments?,TRUE
+Does Fenwick trees require O(n log n) time for construction?,FALSE
+Is a hash function always produces unique hash values for different inputs?,FALSE
+Is collision resolution necessary in hash tables to handle cases where multiple keys hash to the same index?,TRUE
+Does a binary heap guarantee constant-time insertion and deletion of elements?,FALSE
+Are binary search trees guaranteed to be balanced at all times?,TRUE
+Is a suffix tree used for finding all occurrences of a pattern in a string?,TRUE
+Is binary heaps are typically used to implement priority queues?,TRUE
+Does Floyd-Warshall algorithm can handle graphs with negative cycles?,TRUE
+Is a trie is a type of tree data structure used primarily for searching strings?,FALSE
+Can Prim's algorithm always finds the shortest path between two vertices in a graph?,FALSE
+Does a hash table with separate chaining resolves collisions by placing collided elements in the same bucket?,TRUE
+Can a graph have multiple topological orderings?,TRUE
+Does a segment tree can be used to perform range sum queries efficiently?,TRUE
+Does a suffix tree can be used to efficiently find all occurrences of a pattern in a string?,TRUE
+Is a linked list a type of linear data structure?,TRUE
+Does the time complexity of selection sort is O(n^2)?,TRUE
+Can a binary search tree can have at most two children for each node?,TRUE
+Does a queue follows the First In First Out (FIFO) principle?,TRUE
+Does depth-first search always explores vertices in ascending order of their distance from the source vertex?,FALSE
+Is a hash table with linear probing resolves collisions by placing collided elements in separate linked lists?,FALSE
+Can Huffman coding can be used for lossless data compression?,TRUE
+Can a graph with only one vertex cannot have any bridges?,TRUE
+Does a suffix array is always more space-efficient than a suffix tree?,FALSE
+Is a binary heap is always a complete binary tree?,TRUE
+Does a Floyd-Warshall algorithm finds the shortest paths between all pairs of vertices in a graph with non-negative edge weights?,TRUE
+Is a suffix tree requires less space compared to a suffix array for storing all the suffixes of a string?,FALSE
+Can Prim's algorithm can handle graphs with negative edge weights?,FALSE
+Does a ternary search divides the search space into three parts at each step?,TRUE
+Is a trie is a tree-like data structure used for storing integers?,FALSE
+Can Dijkstra's algorithm uses breadth-first search to explore vertices?,FALSE
+Does binary search trees are always binary trees?,FALSE
+Can the topological sort of a directed acyclic graph is unique?,FALSE
+Does a directed graph always has the same number of edges as vertices?,FALSE
+Can depth-first search can be used to find the shortest path between two vertices in a weighted graph?,FALSE
+Does a hash table with linear probing resolves collisions by placing the collided element in the next available slot?,FALSE
+Is quick sort has a worst-case time complexity of O(n^2)?,TRUE
+Can a suffix tree is a data structure used to store suffixes of a string?,TRUE
+Does Fenwick trees are efficient for range sum queries and point updates in an array?,TRUE
+Is a graph with only one vertex cannot have any edges?,TRUE
+Does merge sort is an in-place sorting algorithm?,FALSE
+Can breadth-first search can be used to find the shortest path between two vertices in an unweighted graph?,TRUE
+Does a binary heap is a complete binary tree with the heap property?,TRUE
+Is a graph with only one vertex is considered to be connected?,TRUE
+Does a priority queues can be implemented using various data structures such as arrays linked lists binary heaps or balanced binary search trees?,TRUE
+Can balanced binary search trees such as AVL trees and Red-Black trees ensure that the height of the tree remains logarithmic providing consistent performance?,TRUE
+Does a Huffman coding ensures that no code is a prefix of another code making it uniquely decodable?,TRUE
+Is Dijkstra's algorithm is an example of a greedy algorithm as it makes locally optimal choices at each step?,TRUE
+Can a self-balancing binary search tree such as AVL tree or Red-Black tree ensures a worst-case time complexity of O(log n) for search insert and delete operations?,TRUE
+Is the heapify operation in a binary heap has a time complexity of O(log n) where n is the number of elements in the heap?,TRUE
+Can Bellman-Ford algorithm has a time complexity of O(V*E) where V is the number of vertices and E is the number of edges in the graph?,TRUE
+Is a directed graph in-degree of a vertex represents the number of edges entering the vertex?,TRUE
+Does in a graph the diameter is the maximum distance between any pair of vertices?,TRUE
+Is Huffman coding can be used for lossless data compression?,TRUE
+Can a trie be used to efficiently store and retrieve strings?,TRUE
+Does the bubble sort algorithm have a worst-case time complexity of O(n^2)?,TRUE
+Is a linked list a data structure where elements are stored in a sequential order?,TRUE
+Can the topological sort of a directed acyclic graph be computed in linear time?,TRUE
+Does a directed acyclic graph (DAG) have cycles?,FALSE
+Can the Floyd-Warshall algorithm find the shortest paths between all pairs of vertices in a graph with negative edge weights?,TRUE
+Is a spanning tree a subgraph that is a tree and includes all the vertices of the original graph?,TRUE
+Can a priority queue be implemented using a heap data structure?,TRUE
+Is a B-tree a self-balancing tree data structure that maintains sorted data and allows searches; sequential access; insertions; and deletions in logarithmic time?,TRUE
+Does the radix sort algorithm have a worst-case time complexity of O(n * k) where n is the number of elements and k is the number of digits in the largest number?,TRUE
+Can Kruskal's algorithm find the minimum spanning tree of a graph with negative edge weights?,TRUE
+Is a breadth-first search (BFS) algorithm used to traverse or search tree or graph data structures?,TRUE
+Does a hash table with chaining resolve collisions by creating a linked list at each index where collisions occur?,TRUE
+Can the Ford-Fulkerson algorithm find the maximum flow in a flow network?,TRUE
+Is an AVL tree a self-balancing binary search tree where the heights of the two child subtrees of any node differ by at most one?,TRUE
+Does a disjoint-set data structure maintain a collection of disjoint sets and allows for efficient union and find operations?,TRUE
+Can the A* search algorithm find the shortest path from a start node to a goal node in a weighted graph?,TRUE
+Is a trie commonly used in applications where it is necessary to represent and search for a large set of strings?,TRUE
+Does the shell sort algorithm have a worst-case time complexity of O(n^2)?,FALSE
+Can a directed graph have cycles?,TRUE
+Is a graph with only one vertex always connected?,TRUE
+Does a Fibonacci heap have a worst-case time complexity of O(1) for decrease key and amortized O(1) for delete minimum operations?,TRUE
+Can the Edmonds-Karp algorithm find the maximum flow in a flow network?,TRUE
+Is a suffix array a sorted array of all suffixes of a given string?,TRUE
+Does a linear search algorithm have a worst-case time complexity of O(n)?,TRUE
+Can a directed graph with a cycle have a topological ordering?,FALSE
+Is a trie a tree-like data structure used for storing a dynamic set of strings?,TRUE
+Does the quicksort algorithm have a worst-case time complexity of O(n^2)?,TRUE
+Can a hash table with open addressing resolve collisions by finding alternative slots within the same table?,TRUE
+Is the bucket sort algorithm stable?,TRUE
+Does the insertion sort algorithm have a worst-case time complexity of O(n^2)?,TRUE
+Can a binary search tree have duplicate keys?,TRUE
+Is a graph with only one vertex always a connected component?,TRUE
+Does the Kruskal's algorithm for finding minimum spanning tree use greedy strategy?,TRUE
+Can a heap be used to efficiently implement a priority queue?,TRUE
+Is a red-black tree a type of self-balancing binary search tree?,TRUE
+Does the quickselect algorithm have a worst-case time complexity of O(n^2)?,TRUE
+Can a trie be used for approximate string matching and spell checking?,TRUE
+Is a graph with only one vertex always a tree?,TRUE
+Does the binary search algorithm have a worst-case time complexity of O(log n)?,TRUE
+Can a directed acyclic graph (DAG) have multiple topological orderings?,TRUE
+Is a heap a complete binary tree where every level; except possibly the last; is completely filled; and all nodes are as far left as possible?,TRUE
+Does the selection sort algorithm have a worst-case time complexity of O(n^2)?,TRUE
+Can a heap be implemented using an array?,TRUE
+Is a trie a suitable data structure for solving problems related to prefix matching and auto-complete?,TRUE
+Does the Floyd-Warshall algorithm handle negative cycles in a graph?,TRUE
+Can a depth-first search (DFS) algorithm be used to detect cycles in a graph?,TRUE
+Is a binary search tree (BST) a rooted binary tree whose internal nodes each store a key greater than all the keys in the node's left subtree and less than those in its right subtree?,TRUE
+Can the breadth-first search algorithm be used to determine the shortest path between two vertices in an unweighted graph?,TRUE
+Is a heap sort algorithm stable?,FALSE
