@@ -10,6 +10,7 @@ enum answerType {TRUE, FALSE}; // declaration of enum to standardize the questio
 struct unansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
 	string myQuestion;
 	answerType myAnswer;
+    int myScore;
 };
 
 void readCSVToDeck(unansweredDeckStruct unansweredDeck[], const string& filename) {
@@ -23,7 +24,7 @@ void readCSVToDeck(unansweredDeckStruct unansweredDeck[], const string& filename
     }
 
     // declaring variables used to store the current line, question, and its corresponding answer
-    string line, question, answer;
+    string line, question, answer, score;
     int i = 0;
 
     // to read the file line by line
@@ -51,6 +52,29 @@ void readCSVToDeck(unansweredDeckStruct unansweredDeck[], const string& filename
             }
         }
 
+        // start added by caizhen on 23/4/2024 
+        if (getline(ss, score, ','))
+        {
+            if (score == "4")
+            {
+                unansweredDeck[i].myScore = 4;
+            }
+            else if (score == "8")
+            {
+                unansweredDeck[i].myScore = 8;
+            }
+            else if (score == "10")
+            {
+                unansweredDeck[i].myScore = 10;
+            }
+            else
+            {
+                cerr << "Unknown score value: " << score << " in line " << (i + 1) << endl;
+                continue;
+            }
+        }
+        // end added by caizhen on 23/4/2024 
+
         // increment the index by 1
         i++;
     }
@@ -62,7 +86,7 @@ void readCSVToDeck(unansweredDeckStruct unansweredDeck[], const string& filename
 void printFirstTenQuestions(const unansweredDeckStruct unansweredDeck[]) {
     cout << endl << "First 10 Questions and Answers:" << endl;
     // to loop through the first 10 elements of the array
-    for (int i = 0; i < 300; i++) {
+    for (int i = 0; i < 10; i++) {
         // display the question
         cout << "Question " << (i + 1) << ": " << unansweredDeck[i].myQuestion << endl;
 
@@ -77,6 +101,21 @@ void printFirstTenQuestions(const unansweredDeckStruct unansweredDeck[]) {
 
         // to display the question's corresponding answer
         cout << "Answer: " << answerString << endl;
+
+        // start added by caizhen on 23/4/2024 
+        // to convert the score type to string
+        string scoreString;
+        if (unansweredDeck[i].myScore == 4) {
+            scoreString = "4";
+        } else if (unansweredDeck[i].myScore == 8) {
+            scoreString = "8";
+        } else if (unansweredDeck[i].myScore == 10) {
+            scoreString = "10";
+        } else {
+            scoreString = "Unknown";
+        }
+        cout << "Score: " << scoreString << endl;
+        // end added by caizhen on 23/4/2024 
 
         cout << "-----------------------------------" << endl;
     }
