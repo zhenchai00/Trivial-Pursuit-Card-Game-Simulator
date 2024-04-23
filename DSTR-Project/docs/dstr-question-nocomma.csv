@@ -1,4 +1,4 @@
-﻿Linear search has a time complexity of O(n).,TRUE,4
+Linear search has a time complexity of O(n).,TRUE,4
 Binary search trees can have more than two children for each node.,FALSE,8
 Stacks follow the Last In First Out (LIFO) principle.,TRUE,4
 Queues follow the Last In First Out (LIFO) principle.,FALSE,10
