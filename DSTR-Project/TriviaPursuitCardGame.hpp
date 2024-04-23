@@ -64,7 +64,7 @@ void printFirstTenQuestions(const unansweredDeckStruct unansweredDeck[]) {
     // to loop through the first 10 elements of the array
     for (int i = 0; i < 300; i++) {
         // display the question
-        cout << "Question " << i + 1 << ": " << unansweredDeck[i].myQuestion << endl;
+        cout << "Question " << (i + 1) << ": " << unansweredDeck[i].myQuestion << endl;
 
         // to convert the answerType enum to "string" data type
         string answerString;
