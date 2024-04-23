@@ -10,7 +10,7 @@ int main()
 	//cout << "bye bye";
 	//fileHandler();
 
-	readCSVToDeck(unansweredDeck, "docs/dstr-questions-without-headings.csv"); // to read the 300 questions and their corresponding answers into the newly created array of structs
+	readCSVToDeck(unansweredDeck, "docs/dstr-question-nocomma.csv"); // to read the 300 questions and their corresponding answers into the newly created array of structs
 	printFirstTenQuestions(unansweredDeck); // to display the first 10 questions out of the 300 questions for testing purposes (22/4 10:53pm - Kae Lam)
 	
 	return 0;
