@@ -8,6 +8,9 @@ struct studentResponseNode {
 
 	// data attributes
 	int studentID;
+	string question1;
+	string question2;
+	string question3;
 	responseType round1;
 	responseType round2;
 	responseType round3;
@@ -33,15 +36,19 @@ public:
 	}
 
 	// function to create a new node for the linked list;
-	studentResponseNode* createNewNode(int studentID, responseType round1, responseType round2, responseType round3, int score) {
+	studentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, responseType round1, responseType round2, responseType round3, int score) {
 		// to create struct in heap location
 		studentResponseNode* newNode = new studentResponseNode;
 
 		// data attribute of a single node is stored in the memory location
 		newNode->studentID = studentID;
+		newNode->question1 = question1;
+		newNode->question2 = question2;
+		newNode->question3 = question3;
 		newNode->round1 = round1;
 		newNode->round2 = round2;
 		newNode->round3 = round3;
+		newNode->score = score;
 		newNode->nextAddress = nullptr;
 
 		// return the memory address to the insert function
