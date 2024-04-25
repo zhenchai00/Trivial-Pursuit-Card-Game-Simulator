@@ -54,4 +54,27 @@ public:
 		// return the memory address to the insert function
 		return newNode;
 	}
+
+	// function to insert to the front of the list
+	void insertToEnd(int studentID, string question1, string question2, string question3, responseType round1, responseType round2, responseType round3, int score) {
+
+		// function to create an independent node by calling the createNewNode function
+		studentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, round1, round2, round3, score);
+
+		// insert the new node to the end of the linked list
+		if (head == nullptr) { // this is the first node in the linked list
+			head = newNode;
+		}
+		else { // this is not the first node in the linkedlist
+			studentResponseNode* current = head;
+			while (current->nextAddress != nullptr) { // if node not yet the last node, move again
+				current = current->nextAddress;
+			}
+			// if the last node is found
+			current->nextAddress = newNode;
+		}
+		size++;
+	}
+
+
 };
