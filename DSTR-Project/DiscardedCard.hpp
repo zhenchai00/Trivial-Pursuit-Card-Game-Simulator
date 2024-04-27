@@ -44,7 +44,7 @@ public:
 	// the new added discarded card should be at the bottom of the card stack 
 	// adding new discarded card to the discarded area
 	void addNewDiscardedCard(string question, double marks) {
-		LinkedListNode* newnode = createNewNode(question, marks * 80);
+		LinkedListNode* newnode = createNewNode(question, marks);
 
 		// case 1: if the discarded card area have no card
 		if (head == nullptr) {
