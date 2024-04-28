@@ -29,7 +29,7 @@ void readAllfileCSV(reportStructure report[], const string& filename) {
             cout << "File cannot be opened" << endl;
         }
         else {
-            cout << "File opened successfully" << endl;
+            //cout << "File opened successfully" << endl;
             string line, studentID, question1, question2, question3, tempstring;
             unsigned points_1 = 0, points_2 = 0, points_3 = 0, total_score = 0;
             int i = 0;

@@ -1,5 +1,6 @@
 #include "FileHandler.hpp"
 #include "qnaArrOfStruct.hpp"
+#include "ReportFunctions.hpp"
 #include <iostream>
 
 using namespace std;
@@ -54,6 +55,11 @@ int main()
 
 		// pass the studentNum to the function to generate the question by print out
 	}
+
+	//displaying report
+	reportStructure report[5];
+	readAllfileCSV(report, "docs/allAttributes.csv");
+	displayReport(report);
 
 	return 0;
 }

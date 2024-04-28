@@ -1,0 +1,5 @@
+T70001,Arrays can only store elements of the same data type.,Linked lists have constant-time access to any element.,Stacks use the FIFO principle.,10,8,8
+T70002,Hash tables guarantee constant-time lookup for any key.,Depth-first search always finds the shortest path in a weighted graph.,Dijkstra's algorithm guarantees finding the shortest path in a graph with negative edge weights.,8,8,8
+T70003,Merge sort is a comparison-based sorting algorithm.,Radix sort sorts numbers by processing individual digits.,Binary trees have at most three children per node.,10,10,10
+T70004,Tries are primarily used for sorting integers.,A red-black tree ensures balance by performing rotations.,Breadth-first search explores as far as possible along each branch before backtracking.,0,0,10
+T70005,Bellman-Ford algorithm can handle graphs with negative edge weights.,Huffman coding is a lossy compression technique.,Topological sorting can be applied to graphs with cycles.,8,8,10
