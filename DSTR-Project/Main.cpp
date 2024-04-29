@@ -1,5 +1,6 @@
 #include "UnansweredDeck.hpp"
 #include "ReportFunctions.hpp"
+#include "Common.hpp"
 #include <iostream>
 
 using namespace std;
@@ -50,9 +51,10 @@ int main()
 				cin >> studentNum;
 			}
 		}
-		cout << "student num = " << studentNum << endl;
 
+		// cout << "student num = " << studentNum << endl;
 		// pass the studentNum to the function to generate the question by print out
+		executeManual(studentNum);
 	}
 
 	//displaying report
