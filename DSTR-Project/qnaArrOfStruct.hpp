@@ -5,11 +5,11 @@
 
 using namespace std;
 
-enum answerType {TRUE, FALSE}; // declaration of enum to standardize the question's answer type
+enum AnswerType {TRUE, FALSE}; // declaration of enum to standardize the question's answer type
 
 struct unansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
 	string myQuestion;
-	answerType myAnswer;
+	AnswerType myAnswer;
     int myScore;
 };
 
@@ -39,7 +39,7 @@ void readCSVToDeck(unansweredDeckStruct unansweredDeck[], const string& filename
 
         // to read the question's corresponding answer (the second element in the CSV line)
         if (getline(ss, answer, ',')) {
-            // Convert the answer string to answerType enum
+            // Convert the answer string to AnswerType enum
             if (answer == "TRUE") {
                 unansweredDeck[i].myAnswer = TRUE;
             }
@@ -90,7 +90,7 @@ void printFirstTenQuestions(const unansweredDeckStruct unansweredDeck[]) {
         // display the question
         cout << "Question " << (i + 1) << ": " << unansweredDeck[i].myQuestion << endl;
 
-        // to convert the answerType enum to "string" data type
+        // to convert the AnswerType enum to "string" data type
         string answerString;
         if (unansweredDeck[i].myAnswer == TRUE) {
             answerString = "TRUE";

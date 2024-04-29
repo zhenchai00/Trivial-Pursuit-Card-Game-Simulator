@@ -2,28 +2,28 @@
 
 using namespace std;
 
-enum responseType { TRUE_NEW, FALSE_NEW, SKIP, TRUE_DISCARD, FALSE_DISCARD };
+enum ResponseType { TRUE_NEW, FALSE_NEW, SKIP, TRUE_DISCARD, FALSE_DISCARD };
 
-struct studentResponseNode {
+struct StudentResponseNode {
 
 	// data attributes
 	int studentID;
 	string question1;
 	string question2;
 	string question3;
-	responseType round1;
-	responseType round2;
-	responseType round3;
+	ResponseType round1;
+	ResponseType round2;
+	ResponseType round3;
 	int score;
 
 	// link
-	studentResponseNode* nextAddress;
+	StudentResponseNode* nextAddress;
 };
 
 class automatedStudentResponse {
 
 	// properties of the student response linked list
-	studentResponseNode*head;
+	StudentResponseNode*head;
 	string linkedlistName;
 	int size;
 
@@ -36,9 +36,9 @@ public:
 	}
 
 	// function to create a new node for the linked list;
-	studentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, responseType round1, responseType round2, responseType round3, int score) {
+	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, ResponseType round1, ResponseType round2, ResponseType round3, int score) {
 		// to create struct in heap location
-		studentResponseNode* newNode = new studentResponseNode;
+		StudentResponseNode* newNode = new StudentResponseNode;
 
 		// data attribute of a single node is stored in the memory location
 		newNode->studentID = studentID;
@@ -56,17 +56,17 @@ public:
 	}
 
 	// function to insert to the front of the list
-	void insertToEnd(int studentID, string question1, string question2, string question3, responseType round1, responseType round2, responseType round3, int score) {
+	void insertToEnd(int studentID, string question1, string question2, string question3, ResponseType round1, ResponseType round2, ResponseType round3, int score) {
 
 		// function to create an independent node by calling the createNewNode function
-		studentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, round1, round2, round3, score);
+		StudentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, round1, round2, round3, score);
 
 		// insert the new node to the end of the linked list
 		if (head == nullptr) { // this is the first node in the linked list
 			head = newNode;
 		}
 		else { // this is not the first node in the linkedlist
-			studentResponseNode* current = head;
+			StudentResponseNode* current = head;
 			while (current->nextAddress != nullptr) { // if node not yet the last node, move again
 				current = current->nextAddress;
 			}
