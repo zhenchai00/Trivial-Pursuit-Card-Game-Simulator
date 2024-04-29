@@ -21,7 +21,7 @@ struct reportStructure {  // declaration of a struct to be used to create an arr
     unsigned score;
 };
 
-void readAllfileCSV(reportStructure report[], const string& filename) {
+void readAllFileCSV(reportStructure report[], const string& filename) {
     
     try {
         ifstream allfile(filename);

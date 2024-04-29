@@ -57,7 +57,7 @@ int main()
 
 	//displaying report
 	reportStructure report[5];
-	readAllfileCSV(report, "docs/allAttributes.csv");
+	readAllFileCSV(report, "docs/allAttributes.csv");
 	displayReport(report);
 
 	return 0;
