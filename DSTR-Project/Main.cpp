@@ -1,5 +1,4 @@
-#include "FileHandler.hpp"
-#include "qnaArrOfStruct.hpp"
+#include "QnaArrOfStruct.hpp"
 #include "ReportFunctions.hpp"
 #include <iostream>
 
