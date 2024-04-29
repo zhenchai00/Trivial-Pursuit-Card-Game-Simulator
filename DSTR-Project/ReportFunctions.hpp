@@ -99,7 +99,7 @@ void displayReport(const reportStructure report[]) {
         cout << "Question 3 : " << report[i].round3 << endl;
         cout << setw(70) << "\t";
         cout << "Points 3 : " << report[i].point3 << endl;
-         cout << setw(11) << "\t";
+        cout << setw(11) << "\t";
         cout << "Total Score : " << report[i].score << endl;
         cout << string(92, '-') << endl;
         cout << " " << endl;
