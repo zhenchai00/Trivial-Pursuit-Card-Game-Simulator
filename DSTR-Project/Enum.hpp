@@ -1,4 +1,5 @@
 // These two lines prevent the file from being included multiple times in the same source file
+// https://stackoverflow.com/questions/11969762/passing-an-enum-to-another-file-c
 #ifndef ENUM_HPP
 #define ENUM_HPP
 
