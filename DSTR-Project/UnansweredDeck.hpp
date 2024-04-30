@@ -5,11 +5,11 @@
 
 using namespace std;
 
-enum AnswerType {TRUE, FALSE}; // declaration of enum to standardize the question's answer type
+enum AnswerTypeTF {TRUE, FALSE}; // declaration of enum to standardize the question's answer type
 
 struct unansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
 	string myQuestion;
-	AnswerType myAnswer;
+	AnswerTypeTF myAnswer;
     int myScore;
 };
 
