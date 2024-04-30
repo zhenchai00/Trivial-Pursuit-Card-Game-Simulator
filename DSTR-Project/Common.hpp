@@ -7,9 +7,9 @@ using namespace std;
 void executeManual(int studentNum)
 {
     // create student result list
+    StudentResultLinkedList studentResult("Student Result");
     for (int studentId = 1; studentId <= studentNum; studentId++)
     {
-        StudentResultLinkedList studentResult("Student Result");
         string question1;
         string question2;
         string question3;
@@ -19,6 +19,7 @@ void executeManual(int studentNum)
         int score;
         studentResult.insertEndStudentResult(studentId, "", "", "", AnswerType::NONE, AnswerType::NONE, AnswerType::NONE, 0);
     }
+    studentResult.displayNodes();
 
     int totalRound = 3;
     for (int round = 1; round <= totalRound; round++) // round of the game

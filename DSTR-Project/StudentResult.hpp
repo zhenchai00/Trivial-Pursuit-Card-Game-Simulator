@@ -139,4 +139,18 @@ public:
         }
         return nullptr;
     }
+
+    void displayNodes ()
+    {
+        StudentResultNode *current = head;
+
+        while (current != nullptr)
+        {
+            cout << endl;
+            cout << "Student ID: " << current->studentId << endl;
+            current = current->nextAdd;
+        }
+
+        cout << listName << " is empty now" << endl;
+    }
 };
