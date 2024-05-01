@@ -126,7 +126,7 @@ public:
     }
 
     // get student nodes by student id which traverse whole linked list from first to last
-    StudentResultNode *getNodeById (int studentId)
+    StudentResultNode *getNodeById (int studentId, int totalStudent)
     {
         StudentResultNode *current = head;
         while (current != nullptr) // O(n)
