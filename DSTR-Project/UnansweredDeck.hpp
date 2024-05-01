@@ -1,11 +1,10 @@
+#include "Enum.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 
 using namespace std;
-
-enum AnswerTypeTF {TRUE, FALSE}; // declaration of enum to standardize the question's answer type
 
 struct unansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
 	string myQuestion;

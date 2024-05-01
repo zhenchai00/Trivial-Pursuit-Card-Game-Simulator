@@ -12,4 +12,9 @@ enum AnswerType {
     FALSE_DISCARD
 };
 
+enum AnswerTypeTF { 
+    TRUE, 
+    FALSE 
+};
+
 #endif // ENUM_HPP
