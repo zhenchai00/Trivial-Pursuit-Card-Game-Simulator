@@ -1,3 +1,8 @@
+#include "Enum.hpp"
+#include "AnsweredDeck.hpp"
+#include "UnansweredDeck.hpp"
+#include "DiscardedCard.hpp"
+
 #include <iostream>
 
 using namespace std;
@@ -76,5 +81,9 @@ public:
 		size++;
 	}
 
+	// function to automate student responses by obtaining questions from UnansweredDeck LinkedList and responses by reading the 100-student-answer.csv file
+	void runAutomatedGame() {
+			
+	}
 
 };
