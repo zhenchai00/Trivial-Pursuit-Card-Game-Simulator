@@ -1,4 +1,4 @@
-#include "UnansweredDeck.hpp"
+#include "UnansweredDeck.hpp
 #include "ReportFunctions.hpp"
 #include "Common.hpp"
 #include <iostream>
@@ -32,6 +32,7 @@ int main()
 	{
 		// should call the auto function
 		cout << endl << "selected mode auto" << endl;
+		executeAuto();
 	} else if (modeType == 2)	// mode = manual
 	{
 		// should call the manual function

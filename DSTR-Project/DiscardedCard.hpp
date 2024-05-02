@@ -1,13 +1,13 @@
 // data included : question, marks
 // first in first out logic
 // havent including the marks adding function (jia, 28/04)
-#pragma once
 #include <iostream>
 using namespace std;
 
 struct LinkedListNode {
 	// data
 	string question;
+	AnswerTypeTF answer;
 	double marks;
 
 	// link
@@ -29,10 +29,11 @@ public:
 		size = 0;
 	}
 
-	LinkedListNode* createNewNode(string question, double marks) {
+	LinkedListNode* createNewNode(string question, AnswerTypeTF answer,double marks) {
 		LinkedListNode* newnode = new LinkedListNode;
 
 		newnode->question = question;
+		newnode->answer = answer;
 		newnode->marks = marks;
 
 		newnode->next = nullptr;
@@ -43,8 +44,8 @@ public:
 
 	// the new added discarded card should be at the bottom of the card stack 
 	// adding new discarded card to the discarded area
-	void addNewDiscardedCard(string question, double marks) {
-		LinkedListNode* newnode = createNewNode(question, marks);
+	void addNewDiscardedCard(string question, AnswerTypeTF answer, double marks) {
+		LinkedListNode* newnode = createNewNode(question, answer, marks);
 
 		// case 1: if the discarded card area have no card
 		if (head == nullptr) {

@@ -17,7 +17,10 @@ struct StudentResponseNode {
 	AnswerType round1;
 	AnswerType round2;
 	AnswerType round3;
-	int score;
+	int scoreQ1;
+	int scoreQ2;
+	int scoreQ3;
+	int totalScore;
 
 	// link
 	StudentResponseNode* nextAddress;
@@ -39,7 +42,7 @@ public:
 	}
 
 	// function to create a new node for the linked list;
-	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, AnswerType round1, AnswerType round2, AnswerType round3, int score) {
+	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, AnswerType round1, AnswerType round2, AnswerType round3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
 		// to create struct in heap location
 		StudentResponseNode* newNode = new StudentResponseNode;
 
@@ -51,7 +54,10 @@ public:
 		newNode->round1 = round1;
 		newNode->round2 = round2;
 		newNode->round3 = round3;
-		newNode->score = score;
+		newNode->scoreQ1 = scoreQ1;
+		newNode->scoreQ2 = scoreQ2;
+		newNode->scoreQ3 = scoreQ3;
+		newNode->totalScore = totalScore;
 		newNode->nextAddress = nullptr;
 
 		// return the memory address to the insert function
@@ -59,10 +65,10 @@ public:
 	}
 
 	// function to insert to the front of the list
-	void insertToEnd(int studentID, string question1, string question2, string question3, AnswerType round1, AnswerType round2, AnswerType round3, int score) {
+	void insertToEnd(int studentID, string question1, string question2, string question3, AnswerType round1, AnswerType round2, AnswerType round3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
 
 		// function to create an independent node by calling the createNewNode function
-		StudentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, round1, round2, round3, score);
+		StudentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, round1, round2, round3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
 		// insert the new node to the end of the linked list
 		if (head == nullptr) { // this is the first node in the linked list
@@ -78,10 +84,4 @@ public:
 		}
 		size++;
 	}
-
-	// function to automate student responses by obtaining questions from UnansweredDeck LinkedList and responses by reading the 100-student-answer.csv file
-	void runAutomatedGame() {
-			
-	}
-
 };

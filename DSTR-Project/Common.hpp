@@ -3,6 +3,8 @@
 #include "AutomatedStudentResponse.hpp"
 #include "StudentAnswer.hpp"
 #include "Enum.hpp"
+#include "DiscardedCard.hpp"
+
 
 using namespace std;
 
@@ -63,16 +65,67 @@ void executeAuto() {
     readCSVToArr(studentAns, "docs/100-student-answer.csv"); // to read the 100 student responses into the newly created array of structs
     //printAllResponses(studentAns); // to display the all student responses out of the 300 questions for testing purposes
 
+    LinkedList DiscardedCard("Discarded Deck of Cards");
+    answeredDeck AnsweredDeck("Answered Deck of Cards");
+
 
     int numOfStudents = (rand() % (100 - 70 + 1)) + 70; // randomise the number of players from 70 to 100
+    cout << endl << "Number of students participated: " << numOfStudents << endl;
+
+    int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+    AnswerType round1, round2, round3;
+    AnswerTypeTF round1TF, round2TF, round3TF;
+    string question1, question2, question3;
 
     for (int roundNum = 1; roundNum < 4; roundNum++) { // to simulate 3 rounds 
         for (int i = 0; i < numOfStudents; i++) { // to simulate the number of players responding
+            studentID = studentAns[i].studentID;
             if (roundNum == 1) {
-                // if (studentAns[i].round1 == unansweredDeck[i].myAnswer) {
-                //     string question1 = unansweredDeck[i].myQuestion;
-                //     int totalScore = totalScore + unansweredDeck[i].myScore;
-                // }
+
+                unansweredDeck[i].myQuestion = question1;
+                unansweredDeck[i].myAnswer = round1TF;
+                unansweredDeck[i].myScore = score1;
+
+
+                if (studentAns[i].round1 = SKIP) {
+                    scoredMarkQ1 = scoredMarkQ1 + 0;
+                    totalScore = 0;
+                    DiscardedCard.addNewDiscardedCard(question1, round1TF, score1);
+                    
+                } 
+                else if (studentAns[i].round1 = TRUE_NEW) {
+                    if (round1TF == TRUE) {
+                        scoredMarkQ1 = scoredMarkQ1 + score1;
+                        totalScore = totalScore + score1;
+                    }
+                    else {
+                        scoredMarkQ1 = 0;
+                        totalScore = 0;
+                    }
+                }
+                else if (studentAns[i].round1 = FALSE_NEW) {
+                    if (round1TF == FALSE) {
+                        scoredMarkQ1 = scoredMarkQ1 + score1;
+                        totalScore = totalScore + score1;
+                    }
+                    else {
+                        scoredMarkQ1 = 0;
+                        totalScore = 0;
+                    }
+                }
+                else if (studentAns[i].round1 = TRUE_DISCARD) {
+                    DiscardedCard.takeDiscardedCard();
+                    
+                }
+                else if (studentAns[i].round1 = FALSE_DISCARD) {
+
+                }
+            }
+            else if (roundNum == 2) {
+            
+            }
+            else if (roundNum == 3) {
+                
             }
         }
     }
