@@ -124,7 +124,7 @@ void executeAuto() {
                     DiscardedCardInfo->marks = score1;
                     if (studentAns[i].round1 = TRUE_DISCARD) {
                         if (round1TF == TRUE) {
-                            scoredMarkQ1 = scoredMarkQ1 + (score1*0.8);
+                            scoredMarkQ1 = scoredMarkQ1 + round(score1*0.8);
                             totalScore = totalScore + scoredMarkQ1;
                         }
                         else {
@@ -134,7 +134,7 @@ void executeAuto() {
                     }
                     else if (studentAns[i].round1 = FALSE_DISCARD) {
                         if (round1TF == FALSE) {
-                            scoredMarkQ1 = scoredMarkQ1 + (score1 * 0.8);
+                            scoredMarkQ1 = scoredMarkQ1 + round(score1 * 0.8);
                             totalScore = totalScore + scoredMarkQ1;
                         }
                         else {
@@ -143,6 +143,15 @@ void executeAuto() {
                         AnsweredDeck.InsertFront(question1, round1TF, score1);
                     }
                 }
+                // to store student response into a new node of AutomatedStudentResponse LinkedList
+                autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+
+                // to reset the variables for next student
+                int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+                AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
+                AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
+                string question1, question2, question3;
+
             }
             else if (roundNum == 2) {
                 unansweredDeck[i].myQuestion = question2;
@@ -183,7 +192,7 @@ void executeAuto() {
                     DiscardedCardInfo->marks = score2;
                     if (studentAns[i].round2 = TRUE_DISCARD) {
                         if (round2TF == TRUE) {
-                            scoredMarkQ2 = scoredMarkQ2 + (score2 * 0.8);
+                            scoredMarkQ2 = scoredMarkQ2 + round(score2 * 0.8);
                             totalScore = totalScore + scoredMarkQ2;
                         }
                         else {
@@ -193,7 +202,7 @@ void executeAuto() {
                     }
                     else if (studentAns[i].round2 = FALSE_DISCARD) {
                         if (round2TF == FALSE) {
-                            scoredMarkQ2 = scoredMarkQ2 + (score2 * 0.8);
+                            scoredMarkQ2 = scoredMarkQ2 + round(score2 * 0.8);
                             totalScore = totalScore + scoredMarkQ2;
                         }
                         else {
@@ -202,6 +211,15 @@ void executeAuto() {
                         AnsweredDeck.InsertFront(question2, round2TF, score2);
                     }
                 }
+
+                // to update round 2 student response information into the existing node with the corresponding student ID
+                autoStudentResponse.searchAndUpdateNodeRoundTwo(studentID, question2, scoredMarkQ2, totalScore);
+
+                // to reset the variables for next student
+                int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+                AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
+                AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
+                string question1, question2, question3;
             }
             else if (roundNum == 3) {
                 unansweredDeck[i].myQuestion = question3;
@@ -242,7 +260,7 @@ void executeAuto() {
                     DiscardedCardInfo->marks = score3;
                     if (studentAns[i].round3 = TRUE_DISCARD) {
                         if (round3TF == TRUE) {
-                            scoredMarkQ3 = scoredMarkQ3 + (score3 * 0.8);
+                            scoredMarkQ3 = scoredMarkQ3 + round(score3 * 0.8);
                             totalScore = totalScore + scoredMarkQ3;
                         }
                         else {
@@ -252,7 +270,7 @@ void executeAuto() {
                     }
                     else if (studentAns[i].round3 = FALSE_DISCARD) {
                         if (round3TF == FALSE) {
-                            scoredMarkQ3 = scoredMarkQ3 + (score3 * 0.8);
+                            scoredMarkQ3 = scoredMarkQ3 + round(score3 * 0.8);
                             totalScore = totalScore + scoredMarkQ3;
                         }
                         else {
@@ -262,8 +280,8 @@ void executeAuto() {
                     }
                 }
 
-                // to store student response into a new node of AutomatedStudentResponse LinkedList
-                autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+                // to update round 3 student response information into the existing node with the corresponding student ID
+                autoStudentResponse.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
 
                 // to reset the variables for next student
                 int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;

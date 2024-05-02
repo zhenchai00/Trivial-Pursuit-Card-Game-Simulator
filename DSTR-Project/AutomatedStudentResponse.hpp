@@ -82,18 +82,18 @@ public:
 		size++;
 	}
 
-	// Function to display the contents of the linked list nodes
+	// function to display the contents of the linked list nodes
 	void DisplayStudentResponsesForAutoExecution() {
-		// Start with the head node
+		// begin with the head node
 		StudentResponseNode* current = head;
 
-		// Check if the list is empty
+		// to check if the list is empty
 		if (current == nullptr) {
 			cout << "The linked list is empty." << endl;
 			return;
 		}
 
-		// Iterate through the linked list
+		// to loop through the linked list
 		cout << "Displaying student responses:" << endl;
 		while (current != nullptr) {
 			// Print the details of the current node
@@ -104,10 +104,61 @@ public:
 			cout << "Total Score: " << current->totalScore << endl;
 			cout << "---------------------------------" << endl;
 
-			// Move to the next node
+			// move to the next node
 			current = current->nextAddress;
 		}
 	}
+
+	// function to search for a node based on studentID and update its attributes
+	void searchAndUpdateNodeRoundTwo(int studentID, string question2, int scoreQ2, int totalScore) {
+		// begin with the head node
+		StudentResponseNode* current = head;
+
+		// to loop through the linked list
+		while (current != nullptr) {
+			// to check if the current node's studentID matches the provided studentID
+			if (current->studentID == studentID) {
+				// to update the attributes of the current node
+				current->question2 = question2;
+				current->scoreQ2 = scoreQ2;
+				current->totalScore = current->totalScore + totalScore;
+
+				return;
+			}
+
+			// move to the next node
+			current = current->nextAddress;
+		}
+
+		// if no node with the specified studentID is found 
+		cout << "Node with student ID " << studentID << " not found." << endl;
+	}
+
+	// function to search for a node based on studentID and update its attributes
+	void searchAndUpdateNodeRoundThree(int studentID, string question3, int scoreQ3, int totalScore) {
+		// begin with the head node
+		StudentResponseNode* current = head;
+
+		// to loop through the linked list
+		while (current != nullptr) {
+			// to check if the current node's studentID matches the provided studentID
+			if (current->studentID == studentID) {
+				// to update the attributes of the current node
+				current->question3 = question3;
+				current->scoreQ3 = scoreQ3;
+				current->totalScore = current->totalScore + totalScore;
+
+				return;
+			}
+
+			// move to the next node
+			current = current->nextAddress;
+		}
+
+		// if no node with the specified studentID is found 
+		cout << "Node with student ID " << studentID << " not found." << endl;
+	}
+
 
 
 };
