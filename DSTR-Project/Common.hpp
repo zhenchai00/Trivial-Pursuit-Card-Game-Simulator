@@ -7,6 +7,7 @@
 #include "StudentAnswer.hpp"
 #include "Enum.hpp"
 #include "DiscardedCard.hpp"
+#include "AnsweredDeck.hpp"
 
 
 using namespace std;
@@ -68,16 +69,16 @@ void executeAuto() {
     readCSVToArr(studentAns, "docs/100-student-answer.csv"); // to read the 100 student responses into the newly created array of structs
     //printAllResponses(studentAns); // to display the all student responses out of the 300 questions for testing purposes
 
-    LinkedList DiscardedCard("Discarded Deck of Cards");
-    answeredDeck AnsweredDeck("Answered Deck of Cards");
+    DiscardedCardLinkedList DiscardedCard("Discarded Deck of Cards");
+    AnsweredDeck AnsweredDeck("Answered Deck of Cards");
 
 
     int numOfStudents = (rand() % (100 - 70 + 1)) + 70; // randomise the number of players from 70 to 100
     cout << endl << "Number of students participated: " << numOfStudents << endl;
 
     int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
-    AnswerType round1, round2, round3;
-    AnswerTypeTF round1TF, round2TF, round3TF;
+    AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
+    AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
     string question1, question2, question3;
 
     for (int roundNum = 1; roundNum < 4; roundNum++) { // to simulate 3 rounds 
@@ -92,7 +93,6 @@ void executeAuto() {
 
                 if (studentAns[i].round1 = SKIP) {
                     scoredMarkQ1 = scoredMarkQ1 + 0;
-                    totalScore = 0;
                     DiscardedCard.addNewDiscardedCard(question1, round1TF, score1);
                     
                 } 
@@ -103,8 +103,8 @@ void executeAuto() {
                     }
                     else {
                         scoredMarkQ1 = 0;
-                        totalScore = 0;
                     }
+                    AnsweredDeck.InsertFront(question1, round1TF, score1);
                 }
                 else if (studentAns[i].round1 = FALSE_NEW) {
                     if (round1TF == FALSE) {
@@ -113,25 +113,167 @@ void executeAuto() {
                     }
                     else {
                         scoredMarkQ1 = 0;
-                        totalScore = 0;
                     }
+                    AnsweredDeck.InsertFront(question1, round1TF, score1);
                 }
-                else if (studentAns[i].round1 = TRUE_DISCARD) {
-                    DiscardedCard.takeDiscardedCard();
-                    
-                }
-                else if (studentAns[i].round1 = FALSE_DISCARD) {
-
+                else {
+                    // student chooses to answer question from discarded deck of cards
+                    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
+                    DiscardedCardInfo->question = question1;
+                    DiscardedCardInfo->answer = round1TF;
+                    DiscardedCardInfo->marks = score1;
+                    if (studentAns[i].round1 = TRUE_DISCARD) {
+                        if (round1TF == TRUE) {
+                            scoredMarkQ1 = scoredMarkQ1 + (score1*0.8);
+                            totalScore = totalScore + scoredMarkQ1;
+                        }
+                        else {
+                            scoredMarkQ1 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question1, round1TF, score1);
+                    }
+                    else if (studentAns[i].round1 = FALSE_DISCARD) {
+                        if (round1TF == FALSE) {
+                            scoredMarkQ1 = scoredMarkQ1 + (score1 * 0.8);
+                            totalScore = totalScore + scoredMarkQ1;
+                        }
+                        else {
+                            scoredMarkQ1 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question1, round1TF, score1);
+                    }
                 }
             }
             else if (roundNum == 2) {
-            
+                unansweredDeck[i].myQuestion = question2;
+                unansweredDeck[i].myAnswer = round2TF;
+                unansweredDeck[i].myScore = score2;
+
+
+                if (studentAns[i].round2= SKIP) {
+                    scoredMarkQ2 = scoredMarkQ2 + 0;
+                    DiscardedCard.addNewDiscardedCard(question2, round2TF, score2);
+
+                }
+                else if (studentAns[i].round2 = TRUE_NEW) {
+                    if (round2TF == TRUE) {
+                        scoredMarkQ2 = scoredMarkQ2 + score2;
+                        totalScore = totalScore + score2;
+                    }
+                    else {
+                        scoredMarkQ2 = 0;
+                    }
+                    AnsweredDeck.InsertFront(question2, round2TF, score2);
+                }
+                else if (studentAns[i].round2 = FALSE_NEW) {
+                    if (round2TF == FALSE) {
+                        scoredMarkQ2 = scoredMarkQ2 + score2;
+                        totalScore = totalScore + score2;
+                    }
+                    else {
+                        scoredMarkQ2 = 0;
+                    }
+                    AnsweredDeck.InsertFront(question2, round2TF, score2);
+                }
+                else {
+                    // student chooses to answer question from discarded deck of cards
+                    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
+                    DiscardedCardInfo->question = question2;
+                    DiscardedCardInfo->answer = round2TF;
+                    DiscardedCardInfo->marks = score2;
+                    if (studentAns[i].round2 = TRUE_DISCARD) {
+                        if (round2TF == TRUE) {
+                            scoredMarkQ2 = scoredMarkQ2 + (score2 * 0.8);
+                            totalScore = totalScore + scoredMarkQ2;
+                        }
+                        else {
+                            scoredMarkQ2 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question2, round2TF, score2);
+                    }
+                    else if (studentAns[i].round2 = FALSE_DISCARD) {
+                        if (round2TF == FALSE) {
+                            scoredMarkQ2 = scoredMarkQ2 + (score2 * 0.8);
+                            totalScore = totalScore + scoredMarkQ2;
+                        }
+                        else {
+                            scoredMarkQ2 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question2, round2TF, score2);
+                    }
+                }
             }
             else if (roundNum == 3) {
-                
+                unansweredDeck[i].myQuestion = question3;
+                unansweredDeck[i].myAnswer = round3TF;
+                unansweredDeck[i].myScore = score3;
+
+
+                if (studentAns[i].round3 = SKIP) {
+                    scoredMarkQ3 = scoredMarkQ3 + 0;
+                    DiscardedCard.addNewDiscardedCard(question3, round3TF, score3);
+
+                }
+                else if (studentAns[i].round3 = TRUE_NEW) {
+                    if (round3TF == TRUE) {
+                        scoredMarkQ3 = scoredMarkQ3 + score3;
+                        totalScore = totalScore + score3;
+                    }
+                    else {
+                        scoredMarkQ3 = 0;
+                    }
+                    AnsweredDeck.InsertFront(question3, round3TF, score3);
+                }
+                else if (studentAns[i].round3 = FALSE_NEW) {
+                    if (round3TF == FALSE) {
+                        scoredMarkQ3 = scoredMarkQ3 + score3;
+                        totalScore = totalScore + score3;
+                    }
+                    else {
+                        scoredMarkQ3 = 0;
+                    }
+                    AnsweredDeck.InsertFront(question3, round3TF, score3);
+                }
+                else {
+                    // student chooses to answer question from discarded deck of cards
+                    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
+                    DiscardedCardInfo->question = question3;
+                    DiscardedCardInfo->answer = round3TF;
+                    DiscardedCardInfo->marks = score3;
+                    if (studentAns[i].round3 = TRUE_DISCARD) {
+                        if (round3TF == TRUE) {
+                            scoredMarkQ3 = scoredMarkQ3 + (score3 * 0.8);
+                            totalScore = totalScore + scoredMarkQ3;
+                        }
+                        else {
+                            scoredMarkQ3 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question3, round3TF, score3);
+                    }
+                    else if (studentAns[i].round3 = FALSE_DISCARD) {
+                        if (round3TF == FALSE) {
+                            scoredMarkQ3 = scoredMarkQ3 + (score3 * 0.8);
+                            totalScore = totalScore + scoredMarkQ3;
+                        }
+                        else {
+                            scoredMarkQ3 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question3, round3TF, score3);
+                    }
+                }
+
+                // to store student response into a new node of AutomatedStudentResponse LinkedList
+                autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+
+                // to reset the variables for next student
+                int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+                AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
+                AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
+                string question1, question2, question3;
             }
         }
     }
+    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
 }
 
 #endif // COMMON_HPP

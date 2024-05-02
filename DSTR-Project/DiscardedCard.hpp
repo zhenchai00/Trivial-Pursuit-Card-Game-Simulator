@@ -1,36 +1,39 @@
 // data included : question, marks
 // first in first out logic
 // havent including the marks adding function (jia, 28/04)
+
+#ifndef DISCARDED_DECK_HPP
+#define DISCARDED_DECK_HPP
 #include <iostream>
 using namespace std;
 
-struct LinkedListNode {
+struct DiscardedCardLinkedListNode {
 	// data
 	string question;
 	AnswerTypeTF answer;
 	double marks;
 
 	// link
-	LinkedListNode* next;
-	LinkedListNode* prev;
+	DiscardedCardLinkedListNode* next;
+	DiscardedCardLinkedListNode* prev;
 };
 
-class LinkedList {
+class DiscardedCardLinkedList {
 	// initial declaration
-	LinkedListNode* head, *tail;
+	DiscardedCardLinkedListNode* head, *tail;
 	string listname;
 	int size;
 
 public:
 	// constructor
-	LinkedList(string listname) {
+	DiscardedCardLinkedList(string listname) {
 		this->listname = listname;
 		head = tail = nullptr;
 		size = 0;
 	}
 
-	LinkedListNode* createNewNode(string question, AnswerTypeTF answer,double marks) {
-		LinkedListNode* newnode = new LinkedListNode;
+	DiscardedCardLinkedListNode* createNewNode(string question, AnswerTypeTF answer,double marks) {
+		DiscardedCardLinkedListNode* newnode = new DiscardedCardLinkedListNode;
 
 		newnode->question = question;
 		newnode->answer = answer;
@@ -45,7 +48,7 @@ public:
 	// the new added discarded card should be at the bottom of the card stack 
 	// adding new discarded card to the discarded area
 	void addNewDiscardedCard(string question, AnswerTypeTF answer, double marks) {
-		LinkedListNode* newnode = createNewNode(question, answer, marks);
+		DiscardedCardLinkedListNode* newnode = createNewNode(question, answer, marks);
 
 		// case 1: if the discarded card area have no card
 		if (head == nullptr) {
@@ -61,18 +64,23 @@ public:
 	}
 
 	// card been answer, delete the card been answered (only take the top one)
-	void takeDiscardedCard() {
-		LinkedListNode* current = head;
+	DiscardedCardLinkedListNode* takeDiscardedCard() {
+		DiscardedCardLinkedListNode* current = head, nodeFound;
 		
 		// case 1: the list is empty
 		if (head == nullptr) {
-			return;
+			return nullptr;
 		}
-		// case 2: cards existing in the area
+		// case 2: return node and then delete node
 		else {
+			DiscardedCardLinkedListNode* nodeFound = head;
 			head = head->next;
 			delete current;
 			size--;
+			return nodeFound;
 		}
 	}
+
 };
+
+#endif // DISCARDED_DECK_HPP

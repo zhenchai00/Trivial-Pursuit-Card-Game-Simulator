@@ -17,9 +17,6 @@ struct StudentResponseNode {
 	string question1;
 	string question2;
 	string question3;
-	AnswerType round1;
-	AnswerType round2;
-	AnswerType round3;
 	int scoreQ1;
 	int scoreQ2;
 	int scoreQ3;
@@ -45,7 +42,7 @@ public:
 	}
 
 	// function to create a new node for the linked list;
-	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, AnswerType round1, AnswerType round2, AnswerType round3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
+	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
 		// to create struct in heap location
 		StudentResponseNode* newNode = new StudentResponseNode;
 
@@ -54,9 +51,6 @@ public:
 		newNode->question1 = question1;
 		newNode->question2 = question2;
 		newNode->question3 = question3;
-		newNode->round1 = round1;
-		newNode->round2 = round2;
-		newNode->round3 = round3;
 		newNode->scoreQ1 = scoreQ1;
 		newNode->scoreQ2 = scoreQ2;
 		newNode->scoreQ3 = scoreQ3;
@@ -68,10 +62,10 @@ public:
 	}
 
 	// function to insert to the front of the list
-	void insertToEnd(int studentID, string question1, string question2, string question3, AnswerType round1, AnswerType round2, AnswerType round3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
+	void insertToEnd(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
 
 		// function to create an independent node by calling the createNewNode function
-		StudentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, round1, round2, round3, scoreQ1, scoreQ2, scoreQ3, totalScore);
+		StudentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
 		// insert the new node to the end of the linked list
 		if (head == nullptr) { // this is the first node in the linked list
@@ -88,11 +82,33 @@ public:
 		size++;
 	}
 
-	// function to automate student responses by obtaining questions from UnansweredDeck LinkedList and responses by reading the 100-student-answer.csv file
-	void runAutomatedGame() {
-			
+	// Function to display the contents of the linked list nodes
+	void DisplayStudentResponsesForAutoExecution() {
+		// Start with the head node
+		StudentResponseNode* current = head;
+
+		// Check if the list is empty
+		if (current == nullptr) {
+			cout << "The linked list is empty." << endl;
+			return;
+		}
+
+		// Iterate through the linked list
+		cout << "Displaying student responses:" << endl;
+		while (current != nullptr) {
+			// Print the details of the current node
+			cout << "Student ID: " << current->studentID << endl;
+			cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
+			cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
+			cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
+			cout << "Total Score: " << current->totalScore << endl;
+			cout << "---------------------------------" << endl;
+
+			// Move to the next node
+			current = current->nextAddress;
+		}
 	}
+
 
 };
 #endif // AUTOMATED_STUDENT_RESPONSE_HPP
-};

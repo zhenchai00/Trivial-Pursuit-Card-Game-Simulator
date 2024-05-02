@@ -1,9 +1,11 @@
+#ifndef ANSWERED_DECK_HPP
+#define ANSWERED_DECK_HPP
 #include "Enum.hpp"
 #include <iostream>
 
 using namespace std;
 
-struct answeredDeckNode {
+struct AnsweredDeckNode {
 
 	// data attributes
 	string myQuestion;
@@ -11,28 +13,28 @@ struct answeredDeckNode {
 	int myScore;
 
 	// link
-	answeredDeckNode* nextAddress;
+	AnsweredDeckNode* nextAddress;
 };
 
-class answeredDeck {
+class AnsweredDeck {
 
 	// properties of the student response linked list
-	answeredDeckNode* head;
+	AnsweredDeckNode* head;
 	string linkedlistName;
 	int size;
 
 public:
 	// constructor to build the linked list
-	answeredDeck(string linkedlistName) {
+	AnsweredDeck(string linkedlistName) {
 		this->linkedlistName = linkedlistName;
 		head = nullptr;
 		size = 0;
 	}
 
 	// function to create a new node for the linked list;
-	answeredDeckNode* createNewNode(string myQuestion, AnswerTypeTF myAnswer, int myScore) {
+	AnsweredDeckNode* createNewNode(string myQuestion, AnswerTypeTF myAnswer, int myScore) {
 		// to create struct in heap location
-		answeredDeckNode* newNode = new answeredDeckNode;
+		AnsweredDeckNode* newNode = new AnsweredDeckNode;
 
 		// data attribute of a single node is stored in the memory location
 		newNode->myQuestion = myQuestion;
@@ -47,7 +49,7 @@ public:
 	void InsertFront(string myQuestion, AnswerTypeTF myAnswer, int myScore)
 	{
 		// function to create an independent node by calling the createNewNode function
-		answeredDeckNode* newNode = createNewNode(myQuestion, myAnswer, myScore);
+		AnsweredDeckNode* newNode = createNewNode(myQuestion, myAnswer, myScore);
 
 		// insert the new node to the front of the linked list
 		if (head == nullptr) // inserted if this is the first node in the linked list
@@ -65,3 +67,4 @@ public:
 
 
 };
+#endif // ANSWERED_DECK_HPP

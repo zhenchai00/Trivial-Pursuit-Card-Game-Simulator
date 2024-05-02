@@ -13,8 +13,9 @@ enum AnswerType {
 };
 
 enum AnswerTypeTF { 
+    DEFAULT,
     TRUE, 
-    FALSE 
+    FALSE
 };
 
 #endif // ENUM_HPP
