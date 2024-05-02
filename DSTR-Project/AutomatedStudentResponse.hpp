@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/1653958/why-are-ifndef-and-define-used-in-c-header-files
+#ifndef AUTOMATED_STUDENT_RESPONSE_HPP
+#define AUTOMATED_STUDENT_RESPONSE_HPP
 #include "Enum.hpp"
 #include "AnsweredDeck.hpp"
 #include "UnansweredDeck.hpp"
@@ -85,3 +88,4 @@ public:
 	}
 
 };
+#endif // AUTOMATED_STUDENT_RESPONSE_HPP

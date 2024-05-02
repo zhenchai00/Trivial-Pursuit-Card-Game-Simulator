@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/1653958/why-are-ifndef-and-define-used-in-c-header-files
+#ifndef STUDENT_ANSWER_HPP
+#define STUDENT_ANSWER_HPP
 #include "Enum.hpp"
 #include <iostream>
 #include <fstream>
@@ -194,3 +197,5 @@ void printAllResponses(const StudentAnswer studentAnswers[]) { // for testing pu
         cout << "-----------------------------------" << endl;
     }
 }
+
+#endif // STUDENT_ANSWER_HPP

@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/1653958/why-are-ifndef-and-define-used-in-c-header-files
+#ifndef STUDENT_RESULT_HPP
+#define STUDENT_RESULT_HPP
 #include <iostream>
 #include "Enum.hpp"
 
@@ -154,3 +157,4 @@ public:
         cout << listName << " is empty now" << endl;
     }
 };
+#endif // STUDENT_RESULT_HPP
