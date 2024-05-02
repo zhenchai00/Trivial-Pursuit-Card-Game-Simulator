@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/3746484/why-am-i-getting-this-redefinition-of-class-error
+#ifndef UNANSWERED_DECK_HPP
+#define UNANSWERED_DECK_HPP
 #include "Enum.hpp"
 #include <iostream>
 #include <fstream>
@@ -6,13 +9,13 @@
 
 using namespace std;
 
-struct unansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
+struct UnansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
 	string myQuestion;
 	AnswerTypeTF myAnswer;
     int myScore;
 };
 
-void readCSVToDeck(unansweredDeckStruct unansweredDeck[], const string& filename) {
+void readCSVToDeck(UnansweredDeckStruct unansweredDeck[], const string& filename) {
     // to open the CSV file
     ifstream file(filename);
 
@@ -82,7 +85,7 @@ void readCSVToDeck(unansweredDeckStruct unansweredDeck[], const string& filename
     file.close();
 }
 
-void printFirstTenQuestions(const unansweredDeckStruct unansweredDeck[]) {
+void printFirstTenQuestions(const UnansweredDeckStruct unansweredDeck[]) {
     cout << endl << "First 10 Questions and Answers:" << endl;
     // to loop through the first 10 elements of the array
     for (int i = 0; i < 10; i++) {
@@ -119,3 +122,4 @@ void printFirstTenQuestions(const unansweredDeckStruct unansweredDeck[]) {
         cout << "-----------------------------------" << endl;
     }
 }
+#endif // UNANSWERED_DECK_HPP

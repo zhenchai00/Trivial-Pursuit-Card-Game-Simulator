@@ -1,5 +1,7 @@
 #include <iostream>
 #include "StudentResult.hpp"
+#include "AutomatedStudentResponse.hpp"
+#include "StudentAnswer.hpp"
 #include "Enum.hpp"
 
 using namespace std;
@@ -38,7 +40,40 @@ void executeManual(int studentNum)
     // q1 round student 2 
 }
 
-void executeAuto ()
-{
-    // method to run auto by doing it own function
+// method to run auto by doing it own function
+void executeAuto() {
+    AutomatedStudentResponse autoStudentResponse("Student Responses using Auto Method");
+
+    // Providing a seed value
+    srand((unsigned)time(NULL));
+
+    UnansweredDeckStruct unansweredDeck[300]; // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
+    readCSVToDeck(unansweredDeck, "docs/dstr-question-nocomma.csv"); // to read the 300 questions and their corresponding answers into the newly created array of structs
+
+    // Shuffling the unanswered questions
+    for (int i = 0; i < 300; i++) {
+        int r = rand() % 300;  // generate a random position
+        UnansweredDeckStruct temp = unansweredDeck[i];
+        unansweredDeck[i] = unansweredDeck[r];
+        unansweredDeck[r] = temp;
+    }
+    //printFirstTenQuestions(unansweredDeck); // to display the first 10 questions out of the 300 questions for testing purposes
+
+    StudentAnswer studentAns[100];
+    readCSVToArr(studentAns, "docs/100-student-answer.csv"); // to read the 100 student responses into the newly created array of structs
+    //printAllResponses(studentAns); // to display the all student responses out of the 300 questions for testing purposes
+
+
+    int numOfStudents = (rand() % (100 - 70 + 1)) + 70; // randomise the number of players from 70 to 100
+
+    for (int roundNum = 1; roundNum < 4; roundNum++) { // to simulate 3 rounds 
+        for (int i = 0; i < numOfStudents; i++) { // to simulate the number of players responding
+            if (roundNum == 1) {
+                // if (studentAns[i].round1 == unansweredDeck[i].myAnswer) {
+                //     string question1 = unansweredDeck[i].myQuestion;
+                //     int totalScore = totalScore + unansweredDeck[i].myScore;
+                // }
+            }
+        }
+    }
 }

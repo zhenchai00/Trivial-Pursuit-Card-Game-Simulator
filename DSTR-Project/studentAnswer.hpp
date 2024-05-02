@@ -8,14 +8,14 @@ using namespace std;
 
 // to create an Array of Struct to store the 100 student responses from the 100-student-answer.csv file
 
-struct studentAnswer {  // declaration of a struct to be used to create an array of structs
+struct StudentAnswer {  // declaration of a struct to be used to create an array of structs
 	int studentID;
 	AnswerType round1;
 	AnswerType round2;
 	AnswerType round3;
 };
 
-void readCSVToArr(studentAnswer studentAnswers[], const string& filename) {
+void readCSVToArr(StudentAnswer studentAnswers[], const string& filename) {
     // to open the CSV file
     ifstream file(filename);
 
@@ -104,7 +104,7 @@ void readCSVToArr(studentAnswer studentAnswers[], const string& filename) {
     file.close();
 }
 
-void printAllResponses(const studentAnswer studentAnswers[]) { // for testing purposes - Kae Lam (1/5/2024 - 10AM)
+void printAllResponses(const StudentAnswer studentAnswers[]) { // for testing purposes - Kae Lam (1/5/2024 - 10AM)
     // to loop through all 100 responses in the array of struct
     for (int i = 0; i < 100; i++) {
         // to display the student ID
@@ -193,3 +193,4 @@ void printAllResponses(const studentAnswer studentAnswers[]) { // for testing pu
 
         cout << "-----------------------------------" << endl;
     }
+}
