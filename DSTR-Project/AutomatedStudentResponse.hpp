@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/1653958/why-are-ifndef-and-define-used-in-c-header-files
+#ifndef AUTOMATED_STUDENT_RESPONSE_HPP
+#define AUTOMATED_STUDENT_RESPONSE_HPP
 #include "Enum.hpp"
 #include "AnsweredDeck.hpp"
 #include "UnansweredDeck.hpp"
@@ -84,4 +87,12 @@ public:
 		}
 		size++;
 	}
+
+	// function to automate student responses by obtaining questions from UnansweredDeck LinkedList and responses by reading the 100-student-answer.csv file
+	void runAutomatedGame() {
+			
+	}
+
+};
+#endif // AUTOMATED_STUDENT_RESPONSE_HPP
 };

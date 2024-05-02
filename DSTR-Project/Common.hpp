@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/1653958/why-are-ifndef-and-define-used-in-c-header-files
+#ifndef COMMON_HPP
+#define COMMON_HPP
 #include <iostream>
 #include "StudentResult.hpp"
 #include "AutomatedStudentResponse.hpp"
@@ -130,3 +133,6 @@ void executeAuto() {
         }
     }
 }
+
+#endif // COMMON_HPP
+
