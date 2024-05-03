@@ -117,7 +117,7 @@ public:
 		StudentResponseNode* current = head;
 
 		// to loop through the linked list
-		while (current != nullptr) {
+		while (current != nullptr) { // 0(n)
 			// to check if the current node's studentID matches the provided studentID
 			if (current->studentID == studentID) {
 				// to update the attributes of the current node
@@ -142,7 +142,7 @@ public:
 		StudentResponseNode* current = head;
 
 		// to loop through the linked list
-		while (current != nullptr) {
+		while (current != nullptr) { // 0(n)
 			// to check if the current node's studentID matches the provided studentID
 			if (current->studentID == studentID) {
 				// to update the attributes of the current node
