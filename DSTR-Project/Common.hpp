@@ -2,6 +2,7 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 #include <iostream>
+#include <cmath>
 #include "StudentResult.hpp"
 #include "AutomatedStudentResponse.hpp"
 #include "StudentAnswer.hpp"
@@ -79,24 +80,31 @@ void executeAuto() {
     int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
     AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
     AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
-    string question1, question2, question3;
+    string question1 = "", question2 = "", question3 = "";
 
     for (int roundNum = 1; roundNum < 4; roundNum++) { // to simulate 3 rounds 
         for (int i = 0; i < numOfStudents; i++) { // to simulate the number of players responding
             studentID = studentAns[i].studentID;
             if (roundNum == 1) {
 
-                unansweredDeck[i].myQuestion = question1;
-                unansweredDeck[i].myAnswer = round1TF;
-                unansweredDeck[i].myScore = score1;
+                question1 = unansweredDeck[i].myQuestion;
+                round1TF = unansweredDeck[i].myAnswer;
+                score1 = unansweredDeck[i].myScore;
+
+                /*cout << "==================================";
+                cout << unansweredDeck[0].myQuestion;
+                cout << "==================================";
+                cout << question1;
+                cout << round1TF;
+                cout << score1;*/
 
 
-                if (studentAns[i].round1 = SKIP) {
+                if (studentAns[i].round1 == SKIP) {
                     scoredMarkQ1 = scoredMarkQ1 + 0;
                     DiscardedCard.addNewDiscardedCard(question1, round1TF, score1);
                     
                 } 
-                else if (studentAns[i].round1 = TRUE_NEW) {
+                else if (studentAns[i].round1 == TRUE_NEW) {
                     if (round1TF == TRUE) {
                         scoredMarkQ1 = scoredMarkQ1 + score1;
                         totalScore = totalScore + score1;
@@ -106,7 +114,7 @@ void executeAuto() {
                     }
                     AnsweredDeck.InsertFront(question1, round1TF, score1);
                 }
-                else if (studentAns[i].round1 = FALSE_NEW) {
+                else if (studentAns[i].round1 == FALSE_NEW) {
                     if (round1TF == FALSE) {
                         scoredMarkQ1 = scoredMarkQ1 + score1;
                         totalScore = totalScore + score1;
@@ -150,21 +158,21 @@ void executeAuto() {
                 int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
                 AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
                 AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
-                string question1, question2, question3;
+                string question1 = "", question2 = "", question3 = "";
 
             }
             else if (roundNum == 2) {
-                unansweredDeck[i].myQuestion = question2;
-                unansweredDeck[i].myAnswer = round2TF;
-                unansweredDeck[i].myScore = score2;
+                question2 = unansweredDeck[i].myQuestion;
+                round2TF = unansweredDeck[i].myAnswer;
+                score2 = unansweredDeck[i].myScore;
 
 
-                if (studentAns[i].round2= SKIP) {
+                if (studentAns[i].round2 == SKIP) {
                     scoredMarkQ2 = scoredMarkQ2 + 0;
                     DiscardedCard.addNewDiscardedCard(question2, round2TF, score2);
 
                 }
-                else if (studentAns[i].round2 = TRUE_NEW) {
+                else if (studentAns[i].round2 == TRUE_NEW) {
                     if (round2TF == TRUE) {
                         scoredMarkQ2 = scoredMarkQ2 + score2;
                         totalScore = totalScore + score2;
@@ -174,7 +182,7 @@ void executeAuto() {
                     }
                     AnsweredDeck.InsertFront(question2, round2TF, score2);
                 }
-                else if (studentAns[i].round2 = FALSE_NEW) {
+                else if (studentAns[i].round2 == FALSE_NEW) {
                     if (round2TF == FALSE) {
                         scoredMarkQ2 = scoredMarkQ2 + score2;
                         totalScore = totalScore + score2;
@@ -190,7 +198,7 @@ void executeAuto() {
                     DiscardedCardInfo->question = question2;
                     DiscardedCardInfo->answer = round2TF;
                     DiscardedCardInfo->marks = score2;
-                    if (studentAns[i].round2 = TRUE_DISCARD) {
+                    if (studentAns[i].round2 == TRUE_DISCARD) {
                         if (round2TF == TRUE) {
                             scoredMarkQ2 = scoredMarkQ2 + round(score2 * 0.8);
                             totalScore = totalScore + scoredMarkQ2;
@@ -200,7 +208,7 @@ void executeAuto() {
                         }
                         AnsweredDeck.InsertFront(question2, round2TF, score2);
                     }
-                    else if (studentAns[i].round2 = FALSE_DISCARD) {
+                    else if (studentAns[i].round2 == FALSE_DISCARD) {
                         if (round2TF == FALSE) {
                             scoredMarkQ2 = scoredMarkQ2 + round(score2 * 0.8);
                             totalScore = totalScore + scoredMarkQ2;
@@ -219,20 +227,20 @@ void executeAuto() {
                 int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
                 AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
                 AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
-                string question1, question2, question3;
+                string question1 = "", question2 = "", question3 = "";
             }
             else if (roundNum == 3) {
-                unansweredDeck[i].myQuestion = question3;
-                unansweredDeck[i].myAnswer = round3TF;
-                unansweredDeck[i].myScore = score3;
+                question3 = unansweredDeck[i].myQuestion;
+                round3TF = unansweredDeck[i].myAnswer;
+                score3 = unansweredDeck[i].myScore;
 
 
-                if (studentAns[i].round3 = SKIP) {
+                if (studentAns[i].round3 == SKIP) {
                     scoredMarkQ3 = scoredMarkQ3 + 0;
                     DiscardedCard.addNewDiscardedCard(question3, round3TF, score3);
 
                 }
-                else if (studentAns[i].round3 = TRUE_NEW) {
+                else if (studentAns[i].round3 == TRUE_NEW) {
                     if (round3TF == TRUE) {
                         scoredMarkQ3 = scoredMarkQ3 + score3;
                         totalScore = totalScore + score3;
@@ -242,7 +250,7 @@ void executeAuto() {
                     }
                     AnsweredDeck.InsertFront(question3, round3TF, score3);
                 }
-                else if (studentAns[i].round3 = FALSE_NEW) {
+                else if (studentAns[i].round3 == FALSE_NEW) {
                     if (round3TF == FALSE) {
                         scoredMarkQ3 = scoredMarkQ3 + score3;
                         totalScore = totalScore + score3;
@@ -258,7 +266,7 @@ void executeAuto() {
                     DiscardedCardInfo->question = question3;
                     DiscardedCardInfo->answer = round3TF;
                     DiscardedCardInfo->marks = score3;
-                    if (studentAns[i].round3 = TRUE_DISCARD) {
+                    if (studentAns[i].round3 == TRUE_DISCARD) {
                         if (round3TF == TRUE) {
                             scoredMarkQ3 = scoredMarkQ3 + round(score3 * 0.8);
                             totalScore = totalScore + scoredMarkQ3;
@@ -268,7 +276,7 @@ void executeAuto() {
                         }
                         AnsweredDeck.InsertFront(question3, round3TF, score3);
                     }
-                    else if (studentAns[i].round3 = FALSE_DISCARD) {
+                    else if (studentAns[i].round3 == FALSE_DISCARD) {
                         if (round3TF == FALSE) {
                             scoredMarkQ3 = scoredMarkQ3 + round(score3 * 0.8);
                             totalScore = totalScore + scoredMarkQ3;
@@ -287,7 +295,7 @@ void executeAuto() {
                 int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
                 AnswerType round1 = NONE, round2 = NONE, round3 = NONE;
                 AnswerTypeTF round1TF = DEFAULT, round2TF = DEFAULT, round3TF = DEFAULT;
-                string question1, question2, question3;
+                string question1 = "", question2 = "", question3 = "";
             }
         }
     }

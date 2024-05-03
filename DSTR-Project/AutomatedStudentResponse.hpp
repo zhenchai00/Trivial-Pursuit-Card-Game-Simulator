@@ -70,9 +70,11 @@ public:
 		// insert the new node to the end of the linked list
 		if (head == nullptr) { // this is the first node in the linked list
 			head = newNode;
+			//cout << head->question1 << " " << head->scoreQ1 << " " << head->totalScore << " " << head->studentID << endl;
 		}
 		else { // this is not the first node in the linkedlist
 			StudentResponseNode* current = head;
+			//cout << head->question1 << " " << head->scoreQ1 << " " << head->totalScore << " " << head->studentID << endl;
 			while (current->nextAddress != nullptr) { // if node not yet the last node, move again
 				current = current->nextAddress;
 			}
