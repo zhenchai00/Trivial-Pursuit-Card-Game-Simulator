@@ -50,9 +50,9 @@ void executeManual(int studentNum)
 // method to run auto by doing it own function
 void executeAuto()
 {
-    int totalQuestion = 300;
-    int maxStudentNum = 100;
-    int minStudentNum = 70;
+    const int totalQuestion = 300;
+    const int maxStudentNum = 100;
+    const int minStudentNum = 70;
     AutomatedStudentResponse autoStudentResponse("Student Responses using Auto Method");
 
     // Providing a seed value
@@ -82,9 +82,9 @@ void executeAuto()
     cout << endl
          << "Number of students participated: " << numOfStudents << endl;
 
-    int studentID, totalScore, score1, score2, score3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3 = 0;
-    AnswerType studentAnswer1, studentAnswer2, studentAnswer3 = NONE;
-    AnswerTypeTF questionAnswer1TF, questionAnswer2TF, questionAnswer3TF = DEFAULT;
+    int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+    AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
+    AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
     string question1, question2, question3 = "";
     int test = 1;
 
