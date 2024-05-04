@@ -7,33 +7,37 @@
 #include <iostream>
 using namespace std;
 
-struct DiscardedCardLinkedListNode {
+struct DiscardedCardLinkedListNode
+{
 	// data
 	string question;
 	AnswerTypeTF answer;
 	double marks;
 
 	// link
-	DiscardedCardLinkedListNode* next;
-	DiscardedCardLinkedListNode* prev;
+	DiscardedCardLinkedListNode *next;
+	DiscardedCardLinkedListNode *prev;
 };
 
-class DiscardedCardLinkedList {
+class DiscardedCardLinkedList
+{
 	// initial declaration
-	DiscardedCardLinkedListNode* head, *tail;
+	DiscardedCardLinkedListNode *head, *tail;
 	string listname;
 	int size;
 
 public:
 	// constructor
-	DiscardedCardLinkedList(string listname) {
+	DiscardedCardLinkedList(string listname)
+	{
 		this->listname = listname;
 		head = tail = nullptr;
 		size = 0;
 	}
 
-	DiscardedCardLinkedListNode* createNewNode(string question, AnswerTypeTF answer,double marks) {
-		DiscardedCardLinkedListNode* newnode = new DiscardedCardLinkedListNode;
+	DiscardedCardLinkedListNode *createNewNode(string question, AnswerTypeTF answer, double marks)
+	{
+		DiscardedCardLinkedListNode *newnode = new DiscardedCardLinkedListNode;
 
 		newnode->question = question;
 		newnode->answer = answer;
@@ -45,17 +49,20 @@ public:
 		return newnode;
 	}
 
-	// the new added discarded card should be at the bottom of the card stack 
+	// the new added discarded card should be at the bottom of the card stack
 	// adding new discarded card to the discarded area
-	void addNewDiscardedCard(string question, AnswerTypeTF answer, double marks) {
-		DiscardedCardLinkedListNode* newnode = createNewNode(question, answer, marks);
+	void addNewDiscardedCard(string question, AnswerTypeTF answer, double marks)
+	{
+		DiscardedCardLinkedListNode *newnode = createNewNode(question, answer, marks);
 
 		// case 1: if the discarded card area have no card
-		if (head == nullptr) {
+		if (head == nullptr)
+		{
 			head = tail = newnode;
 		}
 		// case 2: cards have existed in the area
-		else {
+		else
+		{
 			tail->next = newnode;
 			newnode->prev = tail;
 			tail = newnode;
@@ -63,24 +70,78 @@ public:
 		size++;
 	}
 
+	// // card been answer, delete the card been answered (only take the top one)
+	// DiscardedCardLinkedListNode *takeDiscardedCard()
+	// {
+	// 	// case 1: the list is empty
+	// 	if (head == nullptr)
+	// 	{
+	// 		return nullptr;
+	// 	}
+	// 	// case 2: return node and then delete node
+
+	// 	DiscardedCardLinkedListNode *current, *nodeFound = head;
+	// 	head = head->next;
+	// 	if (head != nullptr)
+	// 	{
+	// 		head->prev = nullptr;
+	// 	}
+	// 	else
+	// 	{
+	// 		tail = nullptr;
+	// 	}
+	// 	delete current;
+	// 	size--;
+	// 	return nodeFound;
+	// }
 	// card been answer, delete the card been answered (only take the top one)
-	DiscardedCardLinkedListNode* takeDiscardedCard() {
-		DiscardedCardLinkedListNode* current = head, nodeFound;
-		
+	DiscardedCardLinkedListNode *takeDiscardedCard()
+	{
 		// case 1: the list is empty
-		if (head == nullptr) {
+		if (head == nullptr)
+		{
 			return nullptr;
 		}
 		// case 2: return node and then delete node
-		else {
-			DiscardedCardLinkedListNode* nodeFound = head;
-			head = head->next;
-			delete current;
-			size--;
-			return nodeFound;
+
+		DiscardedCardLinkedListNode *current = head;
+		head = head->next;
+		if (head != nullptr)
+		{
+			head->prev = nullptr;
 		}
+		else
+		{
+			tail = nullptr;
+		}
+
+		// create copy of the node's data before delete it
+		DiscardedCardLinkedListNode *nodeData = new DiscardedCardLinkedListNode;
+		nodeData->question = current->question;
+		nodeData->answer = current->answer;
+		nodeData->marks = current->marks;
+
+		delete current;
+		size--;
+
+		return nodeData;
 	}
 
+	void display()
+	{
+		DiscardedCardLinkedListNode *current = head;
+
+		cout << "********************************" << endl;
+		while (current != nullptr)
+		{
+			cout << " " << current->question << endl;
+			cout << " " << current->answer << endl;
+			cout << " " << current->marks << endl;
+			current = current->next;
+		}
+		cout << "empty" << endl;
+		cout << "********************************" << endl;
+	}
 };
 
 #endif // DISCARDED_DECK_HPP
