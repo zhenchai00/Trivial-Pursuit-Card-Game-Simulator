@@ -13,10 +13,10 @@ struct StudentResultNode
     string question1;
     string question2;
     string question3;
-    AnswerType answer1;
-    AnswerType answer2;
-    AnswerType answer3;
-    int score;
+    int scoreQ1;
+    int scoreQ2;
+    int scoreQ3;
+    int totalScore;
 
     // linked list node
     StudentResultNode *nextAdd, *prevAdd;
@@ -39,17 +39,17 @@ public:
     }
 
     // create a new node for a student linked list
-    StudentResultNode *createNewNode(int studentId, string question1, string question2, string question3, AnswerType answer1, AnswerType answer2, AnswerType answer3, int score)
+    StudentResultNode *createNewNode(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = new StudentResultNode;
         newNode->studentId = studentId;
         newNode->question1 = question1;
         newNode->question2 = question2;
         newNode->question3 = question3;
-        newNode->answer1 = answer1;
-        newNode->answer2 = answer2;
-        newNode->answer3 = answer3;
-        newNode->score = score;
+        newNode->scoreQ1 = scoreQ1;
+        newNode->scoreQ2 = scoreQ2;
+        newNode->scoreQ3 = scoreQ3;
+        newNode->totalScore = totalScore;
 
         newNode->nextAdd = nullptr;
         newNode->prevAdd = nullptr;
@@ -58,9 +58,9 @@ public:
     }
 
     // insert student node to front of the list
-    void insertFrontStudentResult (int studentId, string question1, string question2, string question3, AnswerType answer1, AnswerType answer2, AnswerType answer3, int score)
+    void insertFrontStudentResult (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
-        StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, answer1, answer2, answer3, score);
+        StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
         if (head == nullptr)
         {
@@ -76,9 +76,9 @@ public:
     }
 
     // insert student node to end of the list
-    void insertEndStudentResult (int studentId, string question1, string question2, string question3, AnswerType answer1, AnswerType answer2, AnswerType answer3, int score)
+    void insertEndStudentResult (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
-        StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, answer1, answer2, answer3, score);
+        StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
         if (head == nullptr)
         {
@@ -94,15 +94,15 @@ public:
     }
 
     // insert to sorted list based on the score, more to less
-    void insertToSortedStudentResultByScore (int studentId, string question1, string question2, string question3, AnswerType answer1, AnswerType answer2, AnswerType answer3, int score)
+    void insertToSortedStudentResultByScore (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
-        StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, answer1, answer2, answer3, score);
+        StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
         if (head == nullptr)
         {
             head = newNode;
         }
-        else if (newNode->score >= head->score)
+        else if (newNode->totalScore >= head->totalScore)
         {
             newNode->nextAdd = head;
             head = newNode;
@@ -114,7 +114,7 @@ public:
 
             while (current != nullptr)
             {
-                if (newNode->score < current->score)
+                if (newNode->totalScore < current->totalScore)
                 {
                     break;
                 }

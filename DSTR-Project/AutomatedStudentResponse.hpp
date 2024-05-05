@@ -2,10 +2,6 @@
 #ifndef AUTOMATED_STUDENT_RESPONSE_HPP
 #define AUTOMATED_STUDENT_RESPONSE_HPP
 #include "Enum.hpp"
-#include "AnsweredDeck.hpp"
-#include "UnansweredDeck.hpp"
-#include "DiscardedCard.hpp"
-
 #include <iostream>
 
 using namespace std;

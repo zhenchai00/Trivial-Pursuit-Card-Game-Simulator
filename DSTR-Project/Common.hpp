@@ -21,11 +21,11 @@ void executeManual(int studentNum)
         string question1;
         string question2;
         string question3;
-        AnswerType answer1;
-        AnswerType answer2;
-        AnswerType answer3;
-        int score;
-        studentResult.insertEndStudentResult(studentId, "", "", "", AnswerType::NONE, AnswerType::NONE, AnswerType::NONE, 0);
+        int scoreQ1;
+        int scoreQ2;
+        int scoreQ3;
+        int totalScore;
+        studentResult.insertEndStudentResult(studentId, "", "", "", 0, 0, 0, 0);
     }
     studentResult.displayNodes();
 
