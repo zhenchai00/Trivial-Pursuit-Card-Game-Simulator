@@ -42,9 +42,9 @@ int main()
 		cout << "Please enter how many student in the class. (1 - 100): ";
 		cin >> studentNum;
 		
-		while (studentNum < 1 || studentNum > 101)
+		while (studentNum < 1 || studentNum >= 101)
 		{
-			if (studentNum < 1 || studentNum > 101)
+			if (studentNum < 1 || studentNum >= 101)
 			{
 				cout << "Please enter student number with 1 - 100 only. ";
 				system("cls");
