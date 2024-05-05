@@ -7,11 +7,6 @@ using namespace std;
 
 int main()
 {
-	UnansweredDeckStruct unansweredDeck[300]; // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
-
-	readCSVToDeck(unansweredDeck, "docs/dstr-question-nocomma.csv"); // to read the 300 questions and their corresponding answers into the newly created array of structs
-	// printFirstTenQuestions(unansweredDeck); // to display the first 10 questions out of the 300 questions for testing purposes
-
 	int modeType;
 	cout << "Do you want to run the program manual or automatic? 1 - auto, 2 - manual: ";
 	cin >> modeType;
@@ -28,12 +23,13 @@ int main()
 		}
 	}
 
-	if (modeType == 1)	// mode = auto
+	if (modeType == 1) // mode = auto
 	{
 		// should call the auto function
 		cout << endl << "selected mode auto" << endl;
 		executeAuto();
-	} else if (modeType == 2)	// mode = manual
+	}
+	else if (modeType == 2) // mode = manual
 	{
 		// should call the manual function
 		cout << endl << "selected mode manual" << endl;
@@ -41,7 +37,7 @@ int main()
 		int studentNum = 0;
 		cout << "Please enter how many student in the class. (1 - 100): ";
 		cin >> studentNum;
-		
+
 		while (studentNum < 1 || studentNum >= 101)
 		{
 			if (studentNum < 1 || studentNum >= 101)
@@ -53,12 +49,11 @@ int main()
 			}
 		}
 
-		// cout << "student num = " << studentNum << endl;
 		// pass the studentNum to the function to generate the question by print out
 		executeManual(studentNum);
 	}
 
-	//displaying report
+	// displaying report
 	/*reportStructure report[5];
 	readAllFileCSV(report, "docs/allAttributes.csv");
 	displayReport(report);*/

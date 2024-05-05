@@ -76,7 +76,6 @@ void readCSVToDeck(UnansweredDeckStruct unansweredDeck[], const string& filename
             }
         }
         // end added by caizhen on 23/4/2024 
-
         // increment the index by 1
         i++;
     }

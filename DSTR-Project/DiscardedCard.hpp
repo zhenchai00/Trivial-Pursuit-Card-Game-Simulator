@@ -70,31 +70,6 @@ public:
 		size++;
 	}
 
-	// // card been answer, delete the card been answered (only take the top one)
-	// DiscardedCardLinkedListNode *takeDiscardedCard()
-	// {
-	// 	// case 1: the list is empty
-	// 	if (head == nullptr)
-	// 	{
-	// 		return nullptr;
-	// 	}
-	// 	// case 2: return node and then delete node
-
-	// 	DiscardedCardLinkedListNode *current, *nodeFound = head;
-	// 	head = head->next;
-	// 	if (head != nullptr)
-	// 	{
-	// 		head->prev = nullptr;
-	// 	}
-	// 	else
-	// 	{
-	// 		tail = nullptr;
-	// 	}
-	// 	delete current;
-	// 	size--;
-	// 	return nodeFound;
-	// }
-	// card been answer, delete the card been answered (only take the top one)
 	DiscardedCardLinkedListNode *takeDiscardedCard()
 	{
 		// case 1: the list is empty

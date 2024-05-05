@@ -55,11 +55,13 @@ void executeAuto()
     const int minStudentNum = 70;
     AutomatedStudentResponse autoStudentResponse("Student Responses using Auto Method");
 
-    // Providing a seed value
-    srand((unsigned)time(NULL));
+    // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
+    UnansweredDeckStruct unansweredDeck[totalQuestion];
+    // to read the 300 questions and their corresponding answers into the newly created array of structs
+    readCSVToDeck(unansweredDeck, "docs/dstr-question-nocomma.csv");
 
-    UnansweredDeckStruct unansweredDeck[totalQuestion];              // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
-    readCSVToDeck(unansweredDeck, "docs/dstr-question-nocomma.csv"); // to read the 300 questions and their corresponding answers into the newly created array of structs
+    // Providing a seed value for the shuffling the unanswered questions
+    srand((unsigned)time(NULL));
 
     // Shuffling the unanswered questions
     for (int i = 0; i < totalQuestion; i++)
@@ -69,30 +71,35 @@ void executeAuto()
         unansweredDeck[i] = unansweredDeck[r];
         unansweredDeck[r] = temp;
     }
-    // printFirstTenQuestions(unansweredDeck); // to display the first 10 questions out of the 300 questions for testing purposes
+    // to display the first 10 questions out of the 300 questions for testing purposes
+    printFirstTenQuestions(unansweredDeck); 
 
     StudentAnswer studentAns[maxStudentNum];
-    readCSVToArr(studentAns, "docs/100-student-answer.csv"); // to read the 100 student responses into the newly created array of structs
+    // to read the 100 student responses into the newly created array of structs
+    readCSVToArr(studentAns, "docs/100-student-answer-old.csv");
     // printAllResponses(studentAns); // to display the all student responses out of the 300 questions for testing purposes
 
     DiscardedCardLinkedList DiscardedCard("Discarded Deck of Cards");
     AnsweredDeck AnsweredDeck("Answered Deck of Cards");
 
-    int numOfStudents = (rand() % (maxStudentNum - minStudentNum + 1)) + minStudentNum; // randomise the number of players from 70 to 100
-    cout << endl
-         << "Number of students participated: " << numOfStudents << endl;
+    // randomise the number of players from 70 to 100
+    int numOfStudents = (rand() % (maxStudentNum - minStudentNum + 1)) + minStudentNum;
+    cout << endl << "Number of students participated: " << numOfStudents << endl;
 
     int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
     AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
     AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
-    string question1, question2, question3 = "";
+    string question1 = "", question2 = "", question3 = "";
 
+    // to simulate 3 rounds
     for (int roundNum = 1; roundNum < 4; roundNum++)
-    { // to simulate 3 rounds
+    {
+        // to simulate the number of players responding
         for (int i = 0; i < numOfStudents; i++)
-        { // to simulate the number of players responding
+        {
             studentID = studentAns[i].studentID;
             int index = (roundNum - 1) * numOfStudents + i; // Calculate index based on round number
+
             if (roundNum == 1)
             {
                 question1 = unansweredDeck[index].myQuestion;
@@ -101,7 +108,6 @@ void executeAuto()
 
                 if (studentAns[i].round1 == SKIP)
                 {
-                    scoredMarkQ1 = scoredMarkQ1 + 0;
                     DiscardedCard.addNewDiscardedCard(question1, questionAnswer1TF, score1);
                 }
                 else if (studentAns[i].round1 == TRUE_NEW)
@@ -110,10 +116,6 @@ void executeAuto()
                     {
                         scoredMarkQ1 = scoredMarkQ1 + score1;
                         totalScore = totalScore + score1;
-                    }
-                    else
-                    {
-                        scoredMarkQ1 = 0;
                     }
                     AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                 }
@@ -124,10 +126,6 @@ void executeAuto()
                         scoredMarkQ1 = scoredMarkQ1 + score1;
                         totalScore = totalScore + score1;
                     }
-                    else
-                    {
-                        scoredMarkQ1 = 0;
-                    }
                     AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                 }
                 else
@@ -136,10 +134,6 @@ void executeAuto()
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     if (DiscardedCardInfo == nullptr)
                     {
-                        // handle if DiscardedCardInfo return nullptr
-                        // cout << studentAns[i].studentID << " discard empty 1" << endl;
-                        // return;
-
                         // handle different approach if discarded is empty force the student answer the new deck
                         // answer will based on student answer true false as from discard covert to new
                         bool correct = false;
@@ -157,10 +151,6 @@ void executeAuto()
                             scoredMarkQ1 = scoredMarkQ1 + score1;
                             totalScore = totalScore + score1;
                         }
-                        else
-                        {
-                            scoredMarkQ1 = 0;
-                        }
                         AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                     }
                     else
@@ -169,16 +159,13 @@ void executeAuto()
                         questionAnswer1TF = DiscardedCardInfo->answer;
                         score1 = DiscardedCardInfo->marks;
                         int roundedScore1 = (int)round(score1 * 0.8);
+
                         if (studentAns[i].round1 == TRUE_DISCARD)
                         {
                             if (questionAnswer1TF == TRUE)
                             {
                                 scoredMarkQ1 = scoredMarkQ1 + roundedScore1;
                                 totalScore = totalScore + scoredMarkQ1;
-                            }
-                            else
-                            {
-                                scoredMarkQ1 = 0;
                             }
                             AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                         }
@@ -189,10 +176,6 @@ void executeAuto()
                                 scoredMarkQ1 = scoredMarkQ1 + roundedScore1;
                                 totalScore = totalScore + scoredMarkQ1;
                             }
-                            else
-                            {
-                                scoredMarkQ1 = 0;
-                            }
                             AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                         }
                     }
@@ -201,10 +184,10 @@ void executeAuto()
                 autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
 
                 // to reset the variables for next student
-                studentID = totalScore = score1 = score2 = score3 = scoredMarkQ1 = scoredMarkQ2 = scoredMarkQ3 = 0;
-                studentAnswer1 = studentAnswer2 = studentAnswer3 = NONE;
-                questionAnswer1TF = questionAnswer2TF = questionAnswer3TF = DEFAULT;
-                question1 = question2 = question3 = "";
+                studentID = totalScore = score1 = scoredMarkQ1 = 0;
+                studentAnswer1 = NONE;
+                questionAnswer1TF = DEFAULT;
+                question1 = "";
             }
             else if (roundNum == 2)
             {
@@ -214,7 +197,6 @@ void executeAuto()
 
                 if (studentAns[i].round2 == SKIP)
                 {
-                    scoredMarkQ2 = scoredMarkQ2 + 0;
                     DiscardedCard.addNewDiscardedCard(question2, questionAnswer2TF, score2);
                 }
                 else if (studentAns[i].round2 == TRUE_NEW)
@@ -223,10 +205,6 @@ void executeAuto()
                     {
                         scoredMarkQ2 = scoredMarkQ2 + score2;
                         totalScore = totalScore + score2;
-                    }
-                    else
-                    {
-                        scoredMarkQ2 = 0;
                     }
                     AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                 }
@@ -237,10 +215,6 @@ void executeAuto()
                         scoredMarkQ2 = scoredMarkQ2 + score2;
                         totalScore = totalScore + score2;
                     }
-                    else
-                    {
-                        scoredMarkQ2 = 0;
-                    }
                     AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                 }
                 else
@@ -249,10 +223,6 @@ void executeAuto()
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     if (DiscardedCardInfo == nullptr)
                     {
-                        // handle if DiscardedCardInfo return nullptr
-                        // cout << studentAns[i].studentID << " discard empty 2" << endl;
-                        // return;
-
                         // handle different approach if discarded is empty force the student answer the new deck
                         // answer will based on student answer true false as from discard covert to new
                         bool correct = false;
@@ -270,10 +240,6 @@ void executeAuto()
                             scoredMarkQ2 = scoredMarkQ2 + score2;
                             totalScore = totalScore + score2;
                         }
-                        else
-                        {
-                            scoredMarkQ2 = 0;
-                        }
                         AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                     }
                     else
@@ -282,16 +248,13 @@ void executeAuto()
                         questionAnswer2TF = DiscardedCardInfo->answer;
                         score2 = DiscardedCardInfo->marks;
                         int roundedScore2 = (int)round(score2 * 0.8);
+
                         if (studentAns[i].round2 == TRUE_DISCARD)
                         {
                             if (questionAnswer2TF == TRUE)
                             {
                                 scoredMarkQ2 = scoredMarkQ2 + roundedScore2;
                                 totalScore = totalScore + scoredMarkQ2;
-                            }
-                            else
-                            {
-                                scoredMarkQ2 = 0;
                             }
                             AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                         }
@@ -302,10 +265,6 @@ void executeAuto()
                                 scoredMarkQ2 = scoredMarkQ2 + roundedScore2;
                                 totalScore = totalScore + scoredMarkQ2;
                             }
-                            else
-                            {
-                                scoredMarkQ2 = 0;
-                            }
                             AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                         }
                     }
@@ -315,10 +274,10 @@ void executeAuto()
                 autoStudentResponse.searchAndUpdateNodeRoundTwo(studentID, question2, scoredMarkQ2, totalScore);
 
                 // to reset the variables for next student
-                studentID = totalScore = score1 = score2 = score3 = scoredMarkQ1 = scoredMarkQ2 = scoredMarkQ3 = 0;
-                studentAnswer1 = studentAnswer2 = studentAnswer3 = NONE;
-                questionAnswer1TF = questionAnswer2TF = questionAnswer3TF = DEFAULT;
-                question1 = question2 = question3 = "";
+                studentID = totalScore = score2 = scoredMarkQ2 = 0;
+                studentAnswer2 = NONE;
+                questionAnswer2TF = DEFAULT;
+                question2 = "";
             }
             else if (roundNum == 3)
             {
@@ -328,7 +287,6 @@ void executeAuto()
 
                 if (studentAns[i].round3 == SKIP)
                 {
-                    scoredMarkQ3 = scoredMarkQ3 + 0;
                     DiscardedCard.addNewDiscardedCard(question3, questionAnswer3TF, score3);
                 }
                 else if (studentAns[i].round3 == TRUE_NEW)
@@ -337,10 +295,6 @@ void executeAuto()
                     {
                         scoredMarkQ3 = scoredMarkQ3 + score3;
                         totalScore = totalScore + score3;
-                    }
-                    else
-                    {
-                        scoredMarkQ3 = 0;
                     }
                     AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                 }
@@ -351,10 +305,6 @@ void executeAuto()
                         scoredMarkQ3 = scoredMarkQ3 + score3;
                         totalScore = totalScore + score3;
                     }
-                    else
-                    {
-                        scoredMarkQ3 = 0;
-                    }
                     AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                 }
                 else
@@ -363,10 +313,6 @@ void executeAuto()
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     if (DiscardedCardInfo == nullptr)
                     {
-                        // handle if DiscardedCardInfo return nullptr
-                        // cout << studentAns[i].studentID << " discard empty 3" << endl;
-                        // return;
-
                         // handle different approach if discarded is empty force the student answer the new deck
                         // answer will based on student answer true false as from discard covert to new
                         bool correct = false;
@@ -384,10 +330,6 @@ void executeAuto()
                             scoredMarkQ3 = scoredMarkQ3 + score3;
                             totalScore = totalScore + score3;
                         }
-                        else
-                        {
-                            scoredMarkQ3 = 0;
-                        }
                         AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                     }
                     else
@@ -396,16 +338,13 @@ void executeAuto()
                         questionAnswer3TF = DiscardedCardInfo->answer;
                         score3 = DiscardedCardInfo->marks;
                         int roundedScore3 = (int)round(score3 * 0.8);
+
                         if (studentAns[i].round3 == TRUE_DISCARD)
                         {
                             if (questionAnswer3TF == TRUE)
                             {
                                 scoredMarkQ3 = scoredMarkQ3 + roundedScore3;
                                 totalScore = totalScore + scoredMarkQ3;
-                            }
-                            else
-                            {
-                                scoredMarkQ3 = 0;
                             }
                             AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                         }
@@ -416,10 +355,6 @@ void executeAuto()
                                 scoredMarkQ3 = scoredMarkQ3 + roundedScore3;
                                 totalScore = totalScore + scoredMarkQ3;
                             }
-                            else
-                            {
-                                scoredMarkQ3 = 0;
-                            }
                             AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                         }
                     }
@@ -429,10 +364,10 @@ void executeAuto()
                 autoStudentResponse.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
 
                 // to reset the variables for next student
-                studentID = totalScore = score1 = score2 = score3 = scoredMarkQ1 = scoredMarkQ2 = scoredMarkQ3 = 0;
-                studentAnswer1 = studentAnswer2 = studentAnswer3 = NONE;
-                questionAnswer1TF = questionAnswer2TF = questionAnswer3TF = DEFAULT;
-                question1 = question2 = question3 = "";
+                studentID = totalScore = score3 = scoredMarkQ3 = 0;
+                studentAnswer3 = NONE;
+                questionAnswer3TF = DEFAULT;
+                question3 = "";
             }
         }
     }

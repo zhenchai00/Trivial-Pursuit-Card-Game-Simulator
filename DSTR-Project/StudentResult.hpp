@@ -19,7 +19,7 @@ struct StudentResultNode
     int totalScore;
 
     // linked list node
-    StudentResultNode *nextAdd, *prevAdd;
+    StudentResultNode *next, *prev;
 };
 
 class StudentResultLinkedList
@@ -51,14 +51,14 @@ public:
         newNode->scoreQ3 = scoreQ3;
         newNode->totalScore = totalScore;
 
-        newNode->nextAdd = nullptr;
-        newNode->prevAdd = nullptr;
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
 
         return newNode;
     }
 
     // insert student node to front of the list
-    void insertFrontStudentResult (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
+    void insertToFront (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
@@ -68,15 +68,15 @@ public:
         }
         else
         {
-            newNode->nextAdd = head;
-            head->prevAdd = newNode;
+            newNode->next = head;
+            head->prev = newNode;
             head = newNode;
         }
         size++;
     }
 
     // insert student node to end of the list
-    void insertEndStudentResult (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
+    void insertToEnd (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
@@ -86,8 +86,8 @@ public:
         }
         else
         {
-            tail->nextAdd = newNode;
-            newNode->prevAdd = tail;
+            tail->next = newNode;
+            newNode->prev = tail;
             tail = newNode;
         }
         size++;
@@ -102,28 +102,31 @@ public:
         {
             head = newNode;
         }
-        else if (newNode->totalScore >= head->totalScore)
+        // insert to front list
+        else if (newNode->totalScore <= head->totalScore)
         {
-            newNode->nextAdd = head;
+            newNode->next = head;
+            head->prev = newNode;
             head = newNode;
+        }
+        else if (newNode->totalScore >= tail->totalScore)
+        {
+            newNode->prev = tail;
+            tail->next = newNode;
+            tail = newNode;
         }
         else
         {
-            StudentResultNode *current = head->nextAdd;
-            StudentResultNode *prev = head;
+            StudentResultNode *current = head->next;
 
-            while (current != nullptr)
+            while (current->totalScore < newNode->totalScore)
             {
-                if (newNode->totalScore < current->totalScore)
-                {
-                    break;
-                }
-                prev = current;
-                current = current->nextAdd;
+                current = current->next;
             }
-
-            prev->nextAdd = newNode;
-            newNode->nextAdd = current;
+            current->prev->next = newNode;
+			newNode->prev = current->prev;
+			current->prev = newNode;
+			newNode->next = current;
         }
         size++;
     }
@@ -138,7 +141,7 @@ public:
             {
                 return current;
             }
-            current = current->nextAdd;
+            current = current->next;
         }
         return nullptr;
     }
@@ -151,7 +154,7 @@ public:
         {
             cout << endl;
             cout << "Student ID: " << current->studentId << endl;
-            current = current->nextAdd;
+            current = current->next;
         }
 
         cout << listName << " is empty now" << endl;
