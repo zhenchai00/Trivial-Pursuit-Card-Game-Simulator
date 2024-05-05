@@ -86,7 +86,6 @@ void executeAuto()
     AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
     AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
     string question1, question2, question3 = "";
-    int test = 1;
 
     for (int roundNum = 1; roundNum < 4; roundNum++)
     { // to simulate 3 rounds
@@ -137,7 +136,31 @@ void executeAuto()
                     if (DiscardedCardInfo == nullptr)
                     {
                         // handle if DiscardedCardInfo return nullptr
-                        return;
+                        // cout << studentAns[i].studentID << " discard empty 1" << endl;
+                        // return;
+
+                        // handle different approach if discarded is empty force the student answer the new deck
+                        // answer will based on student answer true false as from discard covert to new
+                        bool correct = false;
+                        if (studentAns[i].round1 == TRUE_DISCARD && questionAnswer1TF == TRUE)
+                        {
+                            correct = true;
+                        }
+                        else if (studentAns[i].round1 == FALSE_DISCARD && questionAnswer1TF == FALSE)
+                        {
+                            correct = true;
+                        }
+
+                        if (correct)
+                        {
+                            scoredMarkQ1 = scoredMarkQ1 + score1;
+                            totalScore = totalScore + score1;
+                        }
+                        else
+                        {
+                            scoredMarkQ1 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                     }
                     else
                     {
@@ -226,7 +249,31 @@ void executeAuto()
                     if (DiscardedCardInfo == nullptr)
                     {
                         // handle if DiscardedCardInfo return nullptr
-                        return;
+                        // cout << studentAns[i].studentID << " discard empty 2" << endl;
+                        // return;
+
+                        // handle different approach if discarded is empty force the student answer the new deck
+                        // answer will based on student answer true false as from discard covert to new
+                        bool correct = false;
+                        if (studentAns[i].round2 == TRUE_DISCARD && questionAnswer2TF == TRUE)
+                        {
+                            correct = true;
+                        }
+                        else if (studentAns[i].round2 == FALSE_DISCARD && questionAnswer2TF == FALSE)
+                        {
+                            correct = true;
+                        }
+
+                        if (correct)
+                        {
+                            scoredMarkQ2 = scoredMarkQ2 + score2;
+                            totalScore = totalScore + score2;
+                        }
+                        else
+                        {
+                            scoredMarkQ2 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                     }
                     else
                     {
@@ -316,7 +363,31 @@ void executeAuto()
                     if (DiscardedCardInfo == nullptr)
                     {
                         // handle if DiscardedCardInfo return nullptr
-                        return;
+                        // cout << studentAns[i].studentID << " discard empty 3" << endl;
+                        // return;
+
+                        // handle different approach if discarded is empty force the student answer the new deck
+                        // answer will based on student answer true false as from discard covert to new
+                        bool correct = false;
+                        if (studentAns[i].round3 == TRUE_DISCARD && questionAnswer3TF == TRUE)
+                        {
+                            correct = true;
+                        }
+                        else if (studentAns[i].round3 == FALSE_DISCARD && questionAnswer3TF == FALSE)
+                        {
+                            correct = true;
+                        }
+
+                        if (correct)
+                        {
+                            scoredMarkQ3 = scoredMarkQ3 + score3;
+                            totalScore = totalScore + score3;
+                        }
+                        else
+                        {
+                            scoredMarkQ3 = 0;
+                        }
+                        AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                     }
                     else
                     {
