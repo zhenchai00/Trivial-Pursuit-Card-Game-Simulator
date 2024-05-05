@@ -181,7 +181,7 @@ void executeAuto()
                     }
                 }
                 // to store student response into a new node of AutomatedStudentResponse LinkedList
-                autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+                autoStudentResponse.insertToSortedList(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3);
 
                 // to reset the variables for next student
                 studentID = totalScore = score1 = scoredMarkQ1 = 0;
@@ -371,7 +371,7 @@ void executeAuto()
             }
         }
     }
-    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
+    autoStudentResponse.displayReversedLeaderboardList(); // to print all student responses for testing purposes
 }
 
 #endif // COMMON_HPP
