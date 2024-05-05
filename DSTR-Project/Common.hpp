@@ -92,11 +92,12 @@ void executeAuto()
         for (int i = 0; i < numOfStudents; i++)
         { // to simulate the number of players responding
             studentID = studentAns[i].studentID;
+            int index = (roundNum - 1) * numOfStudents + i; // Calculate index based on round number
             if (roundNum == 1)
             {
-                question1 = unansweredDeck[i].myQuestion;
-                questionAnswer1TF = unansweredDeck[i].myAnswer;
-                score1 = unansweredDeck[i].myScore;
+                question1 = unansweredDeck[index].myQuestion;
+                questionAnswer1TF = unansweredDeck[index].myAnswer;
+                score1 = unansweredDeck[index].myScore;
 
                 if (studentAns[i].round1 == SKIP)
                 {
@@ -207,9 +208,9 @@ void executeAuto()
             }
             else if (roundNum == 2)
             {
-                question2 = unansweredDeck[i].myQuestion;
-                questionAnswer2TF = unansweredDeck[i].myAnswer;
-                score2 = unansweredDeck[i].myScore;
+                question2 = unansweredDeck[index].myQuestion;
+                questionAnswer2TF = unansweredDeck[index].myAnswer;
+                score2 = unansweredDeck[index].myScore;
 
                 if (studentAns[i].round2 == SKIP)
                 {
@@ -321,9 +322,9 @@ void executeAuto()
             }
             else if (roundNum == 3)
             {
-                question3 = unansweredDeck[i].myQuestion;
-                questionAnswer3TF = unansweredDeck[i].myAnswer;
-                score3 = unansweredDeck[i].myScore;
+                question3 = unansweredDeck[index].myQuestion;
+                questionAnswer3TF = unansweredDeck[index].myAnswer;
+                score3 = unansweredDeck[index].myScore;
 
                 if (studentAns[i].round3 == SKIP)
                 {
