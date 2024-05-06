@@ -63,9 +63,28 @@ void executeManual(int numOfStudents)
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
                 cout << "3. False" << endl;
+                // check whether discarded area is empty or not
+                if (!DiscardedCard.isEmpty()) { // having card
+                    DiscardedCard.displayHead();
+                }
                 cin >> input;
                 // condition here
+ 
+                if (input == 1) { // if student choose to skip the round, the card will be added to discarded card area
 
+                }
+                else if (input == 2) { // student choosing answer in 'T'
+
+                }
+                else if (input == 3) { // student choosing answer in 'F'
+
+                }
+                else if (input == 4) { // student choose to answer deck from discarded card
+
+                }
+                else { // invalid input
+
+                }
                 cin.clear();
             }
             else if (roundNum == 2)
