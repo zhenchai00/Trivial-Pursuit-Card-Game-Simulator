@@ -12,39 +12,99 @@
 
 using namespace std;
 
-void executeManual(int studentNum)
+void executeManual(int numOfStudents)
 {
-    // create student result list
-    StudentResultLinkedList studentResult("Student Result");
-    for (int studentId = 1; studentId <= studentNum; studentId++)
-    {
-        string question1;
-        string question2;
-        string question3;
-        int scoreQ1;
-        int scoreQ2;
-        int scoreQ3;
-        int totalScore;
-        //studentResult.insertEndStudentResult(studentId, "", "", "", 0, 0, 0, 0);
-    }
-    studentResult.displayNodes();
+    const int totalQuestion = 300;
+    // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
+    UnansweredDeckStruct unansweredDeck[totalQuestion];
+    readCSVToDeck(unansweredDeck, "docs/dstr-question-nocomma.csv");
 
-    int totalRound = 3;
-    for (int round = 1; round <= totalRound; round++) // round of the game
+    // Providing a seed value for the shuffling the unanswered questions
+    srand((unsigned)time(NULL));
+
+    // Shuffling the unanswered questions
+    for (int i = 0; i < totalQuestion; i++)
     {
-        for (int studentId = 1; studentId <= studentNum; studentId++)
+        int r = rand() % totalQuestion; // generate a random position
+        UnansweredDeckStruct temp = unansweredDeck[i];
+        unansweredDeck[i] = unansweredDeck[r];
+        unansweredDeck[r] = temp;
+    }
+
+    DiscardedCardLinkedList DiscardedCard("Discarded Deck of Cards");
+    AnsweredDeck AnsweredDeck("Answered Deck of Cards");
+    StudentResultLinkedList studentResult("Student Result");
+
+    int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+    AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
+    AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
+    string question1 = "", question2 = "", question3 = "";
+
+    int input;
+
+    for (int roundNum = 1; roundNum < 4; roundNum++)
+    {
+        for (int i = 0; i < numOfStudents; i++)
         {
-            // display question and answer input
-            // capture the answer input and compare the question answers
-            // update the student linked list
+            int studentID = i + 1;
+            int index = (roundNum - 1) * numOfStudents + i; // Calculate index based on round number
+
+            cout << endl << "Student ID: " << studentID << endl;
+
+            if (roundNum == 1)
+            {
+                question1 = unansweredDeck[index].myQuestion;
+                questionAnswer1TF = unansweredDeck[index].myAnswer;
+                score1 = unansweredDeck[index].myScore;
+
+                cout << "Round: " << roundNum << endl;
+                cout << "Question: " << endl << question1 << endl;
+                cout << "Choose option below:" << endl;
+                cout << "1. Skip" << endl;
+                cout << "2. True" << endl;
+                cout << "3. False" << endl;
+                cin >> input;
+                // condition here
+
+                cin.clear();
+            }
+            else if (roundNum == 2)
+            {
+                question2 = unansweredDeck[index].myQuestion;
+                questionAnswer2TF = unansweredDeck[index].myAnswer;
+                score2 = unansweredDeck[index].myScore;
+
+                cout << "Round: " << roundNum << endl;
+                cout << "Question: " << endl << question2 << endl;
+                cout << "1. Skip" << endl;
+                cout << "2. True" << endl;
+                cout << "3. False" << endl;
+                cin >> input;
+                // condition here
+
+                cin.clear();
+            }
+            else if (roundNum == 3)
+            {
+                question3 = unansweredDeck[index].myQuestion;
+                questionAnswer3TF = unansweredDeck[index].myAnswer;
+                score3 = unansweredDeck[index].myScore;
+
+                cout << "Round: " << roundNum << endl;
+                cout << "Question: " << endl << question3 << endl;
+                cout << "1. Skip" << endl;
+                cout << "2. True" << endl;
+                cout << "3. False" << endl;
+                cin >> input;
+                // condition here
+
+                cin.clear();
+            }
         }
     }
-    // function to read csv to object linkedlist
-    // before get need to randomize / suffer the question arrangement
-    // get all question linked list = hit 3 round, break
-    // loop all the question based on the student
-    // q1 round 1 student 1
-    // q1 round student 2
+
+    // call the ranking tree report
+    // call the table report
 }
 
 // method to run auto by doing it own function
