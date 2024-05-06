@@ -25,7 +25,7 @@ void executeManual(int studentNum)
         int scoreQ2;
         int scoreQ3;
         int totalScore;
-        studentResult.insertEndStudentResult(studentId, "", "", "", 0, 0, 0, 0);
+        //studentResult.insertEndStudentResult(studentId, "", "", "", 0, 0, 0, 0);
     }
     studentResult.displayNodes();
 
@@ -181,7 +181,7 @@ void executeAuto()
                     }
                 }
                 // to store student response into a new node of AutomatedStudentResponse LinkedList
-                autoStudentResponse.insertToSortedList(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3);
+                autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3,totalScore);
 
                 // to reset the variables for next student
                 studentID = totalScore = score1 = scoredMarkQ1 = 0;
@@ -371,7 +371,7 @@ void executeAuto()
             }
         }
     }
-    autoStudentResponse.displayReversedLeaderboardList(); // to print all student responses for testing purposes
+    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
 }
 
 #endif // COMMON_HPP

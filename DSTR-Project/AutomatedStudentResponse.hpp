@@ -40,7 +40,7 @@ public:
 	}
 
 	// function to create a new node for the linked list;
-	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3) {
+	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
 		// to create struct in heap location
 		StudentResponseNode* newNode = new StudentResponseNode;
 
@@ -52,7 +52,8 @@ public:
 		newNode->scoreQ1 = scoreQ1;
 		newNode->scoreQ2 = scoreQ2;
 		newNode->scoreQ3 = scoreQ3;
-		newNode->totalScore = scoreQ1+scoreQ2+scoreQ3;
+		//newNode->totalScore = scoreQ1+scoreQ2+scoreQ3;
+		newNode->totalScore = totalScore;
 		
 		newNode->nextAddress = nullptr;
 		newNode->prevAddress = nullptr;
@@ -61,34 +62,35 @@ public:
 		return newNode;
 	}
 
-	//not gonna use this function as it's more efficient to insert it while sorting
-	//// function to insert to the front of the list
-	//void insertToEnd(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
 
-	//	// function to create an independent node by calling the createNewNode function
-	//	StudentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
+	// function to insert to the front of the list
+	void insertToEnd(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore) {
 
-	//	// insert the new node to the end of the linked list
-	//	if (head == nullptr) { // this is the first node in the linked list
-	//		head = newNode;
-	//		//cout << head->question1 << " " << head->scoreQ1 << " " << head->totalScore << " " << head->studentID << endl;
-	//	}
-	//	else { // this is not the first node in the linkedlist
-	//		StudentResponseNode* current = head;
-	//		//cout << head->question1 << " " << head->scoreQ1 << " " << head->totalScore << " " << head->studentID << endl;
-	//		while (current->nextAddress != nullptr) { // if node not yet the last node, move again
-	//			current = current->nextAddress;
-	//		}
-	//		// if the last node is found
-	//		current->nextAddress = newNode;
-	//	}
-	//	size++;
-	//}
+		// function to create an independent node by calling the createNewNode function
+		StudentResponseNode* newNode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3,totalScore);
+
+		// insert the new node to the end of the linked list
+		if (head == nullptr) { // this is the first node in the linked list
+			head = newNode;
+			//cout << head->question1 << " " << head->scoreQ1 << " " << head->totalScore << " " << head->studentID << endl;
+		}
+		else { // this is not the first node in the linkedlist
+			StudentResponseNode* current = head;
+			//cout << head->question1 << " " << head->scoreQ1 << " " << head->totalScore << " " << head->studentID << endl;
+			while (current->nextAddress != nullptr) { // if node not yet the last node, move again
+				current = current->nextAddress;
+			}
+			// if the last node is found
+			current->nextAddress = newNode;
+		}
+		size++;
+	}
 	
+	//has bugs atm (prolly would have to switch to doubly linked list later to use this function)
 	//inserting nodes while sorting the doubly linked list
-	void insertToSortedList(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3)
+	void insertToSortedList(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int toalScore)
 	{
-		StudentResponseNode* newnode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3);
+		StudentResponseNode* newnode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, toalScore);
 
 		//empty node case: insert node to the empty list
 		if (head == nullptr)
@@ -103,25 +105,37 @@ public:
 			head = newnode;
 		}
 		//insert from end of list case: when newnode's total score is larger than tail's total score
-		else if (newnode->totalScore >= tail->totalScore) {
+		else if (newnode->totalScore >= tail->totalScore)
+		{
 			newnode->prevAddress = tail;
 			tail->nextAddress = newnode;
 			tail = newnode;
 		}
 		//insert in middle case: when newnode's total score is larger than head and smaller than tail's total score
-		else {
+		else 
+		{
 			StudentResponseNode* current = head->nextAddress;
-			while (current->totalScore < newnode->totalScore) {
+			while (current != nullptr && current->totalScore < newnode->totalScore) {
 				current = current->nextAddress;
 			}
-			current->prevAddress->nextAddress = newnode;
-			newnode->prevAddress = current->prevAddress;
-			current->prevAddress = newnode;
-			newnode->prevAddress = current;
+			if (current != nullptr)
+			{
+				current->prevAddress->nextAddress = newnode;
+				newnode->prevAddress = current->prevAddress;
+				current->prevAddress = newnode;
+				newnode->prevAddress = current;
+			}
+			else
+			{
+				tail->nextAddress = newnode;
+				newnode->prevAddress = tail;
+				tail = newnode;
+			}
 		}
 		size++;
 	}
 
+	//should only be executed if the list is sorted in the order lowest to higheset grade
 	//function to display the leaderboard in reverse order so that it displays from student with highest grade to lowest
 	void displayReversedLeaderboardList() {
 		//pointer to refer to the last node
@@ -153,33 +167,32 @@ public:
 		cout << "Content of list " << linkedlistName << " is done displaying in the screen!" << endl << endl;
 	}
 
-	//not using this function as we need to display in ranked order
-	//// function to display the contents of the linked list nodes
-	//void DisplayStudentResponsesForAutoExecution() {
-	//	// begin with the head node
-	//	StudentResponseNode* current = head;
+	// function to display the contents of the linked list nodes
+	void DisplayStudentResponsesForAutoExecution() {
+		// begin with the head node
+		StudentResponseNode* current = head;
 
-	//	// to check if the list is empty
-	//	if (current == nullptr) {
-	//		cout << "The linked list is empty." << endl;
-	//		return;
-	//	}
+		// to check if the list is empty
+		if (current == nullptr) {
+			cout << "The linked list is empty." << endl;
+			return;
+		}
 
-	//	// to loop through the linked list
-	//	cout << "Displaying student responses:" << endl;
-	//	while (current != nullptr) {
-	//		// Print the details of the current node
-	//		cout << "Student ID: " << current->studentID << endl;
-	//		cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
-	//		cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
-	//		cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
-	//		cout << "Total Score: " << current->totalScore << endl;
-	//		cout << "---------------------------------" << endl;
+		// to loop through the linked list
+		cout << "Displaying student responses:" << endl;
+		while (current != nullptr) {
+			// Print the details of the current node
+			cout << "Student ID: " << current->studentID << endl;
+			cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
+			cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
+			cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
+			cout << "Total Score: " << current->totalScore << endl;
+			cout << "---------------------------------" << endl;
 
-	//		// move to the next node
-	//		current = current->nextAddress;
-	//	}
-	//}
+			// move to the next node
+			current = current->nextAddress;
+		}
+	}
 
 	// function to search for a node based on studentID and update its attributes
 	void searchAndUpdateNodeRoundTwo(int studentID, string question2, int scoreQ2, int totalScore) {
