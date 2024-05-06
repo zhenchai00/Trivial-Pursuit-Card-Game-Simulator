@@ -117,6 +117,20 @@ public:
 		cout << "empty" << endl;
 		cout << "********************************" << endl;
 	}
+
+	// check whether empty
+	bool isEmpty() {
+		if (head == nullptr)
+			return true;
+		return false;
+	}
+
+	// display the header card -------- used in manual mode
+	void displayHead() {
+		if (head != nullptr) {
+			cout << "4. " << head->question << endl;
+		}
+	}
 };
 
 #endif // DISCARDED_DECK_HPP
