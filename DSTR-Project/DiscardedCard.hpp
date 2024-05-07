@@ -126,10 +126,9 @@ public:
 	}
 
 	// display the header card -------- used in manual mode
-	string top() {
+	void displayHead() {
 		if (head != nullptr) {
-			string question = head->question;
-			return question;
+			cout << "4. " << head->question << endl;
 		}
 	}
 };

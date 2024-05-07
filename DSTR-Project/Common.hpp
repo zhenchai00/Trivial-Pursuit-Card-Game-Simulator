@@ -39,7 +39,6 @@ void executeManual(int numOfStudents)
     AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
     AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
     string question1 = "", question2 = "", question3 = "";
-    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard(); 
 
     int input;
 
@@ -57,7 +56,6 @@ void executeManual(int numOfStudents)
                 question1 = unansweredDeck[index].myQuestion;
                 questionAnswer1TF = unansweredDeck[index].myAnswer;
                 score1 = unansweredDeck[index].myScore;
-                
 
                 cout << "Round: " << roundNum << endl;
                 cout << "Question: " << endl << question1 << endl;
@@ -66,57 +64,27 @@ void executeManual(int numOfStudents)
                 cout << "2. True" << endl;
                 cout << "3. False" << endl;
                 // check whether discarded area is empty or not
-                if (!DiscardedCard.isEmpty()) {
-                    cout << "4. " << DiscardedCard.top() << endl;
+                if (!DiscardedCard.isEmpty()) { // having card
+                    DiscardedCard.displayHead();
                 }
                 cin >> input;
                 // condition here
  
                 if (input == 1) { // if student choose to skip the round, the card will be added to discarded card area
-                    DiscardedCard.addNewDiscardedCard(question1, questionAnswer1TF, score1);
+
                 }
                 else if (input == 2) { // student choosing answer in 'T'
-                    if (questionAnswer1TF == TRUE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
-                    }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+
                 }
                 else if (input == 3) { // student choosing answer in 'F'
-                    if (questionAnswer1TF == FALSE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
-                    }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+
                 }
                 else if (input == 4) { // student choose to answer deck from discarded card
-                    int disInput;
-                    cout << "1. True" << endl;
-                    cout << "2. False" << endl;
-                    cin >> disInput;
-                    question1 = DiscardedCardInfo->question;
-                    questionAnswer1TF = DiscardedCardInfo->answer;
-                    score1 = DiscardedCardInfo->marks;
-                    int disScore = (int)round(score1 * 0.8);
-
-                    if (input == 1) {
-                        if (questionAnswer1TF == TRUE) { 
-                            scoredMarkQ1 = scoredMarkQ1 + disScore; 
-                            totalScore = totalScore + disScore; 
-                        } 
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1); 
-                    }
-                    else if (input == 2) {
-                        if (questionAnswer1TF == FALSE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore; 
-                            totalScore = totalScore + disScore; 
-                        }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1); 
-                    }
-
 
                 }
-                
+                else { // invalid input
+
+                }
                 cin.clear();
             }
             else if (roundNum == 2)
@@ -130,56 +98,9 @@ void executeManual(int numOfStudents)
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
                 cout << "3. False" << endl;
-                if (!DiscardedCard.isEmpty()) {
-                    cout << "4. " << DiscardedCard.top() << endl;
-                }
                 cin >> input;
                 // condition here
 
-                if (input == 1) { // if student choose to skip the round, the card will be added to discarded card area
-                    DiscardedCard.addNewDiscardedCard(question1, questionAnswer1TF, score1);
-                }
-                else if (input == 2) { // student choosing answer in 'T'
-                    if (questionAnswer1TF == TRUE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
-                    }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                }
-                else if (input == 3) { // student choosing answer in 'F'
-                    if (questionAnswer1TF == FALSE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
-                    }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                }
-                else if (input == 4) { // student choose to answer deck from discarded card
-                    int disInput;
-                    cout << "1. True" << endl;
-                    cout << "2. False" << endl;
-                    cin >> disInput;
-                    question1 = DiscardedCardInfo->question;
-                    questionAnswer1TF = DiscardedCardInfo->answer;
-                    score1 = DiscardedCardInfo->marks;
-                    int disScore = (int)round(score1 * 0.8);
-
-                    if (input == 1) {
-                        if (questionAnswer1TF == TRUE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
-                            totalScore = totalScore + disScore;
-                        }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                    }
-                    else if (input == 2) {
-                        if (questionAnswer1TF == FALSE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
-                            totalScore = totalScore + disScore;
-                        }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                    }
-
-
-                }
                 cin.clear();
             }
             else if (roundNum == 3)
@@ -193,56 +114,9 @@ void executeManual(int numOfStudents)
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
                 cout << "3. False" << endl;
-                if (!DiscardedCard.isEmpty()) {
-                    cout << "4. " << DiscardedCard.top() << endl;
-                }
                 cin >> input;
                 // condition here
 
-                if (input == 1) { // if student choose to skip the round, the card will be added to discarded card area
-                    DiscardedCard.addNewDiscardedCard(question1, questionAnswer1TF, score1);
-                }
-                else if (input == 2) { // student choosing answer in 'T'
-                    if (questionAnswer1TF == TRUE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
-                    }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                }
-                else if (input == 3) { // student choosing answer in 'F'
-                    if (questionAnswer1TF == FALSE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
-                    }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                }
-                else if (input == 4) { // student choose to answer deck from discarded card
-                    int disInput;
-                    cout << "1. True" << endl;
-                    cout << "2. False" << endl;
-                    cin >> disInput;
-                    question1 = DiscardedCardInfo->question;
-                    questionAnswer1TF = DiscardedCardInfo->answer;
-                    score1 = DiscardedCardInfo->marks;
-                    int disScore = (int)round(score1 * 0.8);
-
-                    if (input == 1) {
-                        if (questionAnswer1TF == TRUE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
-                            totalScore = totalScore + disScore;
-                        }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                    }
-                    else if (input == 2) {
-                        if (questionAnswer1TF == FALSE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
-                            totalScore = totalScore + disScore;
-                        }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
-                    }
-
-
-                }
                 cin.clear();
             }
         }
