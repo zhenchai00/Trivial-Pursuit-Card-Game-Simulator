@@ -167,6 +167,63 @@ public:
 		cout << "Content of list " << linkedlistName << " is done displaying in the screen!" << endl << endl;
 	}
 
+
+	//insert and display for SLL 
+	
+	//insert
+	void insertToSorted(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int toalScore) {
+		StudentResponseNode* newnode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, toalScore);
+		if (head == nullptr)
+		{
+			head = newnode;
+		}
+		else if (newnode->totalScore <= head->totalScore)
+		{
+			newnode->nextAddress = head;
+			head = newnode;
+		}
+		else
+		{
+			StudentResponseNode* current = head->nextAddress;
+			StudentResponseNode* prev = head;
+
+			while (current != nullptr)
+			{
+				if (current->totalScore > newnode->totalScore)
+				{
+					break;
+				}
+				//otherwise
+				prev = current;
+				current = current->nextAddress;
+			}
+			//if found the correct location, add the item to the location (middle / end list) using below lines
+			prev->nextAddress = newnode;
+			newnode->nextAddress = current;
+		}
+		size++;
+	}
+
+	//display
+	void DisplayInOrder() {
+		for (int limit = size - 1; limit >= 0; limit--) {
+			StudentResponseNode* current = head;
+			for (int i = 0; i < limit; i++) {
+				current = current->nextAddress;
+			}
+			cout << "Student ID: " << current->studentID << endl;
+			cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
+			cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
+			cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
+			cout << "Total Score: " << current->totalScore << endl;
+			cout << "---------------------------------" << endl;
+		}
+		cout << endl;
+	}
+
+	//sorting the function
+
+
 	// function to display the contents of the linked list nodes
 	void DisplayStudentResponsesForAutoExecution() {
 		// begin with the head node

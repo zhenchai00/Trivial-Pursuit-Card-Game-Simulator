@@ -442,6 +442,9 @@ void executeAuto()
                 // to update round 3 student response information into the existing node with the corresponding student ID
                 autoStudentResponse.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
 
+                //here sort
+                
+
                 // to reset the variables for next student
                 studentID = totalScore = score3 = scoredMarkQ3 = 0;
                 studentAnswer3 = NONE;
