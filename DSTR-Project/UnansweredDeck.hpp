@@ -8,8 +8,15 @@
 #include <string>
 
 using namespace std;
+<<<<<<< Updated upstream:DSTR-Project/UnansweredDeck.hpp
 
 struct UnansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
+=======
+ 
+enum answerType {TRUE, FALSE}; // declaration of enum to standardize the question's answer type
+
+struct unansweredDeckStruct {  // declaration of a struct to be used to create an array of structs
+>>>>>>> Stashed changes:DSTR-Project/TriviaPursuitCardGame.hpp
 	string myQuestion;
 	AnswerTypeTF myAnswer;
     int myScore;
