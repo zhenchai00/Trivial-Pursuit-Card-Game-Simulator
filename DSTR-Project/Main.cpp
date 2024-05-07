@@ -58,5 +58,12 @@ int main()
 	readAllFileCSV(report, "docs/allAttributes.csv");
 	displayReport(report);*/
 
+<<<<<<< Updated upstream
+=======
+
+	readCSVToDeck(unansweredDeck, "docs/dstr-question-nocomma.csv"); // to read the 300 questions and their corresponding answers into the newly created array of structs
+	printFirstTenQuestions(unansweredDeck); // to display the first 10 questions out of the 300 questions for testing purposes (22/4 10:53pm - Kae Lam)
+	
+>>>>>>> Stashed changes
 	return 0;
 }
