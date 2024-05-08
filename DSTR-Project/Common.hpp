@@ -39,7 +39,7 @@ void executeManual(int numOfStudents)
     AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
     AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
     string question1 = "", question2 = "", question3 = "";
-    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard(); 
+    
 
     int input;
 
@@ -90,7 +90,9 @@ void executeManual(int numOfStudents)
                     AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                 }
                 else if (input == 4) { // student choose to answer deck from discarded card
+                    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard(); 
                     int disInput;
+                    cout << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
@@ -137,45 +139,47 @@ void executeManual(int numOfStudents)
                 // condition here
 
                 if (input == 1) { // if student choose to skip the round, the card will be added to discarded card area
-                    DiscardedCard.addNewDiscardedCard(question1, questionAnswer1TF, score1);
+                    DiscardedCard.addNewDiscardedCard(question2, questionAnswer2TF, score2);
                 }
                 else if (input == 2) { // student choosing answer in 'T'
-                    if (questionAnswer1TF == TRUE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
+                    if (questionAnswer2TF == TRUE) {
+                        scoredMarkQ2 = scoredMarkQ2 + score2;
+                        totalScore = totalScore + score2;
                     }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                    AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                 }
                 else if (input == 3) { // student choosing answer in 'F'
-                    if (questionAnswer1TF == FALSE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
+                    if (questionAnswer2TF == FALSE) {
+                        scoredMarkQ2 = scoredMarkQ2 + score2;
+                        totalScore = totalScore + score2;
                     }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                    AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                 }
                 else if (input == 4) { // student choose to answer deck from discarded card
+                    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     int disInput;
+                    cout << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
-                    question1 = DiscardedCardInfo->question;
-                    questionAnswer1TF = DiscardedCardInfo->answer;
-                    score1 = DiscardedCardInfo->marks;
-                    int disScore = (int)round(score1 * 0.8);
+                    question2 = DiscardedCardInfo->question;
+                    questionAnswer2TF = DiscardedCardInfo->answer;
+                    score2 = DiscardedCardInfo->marks;
+                    int disScore = (int)round(score2 * 0.8);
 
                     if (input == 1) {
-                        if (questionAnswer1TF == TRUE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
+                        if (questionAnswer2TF == TRUE) {
+                            scoredMarkQ2 = scoredMarkQ2 + disScore;
                             totalScore = totalScore + disScore;
                         }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                        AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                     }
                     else if (input == 2) {
-                        if (questionAnswer1TF == FALSE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
+                        if (questionAnswer2TF == FALSE) {
+                            scoredMarkQ2 = scoredMarkQ2 + disScore;
                             totalScore = totalScore + disScore;
                         }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                        AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                     }
 
 
@@ -200,45 +204,47 @@ void executeManual(int numOfStudents)
                 // condition here
 
                 if (input == 1) { // if student choose to skip the round, the card will be added to discarded card area
-                    DiscardedCard.addNewDiscardedCard(question1, questionAnswer1TF, score1);
+                    DiscardedCard.addNewDiscardedCard(question3, questionAnswer3TF, score3);
                 }
                 else if (input == 2) { // student choosing answer in 'T'
-                    if (questionAnswer1TF == TRUE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
+                    if (questionAnswer3TF == TRUE) {
+                        scoredMarkQ3 = scoredMarkQ3 + score3;
+                        totalScore = totalScore + score3;
                     }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                    AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                 }
                 else if (input == 3) { // student choosing answer in 'F'
-                    if (questionAnswer1TF == FALSE) {
-                        scoredMarkQ1 = scoredMarkQ1 + score1;
-                        totalScore = totalScore + score1;
+                    if (questionAnswer3TF == FALSE) {
+                        scoredMarkQ3 = scoredMarkQ3 + score3;
+                        totalScore = totalScore + score3;
                     }
-                    AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                    AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                 }
                 else if (input == 4) { // student choose to answer deck from discarded card
+                    DiscardedCardLinkedListNode* DiscardedCardInfo = DiscardedCard.takeDiscardedCard(); 
                     int disInput;
+                    cout << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
-                    question1 = DiscardedCardInfo->question;
-                    questionAnswer1TF = DiscardedCardInfo->answer;
-                    score1 = DiscardedCardInfo->marks;
-                    int disScore = (int)round(score1 * 0.8);
+                    question3 = DiscardedCardInfo->question;
+                    questionAnswer3TF = DiscardedCardInfo->answer;
+                    score3 = DiscardedCardInfo->marks;
+                    int disScore = (int)round(score3 * 0.8);
 
                     if (input == 1) {
-                        if (questionAnswer1TF == TRUE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
+                        if (questionAnswer3TF == TRUE) {
+                            scoredMarkQ3 = scoredMarkQ3 + disScore;
                             totalScore = totalScore + disScore;
                         }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                        AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                     }
                     else if (input == 2) {
-                        if (questionAnswer1TF == FALSE) {
-                            scoredMarkQ1 = scoredMarkQ1 + disScore;
+                        if (questionAnswer3TF == FALSE) {
+                            scoredMarkQ3 = scoredMarkQ3 + disScore;
                             totalScore = totalScore + disScore;
                         }
-                        AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                        AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                     }
 
 
