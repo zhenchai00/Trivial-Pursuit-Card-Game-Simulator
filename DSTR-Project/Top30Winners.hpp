@@ -32,7 +32,7 @@ public:
         if (node != nullptr && count < 30) {
             inOrder(node->right, count);
 			if (count < 30) {
-				cout << count+1 << ". Student ID:" << node->studentID << " " << node->totalScore << " points" << endl;
+				cout << count+1 << ". Student ID:" << node->studentID << " Overall Score: " << node->totalScore <<endl;
 				count++;
 			}
 			inOrder(node->left, count);
@@ -73,6 +73,31 @@ public:
 			}
 			else {
 				parent->right = newNode;
+			}
+		}
+	}
+
+	//function to search for a student ID in the top 30 winners and retrieve their position and score
+	void searchTop30(int studentID, int& position, int& score) {
+		int count = 0;
+		position = -1;
+		score = -1;
+		searchTop30(root, studentID, count, position, score);
+	}
+
+	//recursive function to search for a student ID in the top 30 winners and update position and score if found
+	void searchTop30(TreeNode* node, int studentID, int& count, int& position, int& score) {
+		if (node != nullptr && count < 30 && position == -1) { 
+			searchTop30(node->right, studentID, count, position, score);
+			if (count < 30 && position == -1) { 
+				count++;
+				if (node->studentID == studentID) {
+					position = count; 
+					score = node->totalScore; 
+				}
+			}
+			if (position == -1) { 
+				searchTop30(node->left, studentID, count, position, score);
 			}
 		}
 	}
