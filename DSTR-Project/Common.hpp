@@ -9,6 +9,7 @@
 #include "Enum.hpp"
 #include "DiscardedCard.hpp"
 #include "AnsweredDeck.hpp"
+#include "Top30Winners.hpp"
 
 using namespace std;
 
@@ -454,6 +455,7 @@ void executeAuto()
         }
     }
     autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
+    autoStudentResponse.AnnounceTop30Winners(); // Announce top 30 winners
 }
 
 #endif // COMMON_HPP

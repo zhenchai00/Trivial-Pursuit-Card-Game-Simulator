@@ -4,6 +4,7 @@
 #include "Enum.hpp"
 #include <iostream>
 #include <iomanip>
+#include "Top30Winners.hpp"
 
 using namespace std;
 
@@ -300,8 +301,21 @@ public:
 		// if no node with the specified studentID is found 
 		cout << "Node with student ID " << studentID << " not found." << endl;
 	}
-
-
+	
+	//function to insert student's ID and total score from the linked list into the tree data structure and then display the top 30 students with the highest scores
+	void AnnounceTop30Winners() {
+		// Create a binary search tree
+		Tree t;
+		StudentResponseNode* current = head;
+		// Traverse the linked list of student responses
+		while (current != nullptr) {
+			t.insert(current->studentID, current->totalScore);
+			current = current->nextAddress;
+		}
+		int count = 0;
+		// Print the top 30 winners in descending order of total scores
+		t.inOrder(count);
+	}
 
 };
 #endif // AUTOMATED_STUDENT_RESPONSE_HPP
