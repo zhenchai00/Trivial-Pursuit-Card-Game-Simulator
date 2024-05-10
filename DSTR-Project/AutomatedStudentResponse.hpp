@@ -359,5 +359,78 @@ public:
 			cout << "Sorry, you are not in the top 30 winners." << endl;
 		}
 	}
+
+	//Quick sort logic
+	StudentResponseNode* getTail(StudentResponseNode* head) { //gets the last node of the linked list
+		while (head != nullptr && head->nextAddress != nullptr) {
+			head = head->nextAddress;
+		}
+		return head;
+	}
+
+	void swap(StudentResponseNode* node1, StudentResponseNode* node2) {
+		if (node1 == nullptr || node2 == nullptr) {
+			cout << "Both nodes must contain some value!" << endl;
+		}
+
+		if (node1 == node2) {
+			return;
+		}
+
+		int tempStudentID = node1->studentID;
+		string tempQ1 = node1->question1;
+		string tempQ2 = node1->question2;
+		string tempQ3 = node1->question3;
+		int tempScoreQ1 = node1->scoreQ1;
+		int tempScoreQ2 = node1->scoreQ2;
+		int tempScoreQ3 = node1->scoreQ3;
+		int tempTotalScore = node1->totalScore;
+
+		node1->studentID = node2->studentID;
+		node1->question1 = node2->question1;
+		node1->question2 = node2->question2;
+		node1->question3 = node2->question3;
+		node1->scoreQ1 = node2->scoreQ1;
+		node1->scoreQ2 = node2->scoreQ2;
+		node1->scoreQ3 = node2->scoreQ3;
+		node1->totalScore = node2->totalScore;
+
+		node2->studentID = tempStudentID;
+		node2->question1 = tempQ1;
+		node2->question2 = tempQ2;
+		node2->question3 = tempQ3;
+		node2->scoreQ1 = tempScoreQ1;
+		node2->scoreQ2 = tempScoreQ2;
+		node2->scoreQ3 = tempScoreQ3;
+		node2->totalScore = tempTotalScore;
+	}
+
+	//partitioning the list 
+	StudentResponseNode* partition(StudentResponseNode* low, StudentResponseNode* high) {
+		int pivot = high->totalScore;
+		StudentResponseNode* i = low;
+		for (StudentResponseNode* j = low; j != high; j = j->nextAddress) {
+			if (j->totalScore < pivot) {
+				swap(i, j);
+				i = i->nextAddress;
+			}
+		}
+		swap(i, high);
+		return i;
+	}
+
+	void quickSortUtil(StudentResponseNode* low, StudentResponseNode* high) {
+		if (high != nullptr && low != high && low != high->nextAddress) {
+			StudentResponseNode* pivotNode = partition(low, high);
+			quickSortUtil(low, pivotNode); //sorts the sublist before the pivot
+			quickSortUtil(pivotNode->nextAddress, high); //sorts the sublist after the pivot
+		}
+	}
+
+	void quickSort() {
+		StudentResponseNode* lastNode = getTail(head);
+		quickSortUtil(head, lastNode);
+	}
+
 };
 #endif // AUTOMATED_STUDENT_RESPONSE_HPP

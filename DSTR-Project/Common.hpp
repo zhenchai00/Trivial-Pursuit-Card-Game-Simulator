@@ -615,6 +615,7 @@ void executeAuto()
                 autoStudentResponse.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
 
                 // here sort
+                autoStudentResponse.quickSort();
 
                 // to reset the variables for next student
                 studentID = totalScore = score3 = scoredMarkQ3 = 0;
