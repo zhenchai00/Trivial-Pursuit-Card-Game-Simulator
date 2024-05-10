@@ -36,18 +36,24 @@ void executeManual(int numOfStudents)
     AnsweredDeck AnsweredDeck("Answered Deck of Cards");
     StudentResultLinkedList studentResult("Student Result");
 
-    int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+    int studentID = 1, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
     AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
     AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
     string question1 = "", question2 = "", question3 = "";
 
     int input;
 
-    for (int roundNum = 1; roundNum < 4; roundNum++)
+    for (/*int roundNum = 1; roundNum < 4; roundNum++*/ int i = 0; i < numOfStudents; i++) // swap the loop position so it can display nicely
     {
-        for (int i = 0; i < numOfStudents; i++)
+        int studentID = i + 1;
+        totalScore = 0;
+        scoredMarkQ1 = 0;
+        scoredMarkQ2 = 0;
+        scoredMarkQ3 = 0;
+
+        for (/*int i = 0; i < numOfStudents; i++*/ int roundNum = 1; roundNum < 4; roundNum++)
         {
-            int studentID = i + 1;
+            /*int studentID = i + 1;*/
             int index = (roundNum - 1) * numOfStudents + i; // Calculate index based on round number
 
             cout << endl << "Student ID: " << studentID << endl;
@@ -289,10 +295,24 @@ void executeManual(int numOfStudents)
                 }
                 cin.clear();
             }
+
+            
         }
+        // test
+        /*cout << endl << endl;
+        studentResult.ManualInsertToSortedStudentResultByScore(studentID, question1, question2, question3,
+            scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);*/
+        // test display the linked list c whether it exist in linked list or not
+        cout << endl << endl;
+        studentResult.ManualInsertToSortedStudentResultByScore(studentID, question1, question2, question3,
+            scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+        
     }
-    studentResult.insertToSortedStudentResultByScore(studentID, question1, question2, question3,
-        scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+   
+    studentResult.displayStudentResults(); 
+    
+   
+    
     // call the ranking tree report
     // call the table report
 }
