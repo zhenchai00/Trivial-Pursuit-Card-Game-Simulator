@@ -119,15 +119,18 @@ public:
 	}
 
 	// check whether empty
-	bool isEmpty() {
+	bool isEmpty()
+	{
 		if (head == nullptr)
 			return true;
 		return false;
 	}
 
 	// display the header card -------- used in manual mode
-	string top() {
-		if (head != nullptr) {
+	string top()
+	{
+		if (head != nullptr)
+		{
 			string question = head->question;
 			return question;
 		}

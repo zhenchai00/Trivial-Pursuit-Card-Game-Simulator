@@ -58,7 +58,7 @@ public:
     }
 
     // insert student node to front of the list
-    void insertToFront (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
+    void insertToFront(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
@@ -76,7 +76,7 @@ public:
     }
 
     // insert student node to end of the list
-    void insertToEnd (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
+    void insertToEnd(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
@@ -94,7 +94,7 @@ public:
     }
 
     // insert to sorted list based on the score, more to less
-    void insertToSortedStudentResultByScore (int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
+    void insertToSortedStudentResultByScore(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
@@ -124,15 +124,15 @@ public:
                 current = current->next;
             }
             current->prev->next = newNode;
-			newNode->prev = current->prev;
-			current->prev = newNode;
-			newNode->next = current;
+            newNode->prev = current->prev;
+            current->prev = newNode;
+            newNode->next = current;
         }
         size++;
     }
 
     // get student nodes by student id which traverse whole linked list from first to last
-    StudentResultNode *getNodeById (int studentId)
+    StudentResultNode *getNodeById(int studentId)
     {
         StudentResultNode *current = head;
         while (current != nullptr) // O(n)
@@ -146,7 +146,7 @@ public:
         return nullptr;
     }
 
-    void displayNodes ()
+    void displayNodes()
     {
         StudentResultNode *current = head;
 

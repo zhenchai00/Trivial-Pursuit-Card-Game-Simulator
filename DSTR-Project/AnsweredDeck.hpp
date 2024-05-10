@@ -5,7 +5,8 @@
 
 using namespace std;
 
-struct AnsweredDeckNode {
+struct AnsweredDeckNode
+{
 
 	// data attributes
 	string myQuestion;
@@ -13,28 +14,31 @@ struct AnsweredDeckNode {
 	int myScore;
 
 	// link
-	AnsweredDeckNode* nextAddress;
+	AnsweredDeckNode *nextAddress;
 };
 
-class AnsweredDeck {
+class AnsweredDeck
+{
 
 	// properties of the student response linked list
-	AnsweredDeckNode* head;
+	AnsweredDeckNode *head;
 	string linkedlistName;
 	int size;
 
 public:
 	// constructor to build the linked list
-	AnsweredDeck(string linkedlistName) {
+	AnsweredDeck(string linkedlistName)
+	{
 		this->linkedlistName = linkedlistName;
 		head = nullptr;
 		size = 0;
 	}
 
 	// function to create a new node for the linked list;
-	AnsweredDeckNode* createNewNode(string myQuestion, AnswerTypeTF myAnswer, int myScore) {
+	AnsweredDeckNode *createNewNode(string myQuestion, AnswerTypeTF myAnswer, int myScore)
+	{
 		// to create struct in heap location
-		AnsweredDeckNode* newNode = new AnsweredDeckNode;
+		AnsweredDeckNode *newNode = new AnsweredDeckNode;
 
 		// data attribute of a single node is stored in the memory location
 		newNode->myQuestion = myQuestion;
@@ -49,7 +53,7 @@ public:
 	void InsertFront(string myQuestion, AnswerTypeTF myAnswer, int myScore)
 	{
 		// function to create an independent node by calling the createNewNode function
-		AnsweredDeckNode* newNode = createNewNode(myQuestion, myAnswer, myScore);
+		AnsweredDeckNode *newNode = createNewNode(myQuestion, myAnswer, myScore);
 
 		// insert the new node to the front of the linked list
 		if (head == nullptr) // inserted if this is the first node in the linked list
@@ -63,8 +67,5 @@ public:
 		}
 		size++;
 	}
-
-
-
 };
 #endif // ANSWERED_DECK_HPP
