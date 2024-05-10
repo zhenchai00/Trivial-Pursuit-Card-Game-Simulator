@@ -2,6 +2,7 @@
 #ifndef STUDENT_RESULT_HPP
 #define STUDENT_RESULT_HPP
 #include <iostream>
+#include <iomanip>
 #include "Enum.hpp"
 
 using namespace std;
@@ -159,5 +160,74 @@ public:
 
         cout << listName << " is empty now" << endl;
     }
+
+    // insert the manual mode data by sorting the total score
+    void ManualInsertToSortedStudentResultByScore(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
+    {
+        StudentResultNode* newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
+
+        if (head == nullptr)
+        {
+            head = tail = newNode;
+        }
+        // Insert at the front of the list if the list is empty or if the new node's score is greater than or equal to the head's score
+        else if (newNode->totalScore >= head->totalScore)
+        {
+            newNode->next = head;
+            head->prev = newNode;
+            head = newNode;
+        }
+        // Insert at the end of the list if the new node's score is less than or equal to the tail's score
+        else if (newNode->totalScore <= tail->totalScore)
+        {
+            newNode->prev = tail;
+            tail->next = newNode;
+            tail = newNode;
+        }
+        // Insert in the middle of the list
+        else
+        {
+            StudentResultNode* current = tail;
+
+            while (current->prev != nullptr && current->prev->totalScore < newNode->totalScore)
+            {
+                current = current->prev;
+            }
+
+            newNode->next = current->next;
+            newNode->prev = current;
+            current->next->prev = newNode;
+            current->next = newNode;
+        }
+        size++;
+    }
+
+    // testing function can ignored this
+    void displayStudentResults() {
+        if (head == nullptr) {
+            cout << "Student Result List is empty." << endl;
+            return;
+        }
+
+        cout << "Student Result List:" << endl;
+
+        StudentResultNode* current = head;
+        while (current != nullptr) {
+            cout << "Student ID: " << current->studentId << endl << endl;
+            cout << "Question 1: " << current->question1 << endl;
+            cout << "Score Q1: " << current->scoreQ1 << endl;
+            cout << "Question 2: " << current->question2 << endl;
+            cout << "Score Q2: " << current->scoreQ2 << endl;
+            cout << "Question 3: " << current->question3 << endl;
+            cout << "Score Q3: " << current->scoreQ3 << endl << endl;
+            cout << "Total Score: " << current->totalScore << endl;
+            cout << "--------------------------------------------------------------------------------------------------" << endl;
+            cout << endl; // Insert a blank line between students
+            current = current->next;
+        }
+    }
+
+
+    
 };
 #endif // STUDENT_RESULT_HPP
