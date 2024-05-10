@@ -360,76 +360,81 @@ public:
 		}
 	}
 
-	//Quick sort logic
-	StudentResponseNode* getTail(StudentResponseNode* head) { //gets the last node of the linked list
-		while (head != nullptr && head->nextAddress != nullptr) {
-			head = head->nextAddress;
-		}
-		return head;
+
+
+	//Quick sort logic 
+	StudentResponseNode* getTail(StudentResponseNode* current) {
+		while (current != nullptr && current->nextAddress != nullptr)
+			current = current->nextAddress;
+		return current;
 	}
 
-	void swap(StudentResponseNode* node1, StudentResponseNode* node2) {
-		if (node1 == nullptr || node2 == nullptr) {
-			cout << "Both nodes must contain some value!" << endl;
-		}
+	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd) {
+		StudentResponseNode* pivot = end;
+		StudentResponseNode* prev = nullptr;
+		StudentResponseNode* current = head;
+		StudentResponseNode* tail = pivot;
 
-		if (node1 == node2) {
-			return;
-		}
+		while (current != pivot) {
+			if (current->totalScore < pivot->totalScore) {
+				if ((*newHead) == NULL)
+					(*newHead) = current;
 
-		int tempStudentID = node1->studentID;
-		string tempQ1 = node1->question1;
-		string tempQ2 = node1->question2;
-		string tempQ3 = node1->question3;
-		int tempScoreQ1 = node1->scoreQ1;
-		int tempScoreQ2 = node1->scoreQ2;
-		int tempScoreQ3 = node1->scoreQ3;
-		int tempTotalScore = node1->totalScore;
-
-		node1->studentID = node2->studentID;
-		node1->question1 = node2->question1;
-		node1->question2 = node2->question2;
-		node1->question3 = node2->question3;
-		node1->scoreQ1 = node2->scoreQ1;
-		node1->scoreQ2 = node2->scoreQ2;
-		node1->scoreQ3 = node2->scoreQ3;
-		node1->totalScore = node2->totalScore;
-
-		node2->studentID = tempStudentID;
-		node2->question1 = tempQ1;
-		node2->question2 = tempQ2;
-		node2->question3 = tempQ3;
-		node2->scoreQ1 = tempScoreQ1;
-		node2->scoreQ2 = tempScoreQ2;
-		node2->scoreQ3 = tempScoreQ3;
-		node2->totalScore = tempTotalScore;
-	}
-
-	//partitioning the list 
-	StudentResponseNode* partition(StudentResponseNode* low, StudentResponseNode* high) {
-		int pivot = high->totalScore;
-		StudentResponseNode* i = low;
-		for (StudentResponseNode* j = low; j != high; j = j->nextAddress) {
-			if (j->totalScore < pivot) {
-				swap(i, j);
-				i = i->nextAddress;
+				prev = current;
+				current = current->nextAddress;
+			}
+			else  
+			{
+				if (prev)
+					prev->nextAddress = current->nextAddress;
+				StudentResponseNode* temp = current->nextAddress;
+				current->nextAddress = nullptr;
+				tail->nextAddress = current;
+				tail = current;
+				current = temp;
 			}
 		}
-		swap(i, high);
-		return i;
+
+		if ((*newHead) == nullptr)
+			(*newHead) = pivot;
+
+		(*newEnd) = tail;
+ 
+		return pivot;
 	}
 
-	void quickSortUtil(StudentResponseNode* low, StudentResponseNode* high) {
-		if (high != nullptr && low != high && low != high->nextAddress) {
-			StudentResponseNode* pivotNode = partition(low, high);
-			quickSortUtil(low, pivotNode); //sorts the sublist before the pivot
-			quickSortUtil(pivotNode->nextAddress, high); //sorts the sublist after the pivot
+	StudentResponseNode* quickSortRecur(StudentResponseNode* head, StudentResponseNode* end)
+	{
+		if (!head || head == end)
+			return head;
+
+		StudentResponseNode* newHead = nullptr, * newEnd = nullptr;
+
+		StudentResponseNode* pivot
+			= partition(head, end, &newHead, &newEnd);
+ 
+		if (newHead != pivot) {
+			StudentResponseNode* temp = newHead;
+			while (temp->nextAddress != pivot)
+				temp = temp->nextAddress;
+			temp->nextAddress = NULL;
+
+			newHead = quickSortRecur(newHead, temp);
+
+
+			temp = getTail(newHead);
+			temp->nextAddress = pivot;
 		}
+
+		pivot->nextAddress = quickSortRecur(pivot->nextAddress, newEnd);
+
+		return newHead;
 	}
 
-	void quickSort() {
-		StudentResponseNode* lastNode = getTail(head);
-		quickSortUtil(head, lastNode);
+	void quickSort(AutomatedStudentResponse& list)
+	{
+		list.head = list.quickSortRecur(list.head, list.getTail(list.head));
+		list.tail = list.getTail(list.head);
 	}
 
 };

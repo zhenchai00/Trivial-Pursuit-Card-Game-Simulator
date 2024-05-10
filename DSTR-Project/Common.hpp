@@ -615,6 +615,7 @@ void executeAuto()
                 autoStudentResponse.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
 
                 // here sort
+                autoStudentResponse.quickSort(autoStudentResponse);
 
                 // to reset the variables for next student
                 studentID = totalScore = score3 = scoredMarkQ3 = 0;
@@ -624,7 +625,7 @@ void executeAuto()
             }
         }
     }
-    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
+    autoStudentResponse.DisplayInOrder(); // to print all student responses for testing purposes
     autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
 }
 
