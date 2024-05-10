@@ -118,7 +118,7 @@ void executeManual(int numOfStudents)
                     score1 = DiscardedCardInfo->marks;
                     int disScore = (int)round(score1 * 0.8);
 
-                    if (input == 1)
+                    if (disInput == 1)
                     {
                         if (questionAnswer1TF == TRUE)
                         {
@@ -127,7 +127,7 @@ void executeManual(int numOfStudents)
                         }
                         AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                     }
-                    else if (input == 2)
+                    else if (disInput == 2)
                     {
                         if (questionAnswer1TF == FALSE)
                         {
@@ -197,7 +197,7 @@ void executeManual(int numOfStudents)
                     score2 = DiscardedCardInfo->marks;
                     int disScore = (int)round(score2 * 0.8);
 
-                    if (input == 1)
+                    if (disInput == 1)
                     {
                         if (questionAnswer2TF == TRUE)
                         {
@@ -206,7 +206,7 @@ void executeManual(int numOfStudents)
                         }
                         AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                     }
-                    else if (input == 2)
+                    else if (disInput == 2)
                     {
                         if (questionAnswer2TF == FALSE)
                         {
@@ -275,7 +275,7 @@ void executeManual(int numOfStudents)
                     score3 = DiscardedCardInfo->marks;
                     int disScore = (int)round(score3 * 0.8);
 
-                    if (input == 1)
+                    if (disInput == 1)
                     {
                         if (questionAnswer3TF == TRUE)
                         {
@@ -284,7 +284,7 @@ void executeManual(int numOfStudents)
                         }
                         AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                     }
-                    else if (input == 2)
+                    else if (disInput == 2)
                     {
                         if (questionAnswer3TF == FALSE)
                         {

@@ -211,7 +211,7 @@ public:
 
         cout << "Student Result List:" << endl;
 
-        StudentResultNode* current = head;
+        StudentResultNode* current = head;  
         while (current != nullptr) {
             cout << "Student ID: " << current->studentId << endl << endl;
             cout << "Question 1: " << current->question1 << endl;
