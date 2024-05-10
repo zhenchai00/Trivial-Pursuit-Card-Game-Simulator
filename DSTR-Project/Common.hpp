@@ -60,13 +60,15 @@ void executeManual(int numOfStudents)
 
                 cout << "Round: " << roundNum << endl;
                 cout << "Question: " << endl << question1 << endl;
-                cout << "Choose option below:" << endl;
+                cout << "Choose option below by entering the respective number (1-3):" << endl;
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
                 cout << "3. False" << endl;
                 // check whether discarded area is empty or not
                 if (!DiscardedCard.isEmpty())
                 {
+                    cout << endl;
+                    cout << "***You may enter 4 to answer the discarded card below which only get 80% of mark after correct answering***" << endl;
                     cout << "4. " << DiscardedCard.top() << endl;
                 }
                 cin >> input;
@@ -99,6 +101,7 @@ void executeManual(int numOfStudents)
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     int disInput;
                     cout << endl;
+                    cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
@@ -137,11 +140,14 @@ void executeManual(int numOfStudents)
 
                 cout << "Round: " << roundNum << endl;
                 cout << "Question: " << endl << question2 << endl;
+                cout << "Choose option below by entering the respective number (1-3):" << endl;
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
                 cout << "3. False" << endl;
                 if (!DiscardedCard.isEmpty())
                 {
+                    cout << endl;
+                    cout << "***You may enter 4 to answer the discarded card below which only get 80% of mark after correct answering***" << endl;
                     cout << "4. " << DiscardedCard.top() << endl;
                 }
                 cin >> input;
@@ -174,6 +180,7 @@ void executeManual(int numOfStudents)
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     int disInput;
                     cout << endl;
+                    cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
@@ -211,11 +218,14 @@ void executeManual(int numOfStudents)
 
                 cout << "Round: " << roundNum << endl;
                 cout << "Question: " << endl << question3 << endl;
+                cout << "Choose option below by entering the respective number (1-3):" << endl;
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
                 cout << "3. False" << endl;
                 if (!DiscardedCard.isEmpty())
                 {
+                    cout << endl;
+                    cout << "***You may enter 4 to answer the discarded card below which only get 80% of mark after correct answering***" << endl;
                     cout << "4. " << DiscardedCard.top() << endl;
                 }
                 cin >> input;
@@ -248,6 +258,7 @@ void executeManual(int numOfStudents)
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     int disInput;
                     cout << endl;
+                    cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
