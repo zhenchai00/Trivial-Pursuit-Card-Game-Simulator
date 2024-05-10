@@ -86,6 +86,7 @@ void executeManual(int numOfStudents)
                         totalScore = totalScore + score1;
                     }
                     AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
+                    
                 }
                 else if (input == 3)
                 { // student choosing answer in 'F'
@@ -290,7 +291,8 @@ void executeManual(int numOfStudents)
             }
         }
     }
-
+    studentResult.insertToSortedStudentResultByScore(studentID, question1, question2, question3,
+        scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
     // call the ranking tree report
     // call the table report
 }
