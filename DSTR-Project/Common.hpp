@@ -46,6 +46,7 @@ void executeManual(int numOfStudents)
     for (/*int roundNum = 1; roundNum < 4; roundNum++*/ int i = 0; i < numOfStudents; i++) // swap the loop position so it can display nicely
     {
         int studentID = i + 1;
+        // reset the score each loop (student id) so it didnt leave the score previos student has done
         totalScore = 0;
         scoredMarkQ1 = 0;
         scoredMarkQ2 = 0;

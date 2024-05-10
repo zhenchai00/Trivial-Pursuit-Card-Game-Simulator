@@ -213,14 +213,15 @@ public:
 
         StudentResultNode* current = head;
         while (current != nullptr) {
-            cout << "Student ID: " << current->studentId << endl;
+            cout << "Student ID: " << current->studentId << endl << endl;
             cout << "Question 1: " << current->question1 << endl;
             cout << "Score Q1: " << current->scoreQ1 << endl;
             cout << "Question 2: " << current->question2 << endl;
             cout << "Score Q2: " << current->scoreQ2 << endl;
             cout << "Question 3: " << current->question3 << endl;
-            cout << "Score Q3: " << current->scoreQ3 << endl;
+            cout << "Score Q3: " << current->scoreQ3 << endl << endl;
             cout << "Total Score: " << current->totalScore << endl;
+            cout << "--------------------------------------------------------------------------------------------------" << endl;
             cout << endl; // Insert a blank line between students
             current = current->next;
         }
