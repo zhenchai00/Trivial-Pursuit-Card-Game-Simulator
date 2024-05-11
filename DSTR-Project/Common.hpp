@@ -315,6 +315,7 @@ void executeManual(int numOfStudents)
    
     
     // call the ranking tree report
+    //studentResult.AnnounceTop30Winners();
     // call the table report
 }
 
@@ -646,7 +647,7 @@ void executeAuto()
             }
         }
     }
-    autoStudentResponse.DisplayInOrder(); // to print all student responses for testing purposes
+    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
     autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
 }
 

@@ -327,15 +327,18 @@ public:
 	void AnnounceTop30Winners()
 	{
 		// Create a binary search tree
-		Tree t;
+		BinaryTree tree;
 		StudentResponseNode *current = head;
 		// Traverse the linked list of student responses
-		while (current != nullptr)
-		{
-			t.insert(current->studentID, current->totalScore);
-			current = current->nextAddress;
-		}
 		int count = 0;
+		while (current != nullptr && count < 30)
+		{
+			tree.insertNode(current->studentID);
+			current = current->nextAddress;
+			count++;
+		}
+		tree.levelOrderTraversal();
+		/*int count = 0;
 		// Print the top 30 winners in descending order of total scores
 		t.inOrder(count);
 
@@ -357,7 +360,7 @@ public:
 		else
 		{
 			cout << "Sorry, you are not in the top 30 winners." << endl;
-		}
+		}*/
 	}
 
 
@@ -376,7 +379,7 @@ public:
 		StudentResponseNode* tail = pivot;
 
 		while (current != pivot) {
-			if (current->totalScore < pivot->totalScore) {
+			if (current->totalScore > pivot->totalScore) {
 				if ((*newHead) == NULL)
 					(*newHead) = current;
 

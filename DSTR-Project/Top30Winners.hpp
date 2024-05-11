@@ -6,120 +6,293 @@ struct TreeNode
 {
 	// data
 	int studentID;
-	int totalScore;
 	// tree node
 	struct TreeNode *left;
 	struct TreeNode *right;
 };
 
-class Tree
+class Queue
+{
+private:
+	struct Node
+	{
+		TreeNode* data;
+		Node* next;
+	};
+
+	Node* front;
+	Node* rear;
+
+public:
+	Queue()
+	{
+		front = nullptr;
+		rear = nullptr;
+	}
+
+	void enqueue(TreeNode* data)
+	{
+		Node* newNode = new Node;
+		newNode->data = data;
+		newNode->next = nullptr;
+		if (isEmpty())
+		{
+			front = newNode;
+			rear = newNode;
+		}
+		else
+		{
+			rear->next = newNode;
+			rear = newNode;
+		}
+	}
+
+	TreeNode* dequeue()
+	{
+		if (isEmpty())
+		{
+			cout << "Queue is empty!" << endl;
+			return nullptr;
+		}
+		else
+		{
+			Node* temp = front;
+			TreeNode* data = temp->data;
+			front = front->next;
+			delete temp;
+			return data;
+		}
+	}
+
+	bool isEmpty()
+	{
+		return front == nullptr;
+	}
+};
+
+class BinaryTree
 {
 public:
 	// properties in tree
-	TreeNode *root;
+	TreeNode* root;
 
 	// constructor
-	Tree()
+	BinaryTree()
 	{
 		root = nullptr;
 	}
 
-	// function to perform an in-order traversal of the tree and print the top 30 winners
-	void inOrder(int &count)
-	{
-		cout << "Top 30 Winners:" << endl;
-		inOrder(root, count);
+	TreeNode* createNewNode(int studentID) {
+		TreeNode* newnode = new TreeNode;
+		newnode->studentID = studentID;
+		newnode->left = nullptr;
+		newnode->right = nullptr;
+
+		return newnode;
 	}
 
-	// recursive function to perform an in-order traversal of the tree and print the top 30 winners
-	void inOrder(TreeNode *node, int &count)
+	void insertNode(int studentID)
 	{
-		if (node != nullptr && count < 30)
-		{
-			inOrder(node->right, count);
-			if (count < 30)
-			{
-				cout << count + 1 << ". Student ID:" << node->studentID << " Overall Score: " << node->totalScore << endl;
-				count++;
-			}
-			inOrder(node->left, count);
-		}
-	}
-
-	// function to insert a new node into the binary search tree
-	void insert(int studentID, int totalScore)
-	{
-		TreeNode *newNode = new TreeNode(); // create a new leaf node
-		newNode->studentID = studentID;
-		newNode->totalScore = totalScore;
-		newNode->left = nullptr;
-		newNode->right = nullptr;
+		TreeNode* newnode = createNewNode(studentID);
 		if (root == nullptr)
-		{ // inserting into an empty tree
-			root = newNode;
-		}
-
-		else
-		{ // search for the proper parent node
-			TreeNode *parent = nullptr;
-			TreeNode *node = root;
-			while (node != nullptr)
-			{
-				parent = node;
-				if (node->studentID == studentID)
-				{
-					cout << "Duplicates not allowed." << endl;
-					return;
-				}
-				else if (totalScore <= node->totalScore)
-				{
-					node = node->left;
-				}
-				else
-				{
-					node = node->right;
-				}
-			}
-
-			// insert leaf node as a left or right child for parent node
-			if (totalScore <= parent->totalScore)
-			{
-				parent->left = newNode;
-			}
-			else
-			{
-				parent->right = newNode;
-			}
-		}
-	}
-
-	// function to search for a student ID in the top 30 winners and retrieve their position and score
-	void searchTop30(int studentID, int &position, int &score)
-	{
-		int count = 0;
-		position = -1;
-		score = -1;
-		searchTop30(root, studentID, count, position, score);
-	}
-
-	// recursive function to search for a student ID in the top 30 winners and update position and score if found
-	void searchTop30(TreeNode *node, int studentID, int &count, int &position, int &score)
-	{
-		if (node != nullptr && count < 30 && position == -1)
 		{
-			searchTop30(node->right, studentID, count, position, score);
-			if (count < 30 && position == -1)
-			{
-				count++;
-				if (node->studentID == studentID)
-				{
-					position = count;
-					score = node->totalScore;
+			root = newnode;
+		}
+		else {
+			Queue q;
+			TreeNode* current = root;
+			q.enqueue(current);
+			while (!q.isEmpty()) {
+				current = q.dequeue();
+				if (current->left == nullptr) {
+					current->left = newnode;
+					break;
+				}
+				else {
+					q.enqueue(current->left);
+				}
+				if (current->right == nullptr) {
+					current->right = newnode;
+					break;
+				}
+				else {
+					q.enqueue(current->right);
 				}
 			}
-			if (position == -1)
-			{
-				searchTop30(node->left, studentID, count, position, score);
+		}
+	}
+
+	void levelOrderTraversal()
+	{
+		Queue q;
+		q.enqueue(root);
+
+		int nodesInCurrentLevel = 1;
+		int nodesInNextLevel = 0;
+		int count = 109;
+		int count2 = 116;
+		int count3 = 110;
+		int winnerCount = 1;
+
+		cout << "Top 30 Winners: " << endl;
+		while (!q.isEmpty()) {
+			TreeNode* node = q.dequeue();
+
+			for (int i = 0; i < count; i++) {
+				cout << " ";
+			}
+			if (nodesInNextLevel > 0) {
+				for (int i = 0; i < count; i++) {
+					cout << " ";
+				}
+			}
+			if (node->studentID < 10) {
+				cout << "Student ID:" << node->studentID << "  ";
+			}
+			else {
+				cout << "Student ID:" << node->studentID << " ";
+			}
+
+			// Enqueue left child
+			if (node->left != nullptr) {
+				q.enqueue(node->left);
+				nodesInNextLevel++;
+			}
+
+			// Enqueue right child
+			if (node->right != nullptr) {
+				q.enqueue(node->right);
+				nodesInNextLevel++;
+			}
+
+			// All nodes in the current level are processed
+			nodesInCurrentLevel--;
+
+			// Move to the next line if all nodes in the current level are processed
+			if (nodesInCurrentLevel == 0) {
+				if (count <= 20) {
+					count = 0;
+				}
+				else {
+					if (count % 2 == 0) {
+						count /= 2;
+						count -= 4;
+					}
+					else {
+						count /= 2;
+						count -= 3;
+					}
+				}
+				cout << endl;
+				int nodesInNextLevel2 = nodesInNextLevel;
+				int nodesInNextLevel3 = 0;
+				if (nodesInNextLevel == 15) {
+					nodesInNextLevel2 = 16;
+				}
+				for (int i = 0; i < count3; i++) {
+					cout << " ";
+				}
+				if (winnerCount == 1) {
+					cout << winnerCount << "st " << "Winner" << " ";
+				}
+				else if (winnerCount == 2) {
+					cout << winnerCount << "nd " << "Winner" << " ";
+				}
+				else if (winnerCount == 3) {
+					cout << winnerCount << "rd " << "Winner" << " ";
+				}
+				else if (winnerCount <= 10) {
+					cout << winnerCount << "th " << "Winner" << " ";
+				}
+				else {
+					cout << winnerCount << "th " << "Winner";
+				}
+				if (winnerCount == 16) {
+					for (winnerCount++; winnerCount < 31; winnerCount++) {
+						cout << "   ";
+						cout << winnerCount << "th " << "Winner";
+					}
+				}
+				for (int i = 0; i < nodesInNextLevel2 / 2 - 1; i++) {
+					winnerCount++;
+					for (int i = 0; i < count3 * 2 + 1; i++) {
+						cout << " ";
+					}
+					if (winnerCount == 1) {
+						cout << winnerCount << "st " << "Winner" << " ";
+					}
+					else if (winnerCount == 2) {
+						cout << winnerCount << "nd " << "Winner" << " ";
+					}
+					else if (winnerCount == 3) {
+						cout << winnerCount << "rd " << "Winner" << " ";
+					}
+					else if (winnerCount <= 10) {
+						cout << winnerCount << "th " << "Winner" << " ";
+					}
+					else {
+						cout << winnerCount << "th " << "Winner";
+					}
+				}
+				cout << endl;
+				count3 /= 2;
+				count3 -= 3;
+				winnerCount++;
+				if (nodesInNextLevel > 1) {
+					for (int i = 0; i < count2; i++) {
+						cout << " ";
+					}
+					cout << "|"; 
+
+				}
+				for (int i = 0; i < nodesInNextLevel2 / 2 - 1; i++) {
+					for (int i = 0; i < count2*2-1; i++) {
+						cout << " ";
+					}
+					cout << "|";
+				}
+				cout << endl;
+				count2 /= 2;
+				if (nodesInNextLevel > 1) {
+					for (int i = 0; i < count2; i++) {
+						cout << " ";
+					}
+					for (int i = 0; i < count2 * 2 + 1; i++) {
+						cout << "-";
+					}
+				}
+				for (int i = 0; i < nodesInNextLevel / 2 - 1; i++) {
+					for (int i = 0; i < count2 * 2 - 1; i++) {
+						cout << " ";
+					}
+					for (int i = 0; i < count2 * 2 + 1; i++) {
+						cout << "-";
+					}
+				}
+				if (nodesInNextLevel == 15) {
+					for (int i = 0; i < count2 * 2 - 1; i++) {
+						cout << " ";
+					}
+					for (int i = 0; i < count2 * 2/2 + 1; i++) {
+						cout << "-";
+					}
+				}
+				cout << endl;
+				if (nodesInNextLevel > 1) {
+					for (int i = 0; i < count2; i++) {
+						cout << " ";
+					}
+					cout << "|";
+				}
+				for (int i = 0; i < nodesInNextLevel-1; i++) {
+					for (int i = 0; i < count2 * 2 - 1; i++) {
+						cout << " ";
+					}
+					cout << "|";
+				}
+				cout << endl;
+				nodesInCurrentLevel = nodesInNextLevel;
+				nodesInNextLevel = 0;
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include "Enum.hpp"
+#include "Top30Winners.hpp"
 
 using namespace std;
 
@@ -211,7 +212,7 @@ public:
 
         cout << "Student Result List:" << endl;
 
-        StudentResultNode* current = head;  
+        StudentResultNode* current = head;
         while (current != nullptr) {
             cout << "Student ID: " << current->studentId << endl << endl;
             cout << "Question 1: " << current->question1 << endl;
@@ -226,8 +227,5 @@ public:
             current = current->next;
         }
     }
-
-
-    
 };
 #endif // STUDENT_RESULT_HPP
