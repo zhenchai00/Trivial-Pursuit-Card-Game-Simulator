@@ -648,7 +648,14 @@ void executeAuto()
         }
     }
     autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
+
     autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
+
+    //code to search a student's ID, questions attempted, and total score
+    int studentIDInput;
+    cout << "Enter the student ID to check their score: ";
+    cin >> studentIDInput;
+    autoStudentResponse.searchStudentID(autoStudentResponse, studentIDInput);
 }
 
 #endif // COMMON_HPP

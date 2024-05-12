@@ -456,5 +456,81 @@ public:
 		list.tail = list.getLastNode(list.head);
 	}
 
+
+	//Binary search algorithm
+	StudentResponseNode* middleNode(StudentResponseNode* head, StudentResponseNode* tail) {
+
+		StudentResponseNode* pointer1 = head;
+		StudentResponseNode* pointer2 = head->nextAddress;
+
+		if (head == nullptr) {
+			return nullptr;
+		}
+
+		while (pointer1 != tail) {
+			pointer1 = pointer1->nextAddress;
+			if (pointer1 != tail) {
+				pointer2 = pointer2->nextAddress;
+				pointer1 = pointer1->nextAddress;
+			}
+		}
+
+		return pointer2;
+	}
+
+	StudentResponseNode* binarySearch(StudentResponseNode* head, int studentID) {
+		StudentResponseNode* firstNode = head;
+		StudentResponseNode* lastNode = nullptr;
+
+		while (lastNode != firstNode)
+		{
+			StudentResponseNode* midNode = middleNode(firstNode, lastNode);
+
+			if (midNode == nullptr) {
+				return nullptr;
+			}
+
+			if (midNode->studentID == studentID)
+			{
+				return midNode;
+			}
+
+			else if (midNode->studentID < studentID)
+			{
+				firstNode = midNode->nextAddress;
+			}
+			else
+			{
+				lastNode = midNode;
+			}
+		}
+		//student ID is not in the list
+		cout << "Student ID " << studentID << " does not exist!" << endl;
+		return nullptr;
+	}
+
+	void displaySingleStudent(StudentResponseNode* studentIDNode) {
+
+		if (studentIDNode != nullptr) {
+			cout << "---------------------------------" << endl;
+			cout << "Student ID: " << studentIDNode->studentID << endl;
+			cout << "Question 1: " << studentIDNode->question1 << " - Scored: " << studentIDNode->scoreQ1 << endl;
+			cout << "Question 2: " << studentIDNode->question2 << " - Scored: " << studentIDNode->scoreQ2 << endl;
+			cout << "Question 3: " << studentIDNode->question3 << " - Scored: " << studentIDNode->scoreQ3 << endl;
+			cout << "Total Score: " << studentIDNode->totalScore << endl;
+			cout << "---------------------------------" << endl;
+		}
+		else {
+			cout << "Student ID not found" << endl;
+		}
+	}
+
+	void searchStudentID(AutomatedStudentResponse& studentList, int studentID) {
+		StudentResponseNode* studentNode = studentList.binarySearch(studentList.head, studentID);
+
+		if (studentNode != nullptr) {
+			studentList.displaySingleStudent(studentNode);
+		}
+	}
 };
 #endif // AUTOMATED_STUDENT_RESPONSE_HPP
