@@ -296,4 +296,63 @@ public:
 			}
 		}
 	}
+
+	void Search(int studentID) {
+		if (root == nullptr)
+		{
+			return;
+		}
+		TreeNode* current = root;
+		int count = 1;
+		if (current->studentID == studentID) {
+			cout << "Congratulations! You are placed " << count << "st";
+		}
+		Queue q;
+		q.enqueue(current);
+		while (!q.isEmpty()) {
+			current = q.dequeue();
+			if (current->left->studentID == studentID) {
+				count++;
+				string suffix;
+				if (count == 2) {
+					suffix = "nd";
+				}
+				else if (count == 3) {
+					suffix = "rd";
+				}
+				else {
+					suffix = "th";
+				}
+				cout << "Congratulations! You are placed " << count << suffix << endl;
+				return;
+			}
+			else {
+				count++;
+				q.enqueue(current->left);
+			}
+			if (count == 30) {
+				cout << "Sorry, you are not in the top 30 winners." << endl;
+				return;
+			}
+			if (current->right->studentID == studentID) {
+				count++;
+				string suffix;
+				if (count == 2) {
+					suffix = "nd";
+				}
+				else if (count == 3) {
+					suffix = "rd";
+				}
+				else {
+					suffix = "th";
+				}
+				cout << "Congratulations! You are placed " << count << suffix << endl;
+				return;
+			}
+			else {
+				count++;
+				q.enqueue(current->right);
+			}
+		}
+	}
 };

@@ -203,29 +203,15 @@ public:
 			count++;
 		}
 		tree.levelOrderTraversal();
-		/*int count = 0;
-		// Print the top 30 winners in descending order of total scores
-		t.inOrder(count);
-
 		int studentID;
-		cout << "Enter your student ID to search for: ";
-		cin >> studentID;
-
-		int position = -1; // Initialize position to -1 (not found)
-		int score = -1;	   // Initialize score to -1
-
-		// Search for the student ID in the top 30 winners
-		t.searchTop30(studentID, position, score);
-
-		// Display the search result
-		if (position != -1)
-		{
-			cout << "Congratulations! You are placed " << position << " with an overall score of " << score << endl;
+		string input;
+		cout << "Do you want to check if you are one of the Top 30 Winners? (Y/N)";
+		cin >> input;
+		if (input == "Y" || input == "y") {
+			cout << "Enter Student ID: ";
+			cin >> studentID;
+			tree.Search(studentID);
 		}
-		else
-		{
-			cout << "Sorry, you are not in the top 30 winners." << endl;
-		}*/
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
