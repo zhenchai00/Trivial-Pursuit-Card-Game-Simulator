@@ -209,7 +209,7 @@ public:
             cout << "Student Result List is empty." << endl;
             return;
         }
-
+        cout << "---------------------------------------------------------------------------------------------------" << endl;
         cout << "Student Result List:" << endl;
 
         StudentResultNode* current = head;
