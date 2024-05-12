@@ -67,6 +67,8 @@ public:
 		return newNode;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// function to insert to the front of the list
 	void insertToEnd(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
 	{
@@ -94,148 +96,7 @@ public:
 		size++;
 	}
 
-	// has bugs atm (prolly would have to switch to doubly linked list later to use this function)
-	// inserting nodes while sorting the doubly linked list
-	void insertToSortedList(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
-	{
-		StudentResponseNode *newNode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
-
-		// empty node case: insert node to the empty list
-		if (head == nullptr)
-		{
-			head = tail = newNode;
-		}
-		// insert from front of list case: when newNode's total score is smaller than head's total score
-		else if (newNode->totalScore <= head->totalScore)
-		{
-			newNode->nextAddress = head;
-			head->prevAddress = newNode;
-			head = newNode;
-		}
-		// insert from end of list case: when newNode's total score is larger than tail's total score
-		else if (newNode->totalScore >= tail->totalScore)
-		{
-			newNode->prevAddress = tail;
-			tail->nextAddress = newNode;
-			tail = newNode;
-		}
-		// insert in middle case: when newNode's total score is larger than head and smaller than tail's total score
-		else
-		{
-			StudentResponseNode *current = head->nextAddress;
-			while (current != nullptr && current->totalScore < newNode->totalScore)
-			{
-				current = current->nextAddress;
-			}
-			if (current != nullptr)
-			{
-				current->prevAddress->nextAddress = newNode;
-				newNode->prevAddress = current->prevAddress;
-				current->prevAddress = newNode;
-				newNode->prevAddress = current;
-			}
-			else
-			{
-				tail->nextAddress = newNode;
-				newNode->prevAddress = tail;
-				tail = newNode;
-			}
-		}
-		size++;
-	}
-
-	// should only be executed if the list is sorted in the order lowest to highest grade
-	// function to display the leaderboard in reverse order so that it displays from student with highest grade to lowest
-	void displayReversedLeaderboardList()
-	{
-		// pointer to refer to the last node
-		StudentResponseNode *current = tail;
-
-		// code to display the content of the list
-
-		cout << string(145, '=') << "GAME REPORT" << string(145, '=') << endl;
-
-		// code for displaying the header of the table
-		cout << setw(10) << "Rank" << setw(20) << " " << "StudentID" << setw(20) << " " << "Round1" << setw(20) << " " << "Round2" << setw(20) << " " << "Round3" << setw(20) << " " << "OverallScore" << endl;
-		cout << string(300, '-') << endl;
-
-		int rankOfStudent = 1; // declaring the rank
-		while (current != nullptr)
-		{ // loop until current node reaches null pointer
-			cout << setw(10) << rankOfStudent;
-			cout << setw(20) << " " << current->studentID << " ";
-			cout << setw(20) << "  " << current->question1 << setw(20) << " " << current->question2 << setw(20) << " " << current->question3;
-			cout << setw(20) << current->totalScore << endl;
-			// Display scores below the questions
-			cout << setw(46) << current->scoreQ1 << setw(20) << " " << current->scoreQ2 << setw(20) << " " << current->scoreQ3 << endl;
-			cout << string(300, '-') << endl;
-
-			// Move to the previous node
-			current = current->prevAddress;
-			rankOfStudent++; // iterating the rank after every loop
-		}
-		// display list already finish display
-		cout << "Content of list " << linkedlistName << " is done displaying in the screen!" << endl << endl;
-	}
-
-	// insert and display for SLL
-
-	// insert
-	void insertToSorted(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
-	{
-		StudentResponseNode *newNode = createNewNode(studentID, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
-		if (head == nullptr)
-		{
-			head = newNode;
-		}
-		else if (newNode->totalScore <= head->totalScore)
-		{
-			newNode->nextAddress = head;
-			head = newNode;
-		}
-		else
-		{
-			StudentResponseNode *current = head->nextAddress;
-			StudentResponseNode *prev = head;
-
-			while (current != nullptr)
-			{
-				if (current->totalScore > newNode->totalScore)
-				{
-					break;
-				}
-				// otherwise
-				prev = current;
-				current = current->nextAddress;
-			}
-			// if found the correct location, add the item to the location (middle / end list) using below lines
-			prev->nextAddress = newNode;
-			newNode->nextAddress = current;
-		}
-		size++;
-	}
-
-	// display
-	void DisplayInOrder()
-	{
-		for (int limit = size - 1; limit >= 0; limit--)
-		{
-			StudentResponseNode *current = head;
-			for (int i = 0; i < limit; i++)
-			{
-				current = current->nextAddress;
-			}
-			cout << "Student ID: " << current->studentID << endl;
-			cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
-			cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
-			cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
-			cout << "Total Score: " << current->totalScore << endl;
-			cout << "---------------------------------" << endl;
-		}
-		cout << endl;
-	}
-
-	// sorting the function
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// function to display the contents of the linked list nodes
 	void DisplayStudentResponsesForAutoExecution()
@@ -266,6 +127,8 @@ public:
 			current = current->nextAddress;
 		}
 	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// function to search for a node based on studentID and update its attributes
 	void searchAndUpdateNodeRoundTwo(int studentID, string question2, int scoreQ2, int totalScore)
@@ -323,6 +186,8 @@ public:
 		cout << "Node with student ID " << studentID << " not found." << endl;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// function to insert student's ID and total score from the linked list into the tree data structure and then display the top 30 students with the highest scores
 	void AnnounceTop30Winners()
 	{
@@ -363,7 +228,7 @@ public:
 		}*/
 	}
 
-
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//Quick sort logic 
 	//https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
@@ -376,8 +241,8 @@ public:
 	}
 
 	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd) {
-		//setting the pivot as the last node of the list
-		StudentResponseNode* pivot = end; 
+		
+		StudentResponseNode* pivot = end; //setting the pivot as the last node of the list
 
 		StudentResponseNode* prev = nullptr;
 		StudentResponseNode* current = head;
@@ -456,7 +321,8 @@ public:
 		list.tail = list.getLastNode(list.head);
 	}
 
-
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
 	//Binary search algorithm
 	StudentResponseNode* middleNode(StudentResponseNode* head, StudentResponseNode* tail) {
 
