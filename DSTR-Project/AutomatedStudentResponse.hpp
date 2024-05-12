@@ -347,13 +347,13 @@ public:
 				return midNode;
 			}
 
-			else if (midNode->studentID < studentID)
+			else if (midNode->studentID > studentID)
 			{
-				firstNode = midNode->nextAddress;
+				lastNode = midNode;
 			}
 			else
 			{
-				lastNode = midNode;
+				firstNode = midNode->nextAddress;
 			}
 		}
 		//student ID is not in the list

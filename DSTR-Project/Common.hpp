@@ -326,6 +326,7 @@ void executeAuto()
     const int maxStudentNum = 100;
     const int minStudentNum = 70;
     AutomatedStudentResponse autoStudentResponse("Student Responses using Auto Method");
+    AutomatedStudentResponse autoStudentResponse2("Student Responses using Auto Method 2");
 
     // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
     UnansweredDeckStruct unansweredDeck[totalQuestion];
@@ -455,6 +456,7 @@ void executeAuto()
                 }
                 // to store student response into a new node of AutomatedStudentResponse LinkedList
                 autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+                autoStudentResponse2.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
 
                 // to reset the variables for next student
                 studentID = totalScore = score1 = scoredMarkQ1 = 0;
@@ -545,6 +547,7 @@ void executeAuto()
 
                 // to update round 2 student response information into the existing node with the corresponding student ID
                 autoStudentResponse.searchAndUpdateNodeRoundTwo(studentID, question2, scoredMarkQ2, totalScore);
+                autoStudentResponse2.searchAndUpdateNodeRoundTwo(studentID, question2, scoredMarkQ2, totalScore);
 
                 // to reset the variables for next student
                 studentID = totalScore = score2 = scoredMarkQ2 = 0;
@@ -635,7 +638,8 @@ void executeAuto()
 
                 // to update round 3 student response information into the existing node with the corresponding student ID
                 autoStudentResponse.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
-
+                autoStudentResponse2.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
+                
                 // here sort
                 autoStudentResponse.quickSort(autoStudentResponse);
 
@@ -649,13 +653,15 @@ void executeAuto()
     }
     autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
 
-    autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
-
-    //code to search a student's ID, questions attempted, and total score
+    //code to search a student's ID and display the questions attempted, their score and the total score
     int studentIDInput;
     cout << "Enter the student ID to check their score: ";
     cin >> studentIDInput;
-    autoStudentResponse.searchStudentID(autoStudentResponse, studentIDInput);
+    autoStudentResponse2.searchStudentID(autoStudentResponse2, studentIDInput);
+
+    autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
+
+    
 }
 
 #endif // COMMON_HPP
