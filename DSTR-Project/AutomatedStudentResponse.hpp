@@ -384,7 +384,7 @@ public:
 		StudentResponseNode* tail = pivot;
 
 		while (current != pivot) {
-			if (current->totalScore < pivot->totalScore) {
+			if (current->totalScore > pivot->totalScore) {
 				if ((*newHead) == NULL)
 					(*newHead) = current;
 
