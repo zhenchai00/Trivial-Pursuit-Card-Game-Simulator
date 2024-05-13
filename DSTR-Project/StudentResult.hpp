@@ -255,41 +255,24 @@ public:
     }
 
     // insert the manual mode data by sorting the total score
-    void ManualInsertToSortedStudentResultByScore(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
+    void ManualInsertToStudent(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode* newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
+        // insert the new node to the end of the linked list
         if (head == nullptr)
-        {
-            head = tail = newNode;
-        }
-        // Insert at the front of the list if the list is empty or if the new node's score is greater than or equal to the head's score
-        else if (newNode->totalScore >= head->totalScore)
-        {
-            newNode->next = head;
-            head->prev = newNode;
+        { // this is the first node in the linked list
             head = newNode;
         }
-        // Insert at the end of the list if the new node's score is less than or equal to the tail's score
-        else if (newNode->totalScore <= tail->totalScore)
-        {
-            newNode->prev = tail;
-            tail->next = newNode;
-            tail = newNode;
-        }
-        // Insert in the middle of the list
         else
-        {
-            StudentResultNode* current = tail;
-
-            while (current->prev != nullptr && current->prev->totalScore < newNode->totalScore)
-            {
-                current = current->prev;
+        { // this is not the first node in the linkedlist
+            StudentResultNode* current = head;
+            
+            while (current->next != nullptr)
+            { // if node not yet the last node, move again
+                current = current->next;
             }
-
-            newNode->next = current->next;
-            newNode->prev = current;
-            current->next->prev = newNode;
+            // if the last node is found
             current->next = newNode;
         }
         size++;

@@ -36,14 +36,14 @@ void executeManual(int numOfStudents)
     AnsweredDeck AnsweredDeck("Answered Deck of Cards");
     StudentResultLinkedList studentResult("Student Result");
 
-    int studentID = 1, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
+    int studentID = 0, totalScore = 0, score1 = 0, score2 = 0, score3 = 0, scoredMarkQ1 = 0, scoredMarkQ2 = 0, scoredMarkQ3 = 0;
     AnswerType studentAnswer1 = NONE, studentAnswer2 = NONE, studentAnswer3 = NONE;
     AnswerTypeTF questionAnswer1TF = DEFAULT, questionAnswer2TF = DEFAULT, questionAnswer3TF = DEFAULT;
     string question1 = "", question2 = "", question3 = "";
 
     int input;
 
-    for (int roundNum = 1; roundNum < 4; roundNum++/* int i = 0; i < numOfStudents; i++*/) // swap the loop position so it can display nicely
+    for (int roundNum = 1; roundNum < 4; roundNum++) // swap the loop position so it can display nicely
     {
         //int studentID = i + 1;
         //// reset the score each loop (student id) so it didnt leave the score previos student has done
@@ -52,7 +52,7 @@ void executeManual(int numOfStudents)
         //scoredMarkQ2 = 0;
         //scoredMarkQ3 = 0;
 
-        for (int i = 0; i < numOfStudents; i++ /*int roundNum = 1; roundNum < 4; roundNum++*/)
+        for (int i = 0; i < numOfStudents; i++ )
         {
             int studentID = i + 1;
             int index = (roundNum - 1) * numOfStudents + i; // Calculate index based on round number
@@ -153,9 +153,15 @@ void executeManual(int numOfStudents)
                         AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                     }
                 }
-                
-
                 cin.clear();
+
+                studentResult.ManualInsertToStudent(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+                studentID = totalScore = score1 = scoredMarkQ1 = 0;
+                studentAnswer1 = NONE;
+                questionAnswer1TF = DEFAULT;
+                question1 = "";
+
+                
             }
             else if (roundNum == 2)
             {
@@ -249,8 +255,13 @@ void executeManual(int numOfStudents)
                         AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                     }
                 }
-                
                 cin.clear();
+                studentResult.getStudentIdAndUpdateNode(studentID, question2, scoredMarkQ2, totalScore, 2);
+                studentID = totalScore = score2 = scoredMarkQ2 = 0;
+                studentAnswer2 = NONE;
+                questionAnswer2TF = DEFAULT;
+                question2 = "";
+                
             }
             else if (roundNum == 3)
             {
@@ -346,6 +357,13 @@ void executeManual(int numOfStudents)
                     
                 }
                 cin.clear();
+
+                studentResult.getStudentIdAndUpdateNode(studentID, question3, scoredMarkQ3, totalScore, 3);
+                studentID = totalScore = score3 = scoredMarkQ3 = 0;
+                studentAnswer3 = NONE;
+                questionAnswer3TF = DEFAULT;
+                question3 = "";
+                
             }
 
             
@@ -361,7 +379,7 @@ void executeManual(int numOfStudents)
         
     }
    
-    studentResult.displayStudentResults(); 
+    /*studentResult.displayStudentResults(); */
     
    
     
