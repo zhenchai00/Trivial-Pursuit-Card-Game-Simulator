@@ -101,6 +101,7 @@ public:
         if (head == nullptr)
         {
             cout << this->listName << " is empty!" << endl;
+            return;
         }
         // studentid match the head value, update node from front o(1)
         else if (studentId == head->studentId)
@@ -125,16 +126,16 @@ public:
         {
             if (round == 2)
             {
-                head->question2 = question;
-                head->scoreQ2 = score;
-                head->totalScore += totalScore;
+                tail->question2 = question;
+                tail->scoreQ2 = score;
+                tail->totalScore += totalScore;
                 return;
             }
             else if (round == 3)
             {
-                head->question3 = question;
-                head->scoreQ3 = score;
-                head->totalScore += totalScore;
+                tail->question3 = question;
+                tail->scoreQ3 = score;
+                tail->totalScore += totalScore;
                 return;
             }
         }
@@ -148,16 +149,16 @@ public:
                 {
                     if (round == 2)
                     {
-                        head->question2 = question;
-                        head->scoreQ2 = score;
-                        head->totalScore += totalScore;
+                        current->question2 = question;
+                        current->scoreQ2 = score;
+                        current->totalScore += totalScore;
                         return;
                     }
                     else if (round == 3)
                     {
-                        head->question3 = question;
-                        head->scoreQ3 = score;
-                        head->totalScore += totalScore;
+                        current->question3 = question;
+                        current->scoreQ3 = score;
+                        current->totalScore += totalScore;
                         return;
                     }
                 }
@@ -262,7 +263,7 @@ public:
         // insert the new node to the end of the linked list
         if (head == nullptr)
         { // this is the first node in the linked list
-            head = newNode;
+            head = tail = newNode;
         }
         else
         { // this is not the first node in the linkedlist
