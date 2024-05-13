@@ -43,15 +43,8 @@ void executeManual(int numOfStudents)
 
     int input;
 
-    for (int roundNum = 1; roundNum < 4; roundNum++) // swap the loop position so it can display nicely
+    for (int roundNum = 1; roundNum < 4; roundNum++)
     {
-        //int studentID = i + 1;
-        //// reset the score each loop (student id) so it didnt leave the score previos student has done
-        //totalScore = 0;
-        //scoredMarkQ1 = 0;
-        //scoredMarkQ2 = 0;
-        //scoredMarkQ3 = 0;
-
         for (int i = 0; i < numOfStudents; i++ )
         {
             int studentID = i + 1;
@@ -80,13 +73,15 @@ void executeManual(int numOfStudents)
                 }
                 cin >> input;
 
+                // if student choose to skip the round, the card will be added to discarded card area
                 if (input == 1)
-                { // if student choose to skip the round, the card will be added to discarded card area
+                {
                     DiscardedCard.addNewDiscardedCard(question1, questionAnswer1TF, score1);
                     cout << "****** Score + 0 ******" << endl;
                 }
+                // student choosing answer in 'T'
                 else if (input == 2)
-                { // student choosing answer in 'T'
+                {
                     if (questionAnswer1TF == TRUE)
                     {
                         scoredMarkQ1 = scoredMarkQ1 + score1;
@@ -99,8 +94,9 @@ void executeManual(int numOfStudents)
                     AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                     
                 }
+                // student choosing answer in 'F'
                 else if (input == 3)
-                { // student choosing answer in 'F'
+                {
                     if (questionAnswer1TF == FALSE)
                     {
                         scoredMarkQ1 = scoredMarkQ1 + score1;
@@ -112,15 +108,18 @@ void executeManual(int numOfStudents)
                     }
                     AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                 }
+                // student choose to answer deck from discarded card
                 else if (input == 4)
-                { // student choose to answer deck from discarded card
+                {
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     int disInput;
+
                     cout << endl;
                     cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
+
                     question1 = DiscardedCardInfo->question;
                     questionAnswer1TF = DiscardedCardInfo->answer;
                     score1 = DiscardedCardInfo->marks;
@@ -162,8 +161,6 @@ void executeManual(int numOfStudents)
                 studentAnswer1 = NONE;
                 questionAnswer1TF = DEFAULT;
                 question1 = "";
-
-                
             }
             else if (roundNum == 2)
             {
@@ -185,13 +182,15 @@ void executeManual(int numOfStudents)
                 }
                 cin >> input;
 
+                // if student choose to skip the round, the card will be added to discarded card area
                 if (input == 1)
-                { // if student choose to skip the round, the card will be added to discarded card area
+                {
                     DiscardedCard.addNewDiscardedCard(question2, questionAnswer2TF, score2);
                     cout << "****** Score + 0 ******" << endl;
                 }
+                // student choosing answer in 'T'
                 else if (input == 2)
-                { // student choosing answer in 'T'
+                {
                     if (questionAnswer2TF == TRUE)
                     {
                         scoredMarkQ2 = scoredMarkQ2 + score2;
@@ -203,8 +202,9 @@ void executeManual(int numOfStudents)
                     }
                     AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                 }
+                // student choosing answer in 'F'
                 else if (input == 3)
-                { // student choosing answer in 'F'
+                {
                     if (questionAnswer2TF == FALSE)
                     {
                         scoredMarkQ2 = scoredMarkQ2 + score2;
@@ -216,15 +216,18 @@ void executeManual(int numOfStudents)
                     }
                     AnsweredDeck.InsertFront(question2, questionAnswer2TF, score2);
                 }
+                // student choose to answer deck from discarded card
                 else if (input == 4)
-                { // student choose to answer deck from discarded card
+                {
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     int disInput;
+
                     cout << endl;
                     cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
+
                     question2 = DiscardedCardInfo->question;
                     questionAnswer2TF = DiscardedCardInfo->answer;
                     score2 = DiscardedCardInfo->marks;
@@ -258,12 +261,14 @@ void executeManual(int numOfStudents)
                     }
                 }
                 cin.clear();
+
                 studentResult.getStudentIdAndUpdateNode(studentID, question2, scoredMarkQ2, totalScore, 2);
+
+                // to reset the variables for next student
                 studentID = totalScore = score2 = scoredMarkQ2 = 0;
                 studentAnswer2 = NONE;
                 questionAnswer2TF = DEFAULT;
                 question2 = "";
-                
             }
             else if (roundNum == 3)
             {
@@ -285,13 +290,15 @@ void executeManual(int numOfStudents)
                 }
                 cin >> input;
 
+                // if student choose to skip the round, the card will be added to discarded card area
                 if (input == 1)
-                { // if student choose to skip the round, the card will be added to discarded card area
+                {
                     DiscardedCard.addNewDiscardedCard(question3, questionAnswer3TF, score3);
                     cout << "****** Score + 0 ******" << endl;
                 }
+                // student choosing answer in 'T'
                 else if (input == 2)
-                { // student choosing answer in 'T'
+                {
                     if (questionAnswer3TF == TRUE)
                     {
                         scoredMarkQ3 = scoredMarkQ3 + score3;
@@ -303,8 +310,9 @@ void executeManual(int numOfStudents)
                     }
                     AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                 }
+                // student choosing answer in 'F'
                 else if (input == 3)
-                { // student choosing answer in 'F'
+                {
                     if (questionAnswer3TF == FALSE)
                     {
                         scoredMarkQ3 = scoredMarkQ3 + score3;
@@ -316,15 +324,18 @@ void executeManual(int numOfStudents)
                     }
                     AnsweredDeck.InsertFront(question3, questionAnswer3TF, score3);
                 }
+                // student choose to answer deck from discarded card
                 else if (input == 4)
-                { // student choose to answer deck from discarded card
+                {
                     DiscardedCardLinkedListNode *DiscardedCardInfo = DiscardedCard.takeDiscardedCard();
                     int disInput;
+
                     cout << endl;
                     cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
+
                     question3 = DiscardedCardInfo->question;
                     questionAnswer3TF = DiscardedCardInfo->answer;
                     score3 = DiscardedCardInfo->marks;
@@ -361,24 +372,15 @@ void executeManual(int numOfStudents)
                 cin.clear();
 
                 studentResult.getStudentIdAndUpdateNode(studentID, question3, scoredMarkQ3, totalScore, 3);
+
+                // to reset the variables for next student
                 studentID = totalScore = score3 = scoredMarkQ3 = 0;
                 studentAnswer3 = NONE;
                 questionAnswer3TF = DEFAULT;
                 question3 = "";
-                
             }
-
-            
         }
-        // test
-        /*cout << endl << endl;
-        studentResult.ManualInsertToSortedStudentResultByScore(studentID, question1, question2, question3,
-            scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);*/
-        // test display the linked list c whether it exist in linked list or not
         cout << endl << endl;
-        /*studentResult.ManualInsertToSortedStudentResultByScore(studentID, question1, question2, question3,
-            scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);*/
-        
     }
    
     studentResult.displayStudentResults();

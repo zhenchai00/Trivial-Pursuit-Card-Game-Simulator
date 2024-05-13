@@ -53,10 +53,5 @@ int main()
 		executeManual(studentNum);
 	}
 
-	// displaying report
-	/*reportStructure report[5];
-	readAllFileCSV(report, "docs/allAttributes.csv");
-	displayReport(report);*/
-
 	return 0;
 }
