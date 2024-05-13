@@ -155,7 +155,9 @@ void executeManual(int numOfStudents)
                 }
                 cin.clear();
 
-                studentResult.ManualInsertToStudent(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+                studentResult.insertToFront(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
+
+                // to reset the variables for next student
                 studentID = totalScore = score1 = scoredMarkQ1 = 0;
                 studentAnswer1 = NONE;
                 questionAnswer1TF = DEFAULT;
@@ -379,9 +381,7 @@ void executeManual(int numOfStudents)
         
     }
    
-    /*studentResult.displayStudentResults(); */
-    
-   
+    studentResult.displayStudentResults();
     
     // call the ranking tree report
     //studentResult.AnnounceTop30Winners();
