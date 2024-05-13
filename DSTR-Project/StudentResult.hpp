@@ -94,6 +94,78 @@ public:
         }
         size++;
     }
+    
+    void getStudentIdAndUpdateNode (int studentId, string question, int score, int totalScore, int round = 0) 
+    {
+        // list is empty
+        if (head == nullptr)
+        {
+            cout << this->listName << " is empty!" << endl;
+        }
+        // studentid match the head value, update node from front o(1)
+        else if (studentId == head->studentId)
+        {
+            if (round == 2)
+            {
+                head->question2 = question;
+                head->scoreQ2 = score;
+                head->totalScore += totalScore;
+                return;
+            }
+            else if (round == 3)
+            {
+                head->question3 = question;
+                head->scoreQ3 = score;
+                head->totalScore += totalScore;
+                return;
+            }
+        }
+        // studentid match the head value, update node from end o(1)
+        else if (studentId == tail->studentId)
+        {
+            if (round == 2)
+            {
+                head->question2 = question;
+                head->scoreQ2 = score;
+                head->totalScore += totalScore;
+                return;
+            }
+            else if (round == 3)
+            {
+                head->question3 = question;
+                head->scoreQ3 = score;
+                head->totalScore += totalScore;
+                return;
+            }
+        }
+        // studentid match middle value, update node from middle o(n)
+        else
+        {
+            StudentResultNode *current = head->next;
+            while (current != nullptr)
+            {
+                if (studentId == current->studentId)
+                {
+                    if (round == 2)
+                    {
+                        head->question2 = question;
+                        head->scoreQ2 = score;
+                        head->totalScore += totalScore;
+                        return;
+                    }
+                    else if (round == 3)
+                    {
+                        head->question3 = question;
+                        head->scoreQ3 = score;
+                        head->totalScore += totalScore;
+                        return;
+                    }
+                }
+                current = current->next;
+            }
+        }
+		cout << "Node with student ID " << studentId << " not found." << endl;
+    }
 
     // insert to sorted list based on the score, more to less
     void insertToSortedStudentResultByScore(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
@@ -144,32 +216,12 @@ public:
         // studentid match the head value, return node from front o(1)
         else if (studentId == head->studentId)
         {
-            StudentResultNode *current = head;
-            head = head->next;
-            if (head == nullptr)
-            {
-                tail = nullptr;
-            }
-            else
-            {
-                head->prev = nullptr;
-            }
-            return current;
+            return head;
         }
         // studentid match the tail value, return node from end o(1)
         else if (studentId == tail->studentId)
         {
-            StudentResultNode *current = tail;
-            tail = tail->next;
-            if (tail == nullptr)
-            {
-                head = nullptr;
-            }
-            else
-            {
-                tail->next = nullptr;
-            }
-            return current;
+            return tail;
         }
         // studentid match middle value, return node from middle o(n)
         else 
