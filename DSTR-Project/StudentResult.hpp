@@ -59,7 +59,7 @@ public:
         return newNode;
     }
 
-    // insert student node to front of the list
+    // insert student node to front of the list, time complexity o(1)
     void insertToFront(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
@@ -77,7 +77,7 @@ public:
         size++;
     }
 
-    // insert student node to end of the list
+    // insert student node to end of the list, time complexity o(1)
     void insertToEnd(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
     {
         StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
@@ -102,7 +102,7 @@ public:
 
         if (head == nullptr)
         {
-            head = newNode;
+            head = tail = newNode;
         }
         // insert to front list
         else if (newNode->totalScore <= head->totalScore)
@@ -136,14 +136,54 @@ public:
     // get student nodes by student id which traverse whole linked list from first to last
     StudentResultNode *getNodeById(int studentId)
     {
-        StudentResultNode *current = head;
-        while (current != nullptr) // O(n)
+        // list is empty
+        if (head == nullptr)
         {
-            if (current->studentId == studentId)
+            cout << this->listName << " is empty!" << endl;
+        }
+        // studentid match the head value, return node from front o(1)
+        else if (studentId == head->studentId)
+        {
+            StudentResultNode *current = head;
+            head = head->next;
+            if (head == nullptr)
             {
-                return current;
+                tail = nullptr;
             }
-            current = current->next;
+            else
+            {
+                head->prev = nullptr;
+            }
+            return current;
+        }
+        // studentid match the tail value, return node from end o(1)
+        else if (studentId == tail->studentId)
+        {
+            StudentResultNode *current = tail;
+            tail = tail->next;
+            if (tail == nullptr)
+            {
+                head = nullptr;
+            }
+            else
+            {
+                tail->next = nullptr;
+            }
+            return current;
+        }
+        // studentid match middle value, return node from middle o(n)
+        else 
+        {
+            StudentResultNode *current = head->next;
+            while (current != nullptr) // O(n)
+            {
+                if (current->studentId == studentId)
+                {
+                    return current;
+                }
+                current = current->next;
+            }
+            return nullptr;
         }
         return nullptr;
     }
