@@ -66,7 +66,7 @@ void executeManual(int numOfStudents)
                 score1 = unansweredDeck[index].myScore;
 
                 cout << "Round: " << roundNum << endl;
-                cout << "Question: " << endl << question1 << endl;
+                cout << "Question: " << endl << question1 << " (" << score1 << " score)" << endl;
                 cout << "Choose option below by entering the respective number (1-3):" << endl;
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
@@ -79,7 +79,6 @@ void executeManual(int numOfStudents)
                     cout << "4. " << DiscardedCard.top() << endl;
                 }
                 cin >> input;
-                // condition here
 
                 if (input == 1)
                 { // if student choose to skip the round, the card will be added to discarded card area
@@ -137,7 +136,6 @@ void executeManual(int numOfStudents)
                         AnsweredDeck.InsertFront(question1, questionAnswer1TF, score1);
                     }
                 }
-
                 cin.clear();
             }
             else if (roundNum == 2)
@@ -147,7 +145,7 @@ void executeManual(int numOfStudents)
                 score2 = unansweredDeck[index].myScore;
 
                 cout << "Round: " << roundNum << endl;
-                cout << "Question: " << endl << question2 << endl;
+                cout << "Question: " << endl << question2 << " (" << score2 << " score)" << endl;
                 cout << "Choose option below by entering the respective number (1-3):" << endl;
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
@@ -159,7 +157,6 @@ void executeManual(int numOfStudents)
                     cout << "4. " << DiscardedCard.top() << endl;
                 }
                 cin >> input;
-                // condition here
 
                 if (input == 1)
                 { // if student choose to skip the round, the card will be added to discarded card area
@@ -225,7 +222,7 @@ void executeManual(int numOfStudents)
                 score3 = unansweredDeck[index].myScore;
 
                 cout << "Round: " << roundNum << endl;
-                cout << "Question: " << endl << question3 << endl;
+                cout << "Question: " << endl << question3 << " (" << score3 << " score)" << endl;
                 cout << "Choose option below by entering the respective number (1-3):" << endl;
                 cout << "1. Skip" << endl;
                 cout << "2. True" << endl;
@@ -237,7 +234,6 @@ void executeManual(int numOfStudents)
                     cout << "4. " << DiscardedCard.top() << endl;
                 }
                 cin >> input;
-                // condition here
 
                 if (input == 1)
                 { // if student choose to skip the round, the card will be added to discarded card area

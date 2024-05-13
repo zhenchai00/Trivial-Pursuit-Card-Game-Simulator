@@ -131,7 +131,8 @@ public:
 	{
 		if (head != nullptr)
 		{
-			string question = head->question;
+			string marks = to_string((int)round(head->marks * 0.8));
+			string question = head->question + " (" + marks + "score)";
 			return question;
 		}
 	}
