@@ -122,7 +122,7 @@ public:
 		}
 	}
 
-	void levelOrderTraversal()
+	void levelOrderTraversal(int studentsNumber)
 	{
 		Queue q;
 		q.enqueue(root);
@@ -133,15 +133,16 @@ public:
 		int count2 = 116;
 		int count3 = 110;
 		int winnerCount = 1;
+		int loopCounter = 1;
+		int numOfStudents = 1;
 
 		cout << "Top 30 Winners: " << endl;
 		while (!q.isEmpty()) {
 			TreeNode* node = q.dequeue();
-
 			for (int i = 0; i < count; i++) {
 				cout << " ";
 			}
-			if (nodesInNextLevel > 0) {
+			if (loopCounter > 1) {
 				for (int i = 0; i < count; i++) {
 					cout << " ";
 				}
@@ -157,16 +158,19 @@ public:
 			if (node->left != nullptr) {
 				q.enqueue(node->left);
 				nodesInNextLevel++;
+				numOfStudents += 1;
 			}
 
 			// Enqueue right child
 			if (node->right != nullptr) {
 				q.enqueue(node->right);
 				nodesInNextLevel++;
+				numOfStudents += 1;
 			}
 
 			// All nodes in the current level are processed
 			nodesInCurrentLevel--;
+			loopCounter++;
 
 			// Move to the next line if all nodes in the current level are processed
 			if (nodesInCurrentLevel == 0) {
@@ -186,7 +190,20 @@ public:
 				cout << endl;
 				int nodesInNextLevel2 = nodesInNextLevel;
 				int nodesInNextLevel3 = 0;
-				if (nodesInNextLevel == 15) {
+				int nodesInNextLevel4 = nodesInNextLevel;
+				/*if (nodesInNextLevel == 15) {
+					nodesInNextLevel2 = 16;
+				}*/
+				if (nodesInNextLevel % 2 == 1) {
+					nodesInNextLevel4++;
+				}
+				if (numOfStudents > 3 && numOfStudents < 8) {
+					nodesInNextLevel2 = 4;
+				}
+				else if (numOfStudents >= 8 && numOfStudents < 16) {
+					nodesInNextLevel2 = 8;
+				}
+				else if (numOfStudents >= 16 && numOfStudents < 31) {
 					nodesInNextLevel2 = 16;
 				}
 				for (int i = 0; i < count3; i++) {
@@ -207,45 +224,60 @@ public:
 				else {
 					cout << winnerCount << "th " << "Winner";
 				}
-				if (winnerCount == 16) {
+				
+				/*if (winnerCount == 16) {
 					for (winnerCount++; winnerCount < 31; winnerCount++) {
 						cout << "   ";
 						cout << winnerCount << "th " << "Winner";
 					}
+				}*/
+				if (nodesInNextLevel != 0) {
+					for (int i = 0; i < nodesInNextLevel2 / 2 - 1; i++) {
+						winnerCount++;
+						for (int i = 0; i < count3 * 2 + 1; i++) {
+							cout << " ";
+						}
+						if (winnerCount == 3) {
+							cout << winnerCount << "rd " << "Winner" << " ";
+						}
+						else if (winnerCount <= 10) {
+							cout << winnerCount << "th " << "Winner" << " ";
+						}
+						else {
+							cout << winnerCount << "th " << "Winner";
+						}
+					}
 				}
-				for (int i = 0; i < nodesInNextLevel2 / 2 - 1; i++) {
-					winnerCount++;
-					for (int i = 0; i < count3 * 2 + 1; i++) {
-						cout << " ";
-					}
-					if (winnerCount == 1) {
-						cout << winnerCount << "st " << "Winner" << " ";
-					}
-					else if (winnerCount == 2) {
-						cout << winnerCount << "nd " << "Winner" << " ";
-					}
-					else if (winnerCount == 3) {
-						cout << winnerCount << "rd " << "Winner" << " ";
-					}
-					else if (winnerCount <= 10) {
-						cout << winnerCount << "th " << "Winner" << " ";
-					}
-					else {
-						cout << winnerCount << "th " << "Winner";
+				if (nodesInNextLevel == 0) { //Display last line of winners
+					winnerCount += 1;
+					for (int i = winnerCount; i < studentsNumber+1; i++) {
+						//cout << i;
+						for (int i = 0; i < count3 * 2 + 1; i++) {
+							cout << " ";
+						}
+						if (i == 3) {
+							cout << i << "rd " << "Winner" << " ";
+						}
+						else if (i <= 10) {
+							cout << i << "th " << "Winner" << " ";
+						}
+						else {
+							cout << i << "th " << "Winner";
+						}
 					}
 				}
 				cout << endl;
 				count3 /= 2;
 				count3 -= 3;
 				winnerCount++;
-				if (nodesInNextLevel > 1) {
+				if (nodesInNextLevel >= 1) {
 					for (int i = 0; i < count2; i++) {
 						cout << " ";
 					}
 					cout << "|"; 
 
 				}
-				for (int i = 0; i < nodesInNextLevel2 / 2 - 1; i++) {
+				for (int i = 0; i < nodesInNextLevel4 / 2 - 1; i++) {
 					for (int i = 0; i < count2*2-1; i++) {
 						cout << " ";
 					}
@@ -253,11 +285,18 @@ public:
 				}
 				cout << endl;
 				count2 /= 2;
-				if (nodesInNextLevel > 1) {
+				if (nodesInNextLevel >= 1) {
+					int thecount;
+					if (nodesInNextLevel % 2 == 0 || nodesInNextLevel > 1) {
+						thecount = count2 * 2 + 1;
+					}
+					else {
+						thecount = count2 + 1;
+					}
 					for (int i = 0; i < count2; i++) {
 						cout << " ";
 					}
-					for (int i = 0; i < count2 * 2 + 1; i++) {
+					for (int i = 0; i < thecount; i++) {
 						cout << "-";
 					}
 				}
@@ -269,7 +308,7 @@ public:
 						cout << "-";
 					}
 				}
-				if (nodesInNextLevel == 15) {
+				if (nodesInNextLevel % 2 == 1 && ceil((float)nodesInNextLevel / 2 - 1 > 0)) {
 					for (int i = 0; i < count2 * 2 - 1; i++) {
 						cout << " ";
 					}
@@ -278,7 +317,7 @@ public:
 					}
 				}
 				cout << endl;
-				if (nodesInNextLevel > 1) {
+				if (nodesInNextLevel >= 1) {
 					for (int i = 0; i < count2; i++) {
 						cout << " ";
 					}
@@ -293,6 +332,7 @@ public:
 				cout << endl;
 				nodesInCurrentLevel = nodesInNextLevel;
 				nodesInNextLevel = 0;
+				loopCounter = 1;
 			}
 		}
 	}

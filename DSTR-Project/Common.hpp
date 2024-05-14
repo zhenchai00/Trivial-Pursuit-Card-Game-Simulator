@@ -386,7 +386,7 @@ void executeManual(int numOfStudents)
     studentResult.displayStudentResults();
     
     // call the ranking tree report
-    //studentResult.AnnounceTop30Winners();
+    studentResult.AnnounceTop30Winners();
     // call the table report
 }
 
@@ -725,10 +725,10 @@ void executeAuto()
     autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
 
     //code to search a student's ID and display the questions attempted, their score and the total score
-    int studentIDInput;
+    /*int studentIDInput;
     cout << "Enter the student ID to check their score: ";
     cin >> studentIDInput;
-    autoStudentResponse2.searchStudentID(autoStudentResponse2, studentIDInput);
+    autoStudentResponse2.searchStudentID(autoStudentResponse2, studentIDInput);*/
 
     autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
 

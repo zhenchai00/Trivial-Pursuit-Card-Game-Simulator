@@ -303,5 +303,30 @@ public:
             current = current->next;
         }
     }
+
+    void AnnounceTop30Winners()
+    {
+        // Create a binary search tree
+        BinaryTree tree;
+        StudentResultNode* current = head;
+        // Traverse the linked list of student responses
+        int count = 0;
+        while (current != nullptr && count < 30)
+        {
+            tree.insertNode(current->studentId);
+            current = current->next;
+            count++;
+        }
+        tree.levelOrderTraversal(count);
+        int studentID;
+        string input;
+        cout << "Do you want to check if you are one of the Top 30 Winners? (Y/N)";
+        cin >> input;
+        if (input == "Y" || input == "y") {
+            cout << "Enter Student ID: ";
+            cin >> studentID;
+            tree.Search(studentID);
+        }
+    }
 };
 #endif // STUDENT_RESULT_HPP

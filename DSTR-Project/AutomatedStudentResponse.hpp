@@ -202,7 +202,7 @@ public:
 			current = current->nextAddress;
 			count++;
 		}
-		tree.levelOrderTraversal();
+		tree.levelOrderTraversal(30);
 		int studentID;
 		string input;
 		cout << "Do you want to check if you are one of the Top 30 Winners? (Y/N)";
