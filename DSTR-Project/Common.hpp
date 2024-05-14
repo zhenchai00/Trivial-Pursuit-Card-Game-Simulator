@@ -73,6 +73,29 @@ void executeManual(int numOfStudents)
                 }
                 cin >> input;
 
+                // to handle the invalid input of normal question
+                while (input != 1 && input != 2 && input != 3 && (DiscardedCard.isEmpty() || input != 4))
+                {
+                    cout << "*******************" << endl;
+                    cout << "Invalid Input" << endl;
+                    cout << "*******************" << endl << endl;
+
+                    cout << "Round: " << roundNum << endl;
+                    cout << "Question: " << endl << question1 << " (" << score1 << " score)" << endl;
+                    cout << "Choose option below by entering the respective number (1-3):" << endl;
+                    cout << "1. Skip" << endl;
+                    cout << "2. True" << endl;
+                    cout << "3. False" << endl;
+                    // check whether discarded area is empty or not
+                    if (!DiscardedCard.isEmpty())
+                    {
+                        cout << endl;
+                        cout << "***You may enter 4 to answer the discarded card below which only get 80% of mark after correct answering***" << endl;
+                        cout << "4. " << DiscardedCard.top() << endl;
+                    }
+                    cin >> input;
+                }
+
                 // if student choose to skip the round, the card will be added to discarded card area
                 if (input == 1)
                 {
@@ -119,6 +142,18 @@ void executeManual(int numOfStudents)
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
+
+                    // handle invalid input for discarded card question
+                    while (disInput != 1 && disInput != 2)
+                    {
+                        cout << "*******************" << endl;
+                        cout << "Invalid Input" << endl;
+                        cout << "*******************" << endl << endl;
+                        cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
+                        cout << "1. True" << endl;
+                        cout << "2. False" << endl;
+                        cin >> disInput;
+                    }
 
                     question1 = DiscardedCardInfo->question;
                     questionAnswer1TF = DiscardedCardInfo->answer;
@@ -182,6 +217,29 @@ void executeManual(int numOfStudents)
                 }
                 cin >> input;
 
+                // to handle the invalid input of normal question
+                while (input != 1 && input != 2 && input != 3 && (DiscardedCard.isEmpty() || input != 4))
+                {
+                    cout << "*******************" << endl;
+                    cout << "Invalid Input" << endl;
+                    cout << "*******************" << endl << endl;
+
+                    cout << "Round: " << roundNum << endl;
+                    cout << "Question: " << endl << question1 << " (" << score1 << " score)" << endl;
+                    cout << "Choose option below by entering the respective number (1-3):" << endl;
+                    cout << "1. Skip" << endl;
+                    cout << "2. True" << endl;
+                    cout << "3. False" << endl;
+                    // check whether discarded area is empty or not
+                    if (!DiscardedCard.isEmpty())
+                    {
+                        cout << endl;
+                        cout << "***You may enter 4 to answer the discarded card below which only get 80% of mark after correct answering***" << endl;
+                        cout << "4. " << DiscardedCard.top() << endl;
+                    }
+                    cin >> input;
+                }
+
                 // if student choose to skip the round, the card will be added to discarded card area
                 if (input == 1)
                 {
@@ -227,6 +285,18 @@ void executeManual(int numOfStudents)
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
+
+                    // handle invalid input for discarded card question
+                    while (disInput != 1 && disInput != 2)
+                    {
+                        cout << "*******************" << endl;
+                        cout << "Invalid Input" << endl;
+                        cout << "*******************" << endl << endl;
+                        cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
+                        cout << "1. True" << endl;
+                        cout << "2. False" << endl;
+                        cin >> disInput;
+                    }
 
                     question2 = DiscardedCardInfo->question;
                     questionAnswer2TF = DiscardedCardInfo->answer;
@@ -290,6 +360,29 @@ void executeManual(int numOfStudents)
                 }
                 cin >> input;
 
+                // to handle the invalid input of normal question
+                while (input != 1 && input != 2 && input != 3 && (DiscardedCard.isEmpty() || input != 4))
+                {
+                    cout << "*******************" << endl;
+                    cout << "Invalid Input" << endl;
+                    cout << "*******************" << endl << endl;
+
+                    cout << "Round: " << roundNum << endl;
+                    cout << "Question: " << endl << question1 << " (" << score1 << " score)" << endl;
+                    cout << "Choose option below by entering the respective number (1-3):" << endl;
+                    cout << "1. Skip" << endl;
+                    cout << "2. True" << endl;
+                    cout << "3. False" << endl;
+                    // check whether discarded area is empty or not
+                    if (!DiscardedCard.isEmpty())
+                    {
+                        cout << endl;
+                        cout << "***You may enter 4 to answer the discarded card below which only get 80% of mark after correct answering***" << endl;
+                        cout << "4. " << DiscardedCard.top() << endl;
+                    }
+                    cin >> input;
+                }
+
                 // if student choose to skip the round, the card will be added to discarded card area
                 if (input == 1)
                 {
@@ -335,6 +428,18 @@ void executeManual(int numOfStudents)
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
                     cin >> disInput;
+
+                    // handle invalid input for discarded card question
+                    while (disInput != 1 && disInput != 2)
+                    {
+                        cout << "*******************" << endl;
+                        cout << "Invalid Input" << endl;
+                        cout << "*******************" << endl << endl;
+                        cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
+                        cout << "1. True" << endl;
+                        cout << "2. False" << endl;
+                        cin >> disInput;
+                    }
 
                     question3 = DiscardedCardInfo->question;
                     questionAnswer3TF = DiscardedCardInfo->answer;
