@@ -4,12 +4,12 @@
 #include <iostream>
 #include <cmath>
 #include "StudentResult.hpp"
-#include "AutomatedStudentResponse.hpp"
 #include "StudentAnswer.hpp"
 #include "Enum.hpp"
 #include "DiscardedCard.hpp"
 #include "AnsweredDeck.hpp"
 #include "Top30Winners.hpp"
+#include "AutomatedStudentResponseDoubly.hpp"
 
 using namespace std;
 
@@ -501,8 +501,8 @@ void executeAuto()
     const int totalQuestion = 300;
     const int maxStudentNum = 100;
     const int minStudentNum = 70;
-    AutomatedStudentResponse autoStudentResponse("Student Responses using Auto Method");
-    AutomatedStudentResponse autoStudentResponse2("Student Responses using Auto Method 2");
+    AutomatedStudentResponseDoubly autoStudentResponse("Student Responses using Auto Method");
+    AutomatedStudentResponseDoubly autoStudentResponse2("Student Responses using Auto Method 2");
 
     // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
     UnansweredDeckStruct unansweredDeck[totalQuestion];
@@ -722,8 +722,8 @@ void executeAuto()
                 }
 
                 // to update round 2 student response information into the existing node with the corresponding student ID
-                autoStudentResponse.searchAndUpdateNodeRoundTwo(studentID, question2, scoredMarkQ2, totalScore);
-                autoStudentResponse2.searchAndUpdateNodeRoundTwo(studentID, question2, scoredMarkQ2, totalScore);
+                autoStudentResponse.getStudentIDAndUpdateNode(studentID, question2, scoredMarkQ2, totalScore, 2);
+                autoStudentResponse2.getStudentIDAndUpdateNode(studentID, question2, scoredMarkQ2, totalScore, 2);
 
                 // to reset the variables for next student
                 studentID = totalScore = score2 = scoredMarkQ2 = 0;
@@ -813,8 +813,8 @@ void executeAuto()
                 }
 
                 // to update round 3 student response information into the existing node with the corresponding student ID
-                autoStudentResponse.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
-                autoStudentResponse2.searchAndUpdateNodeRoundThree(studentID, question3, scoredMarkQ3, totalScore);
+                autoStudentResponse.getStudentIDAndUpdateNode(studentID, question3, scoredMarkQ3, totalScore, 3);
+                autoStudentResponse2.getStudentIDAndUpdateNode(studentID, question3, scoredMarkQ3, totalScore, 3);
                 
                 // here sort
                 autoStudentResponse.quickSort(autoStudentResponse);
