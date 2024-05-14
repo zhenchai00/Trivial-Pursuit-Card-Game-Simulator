@@ -337,61 +337,70 @@ public:
 		}
 	}
 
-	void Search(int studentID) {
+	void Search(int studentID, int numOfStudents) {
 		if (root == nullptr)
 		{
 			return;
 		}
 		TreeNode* current = root;
 		int count = 1;
-		if (current->studentID == studentID) {
-			cout << "Congratulations! You are placed " << count << "st";
-		}
 		Queue q;
 		q.enqueue(current);
+		if (current->studentID == studentID) {
+			cout << "Congratulations! You are placed " << count << "st";
+			return;
+		}
+		else if (numOfStudents == 1) {
+			cout << "Sorry, you are not in the top 30 winners." << endl;
+			return;
+		}
 		while (!q.isEmpty()) {
 			current = q.dequeue();
-			if (current->left->studentID == studentID) {
-				count++;
-				string suffix;
-				if (count == 2) {
-					suffix = "nd";
-				}
-				else if (count == 3) {
-					suffix = "rd";
+			if (current->left != nullptr) {
+				if (current->left->studentID == studentID) {
+					count++;
+					string suffix;
+					if (count == 2) {
+						suffix = "nd";
+					}
+					else if (count == 3) {
+						suffix = "rd";
+					}
+					else {
+						suffix = "th";
+					}
+					cout << "Congratulations! You are placed " << count << suffix << endl;
+					return;
 				}
 				else {
-					suffix = "th";
+					count++;
+					q.enqueue(current->left);
 				}
-				cout << "Congratulations! You are placed " << count << suffix << endl;
-				return;
 			}
-			else {
-				count++;
-				q.enqueue(current->left);
+			if (current->right != nullptr) {
+				if (current->right->studentID == studentID) {
+					count++;
+					string suffix;
+					if (count == 2) {
+						suffix = "nd";
+					}
+					else if (count == 3) {
+						suffix = "rd";
+					}
+					else {
+						suffix = "th";
+					}
+					cout << "Congratulations! You are placed " << count << suffix << endl;
+					return;
+				}
+				else {
+					count++;
+					q.enqueue(current->right);
+				}
 			}
-			if (count == 30) {
+			if (count >= numOfStudents) {
 				cout << "Sorry, you are not in the top 30 winners." << endl;
 				return;
-			}
-			if (current->right->studentID == studentID) {
-				count++;
-				string suffix;
-				if (count == 2) {
-					suffix = "nd";
-				}
-				else if (count == 3) {
-					suffix = "rd";
-				}
-				else {
-					suffix = "th";
-				}
-				cout << "Congratulations! You are placed " << count << suffix << endl;
-				return;
-			}
-			else {
-				count++;
-				q.enqueue(current->right);
 			}
 		}
 	}

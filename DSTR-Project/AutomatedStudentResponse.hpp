@@ -210,7 +210,7 @@ public:
 		if (input == "Y" || input == "y") {
 			cout << "Enter Student ID: ";
 			cin >> studentID;
-			tree.Search(studentID);
+			tree.Search(studentID, 30);
 		}
 	}
 
