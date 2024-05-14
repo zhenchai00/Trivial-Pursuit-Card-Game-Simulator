@@ -382,7 +382,7 @@ void executeManual(int numOfStudents)
         }
         cout << endl << endl;
     }
-   
+    studentResult.insertionSort();
     studentResult.displayStudentResults();
     
     // call the ranking tree report

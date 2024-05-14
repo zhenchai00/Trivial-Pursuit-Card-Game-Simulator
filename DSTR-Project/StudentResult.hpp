@@ -220,7 +220,7 @@ public:
         while (current != nullptr)
         {
             // Print the details of the current node
-            cout << "Student ID: " << current->studentID << endl;
+            cout << "Student ID: " << current->studentId << endl;
             cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
             cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
             cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
@@ -228,6 +228,140 @@ public:
             cout << "---------------------------------" << endl;
             cout << endl; // Insert a blank line between students
             current = current->next;
+        }
+    }
+
+    // Merge two sorted doubly linked lists
+    StudentResultNode* merge(StudentResultNode* left, StudentResultNode* right)
+    {
+        if (left == nullptr)
+            return right;
+        if (right == nullptr)
+            return left;
+
+        // Create a new head pointer for the merged list
+        StudentResultNode* merged = nullptr;
+
+        // Choose the smaller value between left and right
+        if (left->totalScore <= right->totalScore)
+        {
+            merged = left;
+            merged->next = merge(left->next, right);
+            if (merged->next)
+                merged->next->prev = merged;
+        }
+        else
+        {
+            merged = right;
+            merged->next = merge(left, right->next);
+            if (merged->next)
+                merged->next->prev = merged;
+        }
+
+        return merged;
+    }
+
+    // Merge sort for doubly linked list
+    void mergeSort(StudentResultNode** headRef)
+    {
+        StudentResultNode* head = *headRef;
+        StudentResultNode* left;
+        StudentResultNode* right;
+
+        // Base case: If the list is empty or has only one node
+        if (head == nullptr || head->next == nullptr)
+            return;
+
+        // Split the list into two halves
+        split(head, &left, &right);
+
+        // Recursively sort the two halves
+        mergeSort(&left);
+        mergeSort(&right);
+
+        // Merge the sorted halves
+        *headRef = merge(left, right);
+    }
+
+    // Function to split a doubly linked list into two halves
+    void split(StudentResultNode* head, StudentResultNode** leftRef, StudentResultNode** rightRef)
+    {
+        StudentResultNode* slow = head;
+        StudentResultNode* fast = head->next;
+
+        // Move 'fast' two nodes and 'slow' one node
+        while (fast != nullptr)
+        {
+            fast = fast->next;
+            if (fast != nullptr)
+            {
+                slow = slow->next;
+                fast = fast->next;
+            }
+        }
+
+        // 'slow' is before the midpoint of the list
+        *leftRef = head;
+        *rightRef = slow->next;
+
+        // Splitting the list
+        slow->next = nullptr;
+        if (*rightRef)
+            (*rightRef)->prev = nullptr;
+    }
+
+    void insertionSort()
+    {
+        if (head == nullptr || head->next == nullptr)
+            return;
+
+        // Initialize sorted linked list
+        StudentResultNode* sorted = nullptr;
+
+        // Traverse the original list
+        StudentResultNode* current = head;
+        while (current != nullptr)
+        {
+            // Store the next node
+            StudentResultNode* nextNode = current->next;
+
+            // Insert current node into sorted linked list
+            if (sorted == nullptr || sorted->totalScore < current->totalScore)
+            {
+                // Insert at the beginning of sorted list
+                current->prev = nullptr;
+                current->next = sorted;
+                if (sorted)
+                    sorted->prev = current;
+                sorted = current;
+            }
+            else
+            {
+                // Traverse the sorted list to find the correct position
+                StudentResultNode* temp = sorted;
+                while (temp->next != nullptr && temp->next->totalScore >= current->totalScore)
+                {
+                    temp = temp->next;
+                }
+
+                // Insert current node after temp
+                current->prev = temp;
+                current->next = temp->next;
+                if (temp->next)
+                    temp->next->prev = current;
+                temp->next = current;
+            }
+
+            // Move to the next node in the original list
+            current = nextNode;
+        }
+
+        // Update head and tail pointers
+        head = sorted;
+        tail = sorted;
+        while (tail->next != nullptr)
+        {
+            tail = tail->next;
         }
     }
 
