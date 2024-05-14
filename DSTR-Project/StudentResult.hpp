@@ -94,8 +94,8 @@ public:
         }
         size++;
     }
-    
-    void getStudentIdAndUpdateNode (int studentId, string question, int score, int totalScore, int round = 0) 
+
+    void getStudentIdAndUpdateNode(int studentId, string question, int score, int totalScore, int round = 0)
     {
         // list is empty
         if (head == nullptr)
@@ -165,45 +165,7 @@ public:
                 current = current->next;
             }
         }
-		cout << "Node with student ID " << studentId << " not found." << endl;
-    }
-
-    // insert to sorted list based on the score, more to less
-    void insertToSortedStudentResultByScore(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
-    {
-        StudentResultNode *newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
-
-        if (head == nullptr)
-        {
-            head = tail = newNode;
-        }
-        // insert to front list
-        else if (newNode->totalScore <= head->totalScore)
-        {
-            newNode->next = head;
-            head->prev = newNode;
-            head = newNode;
-        }
-        else if (newNode->totalScore >= tail->totalScore)
-        {
-            newNode->prev = tail;
-            tail->next = newNode;
-            tail = newNode;
-        }
-        else
-        {
-            StudentResultNode *current = head->next;
-
-            while (current->totalScore < newNode->totalScore)
-            {
-                current = current->next;
-            }
-            current->prev->next = newNode;
-            newNode->prev = current->prev;
-            current->prev = newNode;
-            newNode->next = current;
-        }
-        size++;
+        cout << "Node with student ID " << studentId << " not found." << endl;
     }
 
     // get student nodes by student id which traverse whole linked list from first to last
@@ -225,7 +187,7 @@ public:
             return tail;
         }
         // studentid match middle value, return node from middle o(n)
-        else 
+        else
         {
             StudentResultNode *current = head->next;
             while (current != nullptr) // O(n)
@@ -240,65 +202,30 @@ public:
         }
         return nullptr;
     }
-
-    void displayNodes()
+    // testing function can ignored this
+    void displayStudentResults()
     {
+        // begin with the head node
         StudentResultNode *current = head;
 
-        while (current != nullptr)
+        // to check if the list is empty
+        if (current == nullptr)
         {
-            cout << endl;
-            cout << "Student ID: " << current->studentId << endl;
-            current = current->next;
-        }
-
-        cout << listName << " is empty now" << endl;
-    }
-
-    // insert the manual mode data by sorting the total score
-    void ManualInsertToStudent(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
-    {
-        StudentResultNode* newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
-
-        // insert the new node to the end of the linked list
-        if (head == nullptr)
-        { // this is the first node in the linked list
-            head = tail = newNode;
-        }
-        else
-        { // this is not the first node in the linkedlist
-            StudentResultNode* current = head;
-            
-            while (current->next != nullptr)
-            { // if node not yet the last node, move again
-                current = current->next;
-            }
-            // if the last node is found
-            current->next = newNode;
-        }
-        size++;
-    }
-
-    // testing function can ignored this
-    void displayStudentResults() {
-        if (head == nullptr) {
-            cout << "Student Result List is empty." << endl;
+            cout << "The linked list is empty." << endl;
             return;
         }
-        cout << "---------------------------------------------------------------------------------------------------" << endl;
-        cout << "Student Result List:" << endl;
 
-        StudentResultNode* current = head;
-        while (current != nullptr) {
-            cout << "Student ID: " << current->studentId << endl << endl;
-            cout << "Question 1: " << current->question1 << endl;
-            cout << "Score Q1: " << current->scoreQ1 << endl;
-            cout << "Question 2: " << current->question2 << endl;
-            cout << "Score Q2: " << current->scoreQ2 << endl;
-            cout << "Question 3: " << current->question3 << endl;
-            cout << "Score Q3: " << current->scoreQ3 << endl << endl;
+        // to loop through the linked list
+        cout << "Student Result List:" << endl;
+        while (current != nullptr)
+        {
+            // Print the details of the current node
+            cout << "Student ID: " << current->studentID << endl;
+            cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
+            cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
+            cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
             cout << "Total Score: " << current->totalScore << endl;
-            cout << "--------------------------------------------------------------------------------------------------" << endl;
+            cout << "---------------------------------" << endl;
             cout << endl; // Insert a blank line between students
             current = current->next;
         }
@@ -308,7 +235,7 @@ public:
     {
         // Create a binary search tree
         BinaryTree tree;
-        StudentResultNode* current = head;
+        StudentResultNode *current = head;
         // Traverse the linked list of student responses
         int count = 0;
         while (current != nullptr && count < 30)
@@ -322,7 +249,8 @@ public:
         string input;
         cout << "Do you want to check if you are one of the Top 30 Winners? (Y/N)";
         cin >> input;
-        if (input == "Y" || input == "y") {
+        if (input == "Y" || input == "y")
+        {
             cout << "Enter Student ID: ";
             cin >> studentID;
             tree.Search(studentID);
