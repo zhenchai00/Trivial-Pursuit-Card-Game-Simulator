@@ -10,6 +10,7 @@
 #include "AnsweredDeck.hpp"
 #include "Top30Winners.hpp"
 #include "AutomatedStudentResponseDoubly.hpp"
+#include "SortAndSearchArr.hpp"
 
 using namespace std;
 
@@ -502,7 +503,6 @@ void executeAuto()
     const int maxStudentNum = 100;
     const int minStudentNum = 70;
     AutomatedStudentResponseDoubly autoStudentResponse("Student Responses using Auto Method");
-    AutomatedStudentResponseDoubly autoStudentResponse2("Student Responses using Auto Method 2");
 
     // to create the array of structs with a fixed size of 300 to store the questions and its corresponding answer
     UnansweredDeckStruct unansweredDeck[totalQuestion];
@@ -632,7 +632,6 @@ void executeAuto()
                 }
                 // to store student response into a new node of AutomatedStudentResponse LinkedList
                 autoStudentResponse.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
-                autoStudentResponse2.insertToEnd(studentID, question1, question2, question3, scoredMarkQ1, scoredMarkQ2, scoredMarkQ3, totalScore);
 
                 // to reset the variables for next student
                 studentID = totalScore = score1 = scoredMarkQ1 = 0;
@@ -723,7 +722,6 @@ void executeAuto()
 
                 // to update round 2 student response information into the existing node with the corresponding student ID
                 autoStudentResponse.getStudentIDAndUpdateNode(studentID, question2, scoredMarkQ2, totalScore, 2);
-                autoStudentResponse2.getStudentIDAndUpdateNode(studentID, question2, scoredMarkQ2, totalScore, 2);
 
                 // to reset the variables for next student
                 studentID = totalScore = score2 = scoredMarkQ2 = 0;
@@ -814,10 +812,6 @@ void executeAuto()
 
                 // to update round 3 student response information into the existing node with the corresponding student ID
                 autoStudentResponse.getStudentIDAndUpdateNode(studentID, question3, scoredMarkQ3, totalScore, 3);
-                autoStudentResponse2.getStudentIDAndUpdateNode(studentID, question3, scoredMarkQ3, totalScore, 3);
-                
-                // here sort
-                autoStudentResponse.quickSort(autoStudentResponse);
 
                 // to reset the variables for next student
                 studentID = totalScore = score3 = scoredMarkQ3 = 0;
@@ -827,13 +821,48 @@ void executeAuto()
             }
         }
     }
-    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
 
-    //code to search a student's ID and display the questions attempted, their score and the total score
-    int studentIDInput;
-    cout << "Enter the student ID to check their score: ";
-    cin >> studentIDInput;
-    autoStudentResponse2.searchStudentID(autoStudentResponse2, studentIDInput);
+    //creating two arrays
+    StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
+    StudentResponseNodeArr* searchingArr = new StudentResponseNodeArr[numOfStudents]; //used for searching based on student ID
+
+    //copying the linked list, autoStudentResponse in the arrays
+    int i = 0;
+    for (auto node = autoStudentResponse.getHead(); node != nullptr; node = node->nextAddress) {
+        sortingArr[i].studentID = node->studentID;
+        sortingArr[i].question1 = node->question1;
+        sortingArr[i].question2 = node->question2;
+        sortingArr[i].question3 = node->question3;
+        sortingArr[i].scoreQ1 = node->scoreQ1;
+        sortingArr[i].scoreQ2 = node->scoreQ2;
+        sortingArr[i].scoreQ3 = node->scoreQ3;
+        sortingArr[i].totalScore = node->totalScore;
+        i++;
+    }
+
+    int j = 0;
+    for (auto node = autoStudentResponse.getHead(); node != nullptr; node = node->nextAddress) {
+        searchingArr[j].studentID = node->studentID;
+        searchingArr[j].question1 = node->question1;
+        searchingArr[j].question2 = node->question2;
+        searchingArr[j].question3 = node->question3;
+        searchingArr[j].scoreQ1 = node->scoreQ1;
+        searchingArr[j].scoreQ2 = node->scoreQ2;
+        searchingArr[j].scoreQ3 = node->scoreQ3;
+        searchingArr[j].totalScore = node->totalScore;
+        j++;
+    }
+
+    //function to sort the linked list
+    autoStudentResponse.quickSort(autoStudentResponse);
+
+    QuickSortArr(sortingArr, 0, numOfStudents - 1, numOfStudents);
+
+    //autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
+    DisplayArr(sortingArr, numOfStudents);
+
+    //sort the array in one array instance and search in another cuz one is gonna hv their studentid in jumbled order and the other one isnt
+    searchStudentID(searchingArr, numOfStudents);
 
     autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
 
