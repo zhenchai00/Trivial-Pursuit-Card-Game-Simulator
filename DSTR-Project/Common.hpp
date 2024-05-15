@@ -489,14 +489,44 @@ void executeManual(int numOfStudents)
         cout << endl << endl;
     }
 
-    // sort student result by totalScore with descending order
-    studentResult.insertionSort();
+    //creating two arrays
+    StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
+    StudentResponseNodeArr* searchingArr = new StudentResponseNodeArr[numOfStudents]; //used for searching based on student ID
 
-    // call the ranking tree report
+    //copying the linked list, studentResult in the arrays
+    int i = 0;
+    for (auto node = studentResult.getHead(); node != nullptr; node = node->next) {
+        sortingArr[i].studentID = node->studentId;
+        sortingArr[i].question1 = node->question1;
+        sortingArr[i].question2 = node->question2;
+        sortingArr[i].question3 = node->question3;
+        sortingArr[i].scoreQ1 = node->scoreQ1;
+        sortingArr[i].scoreQ2 = node->scoreQ2;
+        sortingArr[i].scoreQ3 = node->scoreQ3;
+        sortingArr[i].totalScore = node->totalScore;
+        i++;
+    }
+
+    int j = 0;
+    for (auto node = studentResult.getHead(); node != nullptr; node = node->next) {
+        searchingArr[j].studentID = node->studentId;
+        searchingArr[j].question1 = node->question1;
+        searchingArr[j].question2 = node->question2;
+        searchingArr[j].question3 = node->question3;
+        searchingArr[j].scoreQ1 = node->scoreQ1;
+        searchingArr[j].scoreQ2 = node->scoreQ2;
+        searchingArr[j].scoreQ3 = node->scoreQ3;
+        searchingArr[j].totalScore = node->totalScore;
+        j++;
+    }
+
+    QuickSortArr(sortingArr, 0, numOfStudents - 1, numOfStudents);
+    DisplayArr(sortingArr, numOfStudents);
+    searchStudentID(searchingArr, numOfStudents);
+
+
+    // // call the ranking tree report
     studentResult.AnnounceTop30Winners();
-
-    // call the table report
-    studentResult.displayStudentResults();
 }
 
 // method to run auto by doing it own function

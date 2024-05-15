@@ -168,6 +168,11 @@ public:
         cout << "Node with student ID " << studentId << " not found." << endl;
     }
 
+    StudentResultNode *getHead()
+    {
+        return head;
+    }
+
     // get student nodes by student id which traverse whole linked list from first to last
     StudentResultNode *getNodeById(int studentId)
     {
