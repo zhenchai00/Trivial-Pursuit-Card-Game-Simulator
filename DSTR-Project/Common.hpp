@@ -507,6 +507,7 @@ void executeManual(int numOfStudents)
     }
 
     QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
+    appendRank(sortingArr, numOfStudents);
     DisplayArr(sortingArr, numOfStudents);
     searchStudentID(sortingArr, numOfStudents);
     QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);

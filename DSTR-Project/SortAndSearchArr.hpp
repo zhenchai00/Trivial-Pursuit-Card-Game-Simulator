@@ -81,7 +81,7 @@ void QuickSortStudentIDArr(StudentResponseNodeArr studentArr[], int start, int e
 
 //adding rank to the sorted array
 void appendRank(StudentResponseNodeArr sorttedArray[], int arrSize) {
-	for (int i = 1; i < arrSize; i++) {
+	for (int i = 0; i < arrSize; i++) {
 		sorttedArray[i].rank = i + 1;
 	}
 }
