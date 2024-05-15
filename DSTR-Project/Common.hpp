@@ -488,12 +488,15 @@ void executeManual(int numOfStudents)
         }
         cout << endl << endl;
     }
+
+    // sort student result by totalScore with descending order
     studentResult.insertionSort();
-    studentResult.displayStudentResults();
-    
+
     // call the ranking tree report
     studentResult.AnnounceTop30Winners();
+
     // call the table report
+    studentResult.displayStudentResults();
 }
 
 // method to run auto by doing it own function

@@ -135,6 +135,11 @@ public:
 			string question = head->question + " (" + marks + " score)";
 			return question;
 		}
+		else
+		{
+			cout << "Discarded Card is empty!" << endl;
+			return "";
+		}
 	}
 };
 

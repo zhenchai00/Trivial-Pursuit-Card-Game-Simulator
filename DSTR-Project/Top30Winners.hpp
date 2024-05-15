@@ -347,7 +347,7 @@ public:
 		Queue q;
 		q.enqueue(current);
 		if (current->studentID == studentID) {
-			cout << "Congratulations! You are placed " << count << "st";
+			cout << "Congratulations! You are placed " << count << "st" << endl;
 			return;
 		}
 		else if (numOfStudents == 1) {
