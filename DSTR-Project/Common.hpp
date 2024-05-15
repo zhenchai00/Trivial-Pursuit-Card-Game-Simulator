@@ -491,8 +491,7 @@ void executeManual(int numOfStudents)
 
     //creating two arrays
     StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
-    StudentResponseNodeArr* searchingArr = new StudentResponseNodeArr[numOfStudents]; //used for searching based on student ID
-
+    
     //copying the linked list, studentResult in the arrays
     int i = 0;
     for (auto node = studentResult.getHead(); node != nullptr; node = node->next) {
@@ -507,25 +506,12 @@ void executeManual(int numOfStudents)
         i++;
     }
 
-    int j = 0;
-    for (auto node = studentResult.getHead(); node != nullptr; node = node->next) {
-        searchingArr[j].studentID = node->studentId;
-        searchingArr[j].question1 = node->question1;
-        searchingArr[j].question2 = node->question2;
-        searchingArr[j].question3 = node->question3;
-        searchingArr[j].scoreQ1 = node->scoreQ1;
-        searchingArr[j].scoreQ2 = node->scoreQ2;
-        searchingArr[j].scoreQ3 = node->scoreQ3;
-        searchingArr[j].totalScore = node->totalScore;
-        j++;
-    }
-
-    QuickSortArr(sortingArr, 0, numOfStudents - 1, numOfStudents);
+    QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
     DisplayArr(sortingArr, numOfStudents);
-    searchStudentID(searchingArr, numOfStudents);
+    searchStudentID(sortingArr, numOfStudents);
+    QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);
 
-
-    // // call the ranking tree report
+    //call the ranking tree report
     studentResult.AnnounceTop30Winners();
 }
 
@@ -857,7 +843,6 @@ void executeAuto()
 
     //creating two arrays
     StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
-    StudentResponseNodeArr* searchingArr = new StudentResponseNodeArr[numOfStudents]; //used for searching based on student ID
 
     //copying the linked list, autoStudentResponse in the arrays
     int i = 0;
@@ -873,33 +858,26 @@ void executeAuto()
         i++;
     }
 
-    int j = 0;
-    for (auto node = autoStudentResponse.getHead(); node != nullptr; node = node->nextAddress) {
-        searchingArr[j].studentID = node->studentID;
-        searchingArr[j].question1 = node->question1;
-        searchingArr[j].question2 = node->question2;
-        searchingArr[j].question3 = node->question3;
-        searchingArr[j].scoreQ1 = node->scoreQ1;
-        searchingArr[j].scoreQ2 = node->scoreQ2;
-        searchingArr[j].scoreQ3 = node->scoreQ3;
-        searchingArr[j].totalScore = node->totalScore;
-        j++;
-    }
-
     //function to sort the linked list
     autoStudentResponse.quickSort(autoStudentResponse);
 
-    QuickSortArr(sortingArr, 0, numOfStudents - 1, numOfStudents);
+    //sort the array based on total score
+    QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
+
+    //adding the rank after sorting
+    appendRank(sortingArr, numOfStudents);
 
     //autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
     DisplayArr(sortingArr, numOfStudents);
 
-    //sort the array in one array instance and search in another cuz one is gonna hv their studentid in jumbled order and the other one isnt
-    searchStudentID(searchingArr, numOfStudents);
+    //function to sort the array based on student ID use the search function
+    QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);
+
+    //function to search the student ID
+    searchStudentID(sortingArr, numOfStudents);
 
     autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
 
-    
 }
 
 #endif // COMMON_HPP

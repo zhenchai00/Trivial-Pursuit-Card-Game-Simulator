@@ -17,57 +17,73 @@ struct StudentResponseNodeArr
 	int scoreQ2;
 	int scoreQ3;
 	int totalScore;
+	int rank;
 };
 
 //Code for Quick sort in Array
-//https://www.geeksforgeeks.org/cpp-program-for-quicksort/
+//sorting based on total score
+//https://www.programiz.com/dsa/quick-sort
 void swap(StudentResponseNodeArr& item1, StudentResponseNodeArr& item2) {
 	StudentResponseNodeArr temp = item1;
 	item1 = item2;
 	item2 = temp;
 }
-int partitionArr(StudentResponseNodeArr studentArr[], int startIndex, int endIndex)
+
+int partitionTotalScoreArr(StudentResponseNodeArr studentArr[], int startIndex, int endIndex)
 {
-	StudentResponseNodeArr pivot = studentArr[startIndex];
-	int counter = 0;
-	for (int i = startIndex + 1; i < endIndex; i++) {
-		if (studentArr[i].totalScore >= pivot.totalScore) {
-			counter++;
-		}
-	}
+	StudentResponseNodeArr pivot = studentArr[endIndex];
+	int i = startIndex;
 
-	int pivotIndex = startIndex + counter;
-	swap(studentArr[pivotIndex], studentArr[startIndex]);
-
-	int i = startIndex, j = endIndex;
-
-	while (i < pivotIndex && j > pivotIndex) {
-
-		while (studentArr[i].totalScore > pivot.totalScore) {
+	//sorting in descending order
+	for (int j = startIndex; j < endIndex; j++) {
+		if (studentArr[j].totalScore > pivot.totalScore) {
+			swap(studentArr[i], studentArr[j]);
 			i++;
 		}
-
-		while (studentArr[j].totalScore < pivot.totalScore) {
-			j--;
-		}
-
-		if (i < pivotIndex && j > pivotIndex) {
-			swap(studentArr[i++], studentArr[j--]);
-		}
 	}
-
-	return pivotIndex;
+	swap(studentArr[i], studentArr[endIndex]);
+	return i;
 
 }
 
-void QuickSortArr(StudentResponseNodeArr studentArr[], int startIndex, int endIndex, int arrSize) {
+void QuickSortTotalScoreArr(StudentResponseNodeArr studentArr[], int startIndex, int endIndex) {
 	if (startIndex > endIndex) {
 		return;
 	}
-	int p = partitionArr(studentArr, startIndex, endIndex);
-	QuickSortArr(studentArr, p + 1, endIndex, arrSize);
-	QuickSortArr(studentArr, startIndex, p - 1, arrSize);
+	int p = partitionTotalScoreArr(studentArr, startIndex, endIndex);
+	QuickSortTotalScoreArr(studentArr, startIndex, p - 1);
+	QuickSortTotalScoreArr(studentArr, p + 1, endIndex);
+}
 
+//sorting based on student ID
+int partitionStudentID(StudentResponseNodeArr studentArr[], int start, int end) {
+	StudentResponseNodeArr pivot = studentArr[end];
+	int i = start - 1;
+
+	//sorting in ascending order
+	for (int j = start; j < end; j++) {
+		if (studentArr[j].studentID <= pivot.studentID) {
+			i++;
+			swap(studentArr[i], studentArr[j]);
+		}
+	}
+	swap(studentArr[i + 1], studentArr[end]);
+	return i + 1;
+}
+
+void QuickSortStudentIDArr(StudentResponseNodeArr studentArr[], int start, int end) {
+	if (start < end) {
+		int p = partitionStudentID(studentArr, start, end);
+		QuickSortStudentIDArr(studentArr, start, p - 1);
+		QuickSortStudentIDArr(studentArr, p + 1, end);
+	}
+}
+
+//adding rank to the sorted array
+void appendRank(StudentResponseNodeArr sorttedArray[], int arrSize) {
+	for (int i = 1; i < arrSize; i++) {
+		sorttedArray[i].rank = i + 1;
+	}
 }
 
 //Code for Binary search in Array
@@ -97,6 +113,7 @@ int BinarySearchArr(StudentResponseNodeArr sortedArray[], int arrSize, int searc
 
 void DisplaySearchedStudentID(const StudentResponseNodeArr& sortedArray) {
 	cout << "---------------------------------" << endl;
+	cout << "Rank: " << sortedArray.rank << endl;
 	cout << "Student ID: " << sortedArray.studentID << endl;
 	cout << "Question 1: " << sortedArray.question1 << " - Scored: " << sortedArray.scoreQ1 << endl;
 	cout << "Question 2: " << sortedArray.question2 << " - Scored: " << sortedArray.scoreQ2 << endl;
@@ -112,7 +129,7 @@ void searchStudentID(StudentResponseNodeArr sortedArray[], int arrSize) {
 	cin >> studentIDInput;
 
 	int searchResult = BinarySearchArr(sortedArray, arrSize, studentIDInput);
-	if (searchResult != -1) {
+	if (searchResult > 0) {
 		DisplaySearchedStudentID(sortedArray[searchResult]);
 	}
 	else {
@@ -125,6 +142,7 @@ void searchStudentID(StudentResponseNodeArr sortedArray[], int arrSize) {
 void DisplayArr(StudentResponseNodeArr* sortedArray, int size) {
 	for (int i = 0; i < size; i++) {
 		cout << "---------------------------------" << endl;
+		cout << "Rank: " << sortedArray[i].rank << endl;
 		cout << "Student ID: " << sortedArray[i].studentID << endl;
 		cout << "Question 1: " << sortedArray[i].question1 << " - Scored: " << sortedArray[i].scoreQ1 << endl;
 		cout << "Question 2: " << sortedArray[i].question2 << " - Scored: " << sortedArray[i].scoreQ2 << endl;
