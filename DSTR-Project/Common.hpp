@@ -547,7 +547,7 @@ void executeAuto()
         unansweredDeck[r] = temp;
     }
     // to display the first 10 questions out of the 300 questions for testing purposes
-    printFirstTenQuestions(unansweredDeck);
+    // printFirstTenQuestions(unansweredDeck);
 
     StudentAnswer studentAns[maxStudentNum];
     // to read the 100 student responses into the newly created array of structs
