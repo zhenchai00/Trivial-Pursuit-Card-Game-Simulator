@@ -376,19 +376,22 @@ public:
         }
     }
 
+    // Function to display the top winners/ top 30 winners using a binary tree
     void AnnounceTop30Winners()
     {
         // Create a binary search tree
         BinaryTree tree;
+        // Set current to head
         StudentResultNode *current = head;
-        // Traverse the linked list of student responses
         int count = 0;
+        // Insert the all the nodes/ first 30 nodes from the sorted linked list into the tree
         while (current != nullptr && count < 30)
         {
             tree.insertNode(current->studentId);
             current = current->next;
             count++;
         }
+        // Display the binary tree
         tree.levelOrderTraversal(count);
         int studentID;
         string input;
@@ -401,6 +404,7 @@ public:
             {
                 cout << "Enter Student ID: ";
                 cin >> studentID;
+                // Search for the studentID in the binary tree
                 tree.Search(studentID, count);
             }
             cout << "Do you want to check if you are one of the Top 30 Winners? (Y/N)";
