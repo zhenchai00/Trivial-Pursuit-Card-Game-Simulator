@@ -403,5 +403,189 @@ public:
 
         cout << endl << endl;
     }
+
+    //haven't changed any code before this line
+
+    //Quick sort logic 
+    //https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
+
+    //getting the last node of the list
+    StudentResultNode* getLastNode(StudentResultNode* current) {
+        while (current != nullptr && current->next != nullptr)
+            current = current->next;
+        return current;
+    }
+
+    StudentResultNode* partition(StudentResultNode* head, StudentResultNode* end, StudentResultNode** newHead, StudentResultNode** newEnd) {
+
+        StudentResultNode* pivot = end; //setting the pivot as the last node of the list
+
+        StudentResultNode* prev = nullptr;
+        StudentResultNode* current = head;
+        StudentResultNode* tail = pivot;
+
+        while (current != pivot) {
+            if (current->totalScore > pivot->totalScore) {
+                if ((*newHead) == NULL)
+                    (*newHead) = current;
+
+                prev = current;
+                current = current->next;
+            }
+            //condition when the node's total score is greater than the pivot's total score
+            else
+            {
+                if (prev)
+                    prev->next = current->next;
+                StudentResultNode* temp = current->next;
+                current->next = nullptr;
+                tail->next = current;
+                tail = current;
+                current = temp;
+            }
+        }
+
+        if ((*newHead) == nullptr)
+            (*newHead) = pivot;
+
+        (*newEnd) = tail;
+
+        return pivot;
+    }
+
+    //function to sort the list
+    StudentResultNode* sortingFunction(StudentResultNode* head, StudentResultNode* end)
+    {
+        //checking if the list is empty
+        if (!head || head == end)
+            return head;
+
+        //creating pointers to track the sublist's elements
+        StudentResultNode* newHead = nullptr, * newEnd = nullptr;
+
+        //creating the pivot node to compare the nodes for sorting the list
+        StudentResultNode* pivot = partition(head, end, &newHead, &newEnd);
+
+        //block of code to sort the sublist that contain total score lesser than or equal to the pivot
+        if (newHead != pivot) {
+            StudentResultNode* temp = newHead;
+            while (temp->next != pivot) {
+                temp = temp->next;
+            }
+            temp->next = nullptr;
+
+            //sorting the sublist using the recursive function
+            newHead = sortingFunction(newHead, temp);
+
+            //setting back the pivot to be the last node
+            temp = getLastNode(newHead);
+            temp->next = pivot;
+        }
+
+        //sorting the node that is greater than the pivot in the list
+        pivot->next = sortingFunction(pivot->next, newEnd);
+
+        return newHead;
+    }
+
+    //function to perform the sorting operation
+    void quickSort(StudentResultLinkedList& list)
+    {
+        //updating the head to the new head of the sorted list
+        list.head = list.sortingFunction(list.head, list.getLastNode(list.head));
+        //updating the tail to the new tail of the sorted list
+        list.tail = list.getLastNode(list.head);
+    }
+
+    // function to display the contents of the linked list nodes
+    void DisplayStudentResponsesForAutoExecution()
+    {
+        // begin with the head node
+        StudentResultNode* current = head;
+        int rank = 1;
+
+        // to check if the list is empty
+        if (current == nullptr)
+        {
+            cout << "The " << this->listName << " is linked list is empty." << endl;
+            return;
+        }
+
+        // to loop through the linked list
+        cout << "Displaying student responses:" << endl;
+        while (current != nullptr)
+        {
+            // Print the details of the current node
+            cout << "Rank: " << rank << endl;
+            cout << "Student ID: " << current->studentId << endl;
+            cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
+            cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
+            cout << "Question 3: " << current->question3 << " - Scored: " << current->scoreQ3 << endl;
+            cout << "Total Score: " << current->totalScore << endl;
+            cout << "---------------------------------" << endl;
+
+            // move to the next node
+            current = current->next;
+            rank++;
+        }
+    }
+
+    void DisplaySingleStudentResponsesForAutoExecution(StudentResultNode* studentIDNode, int rank)
+    {
+        if (studentIDNode != nullptr) {
+            cout << "---------------------------------" << endl;
+            cout << "Rank: " << rank << endl;
+            cout << "Student ID: " << studentIDNode->studentId << endl;
+            cout << "Question 1: " << studentIDNode->question1 << " - Scored: " << studentIDNode->scoreQ1 << endl;
+            cout << "Question 2: " << studentIDNode->question2 << " - Scored: " << studentIDNode->scoreQ2 << endl;
+            cout << "Question 3: " << studentIDNode->question3 << " - Scored: " << studentIDNode->scoreQ3 << endl;
+            cout << "Total Score: " << studentIDNode->totalScore << endl;
+            cout << "---------------------------------" << endl;
+        }
+        else {
+            cout << "Student ID not found" << endl;
+        }
+    }
+
+
+    //search the student and display their data
+    void searchStudentID(int studentIDinput) {
+        int rank = 1;
+
+        if (head == nullptr)
+        {
+            cout << "The " << this->listName << " Linked List is empty!" << endl;
+            return;
+        }
+        if (studentIDinput == head->studentId) {
+            DisplaySingleStudentResponsesForAutoExecution(head, rank);
+            return;
+        }
+        else if (studentIDinput == tail->studentId) {
+            rank = size;
+            DisplaySingleStudentResponsesForAutoExecution(tail, rank);
+            return;
+        }
+        else {
+            StudentResultNode* current = head;
+            while (current != nullptr) {
+                if (current->studentId == studentIDinput) {
+                    DisplaySingleStudentResponsesForAutoExecution(current, rank);
+                    return;
+                }
+                rank++;
+                current = current->next;
+            }
+        }
+        cout << "Student ID not found!" << endl;
+    }
+
+    //search function
+    void searchStudentIDInSortedList() {
+        int studentIDinput;
+        cout << "Enter the student ID to display their data: ";
+        cin >> studentIDinput;
+        searchStudentID(studentIDinput);
+    }
 };
 #endif // STUDENT_RESULT_HPP

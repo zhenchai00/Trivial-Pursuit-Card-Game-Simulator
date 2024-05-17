@@ -100,6 +100,7 @@ public:
 	{
 		// begin with the head node
 		StudentResponseNode* current = head;
+		int rank = 1;
 
 		// to check if the list is empty
 		if (current == nullptr)
@@ -113,6 +114,7 @@ public:
 		while (current != nullptr)
 		{
 			// Print the details of the current node
+			cout << "Rank: " << rank << endl;
 			cout << "Student ID: " << current->studentID << endl;
 			cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
 			cout << "Question 2: " << current->question2 << " - Scored: " << current->scoreQ2 << endl;
@@ -122,6 +124,24 @@ public:
 
 			// move to the next node
 			current = current->nextAddress;
+			rank++;
+		}
+	}
+
+	void DisplaySingleStudentResponsesForAutoExecution(StudentResponseNode* studentIDNode, int rank)
+	{
+		if (studentIDNode != nullptr) {
+			cout << "---------------------------------" << endl;
+			cout << "Rank: " << rank << endl;
+			cout << "Student ID: " << studentIDNode->studentID << endl;
+			cout << "Question 1: " << studentIDNode->question1 << " - Scored: " << studentIDNode->scoreQ1 << endl;
+			cout << "Question 2: " << studentIDNode->question2 << " - Scored: " << studentIDNode->scoreQ2 << endl;
+			cout << "Question 3: " << studentIDNode->question3 << " - Scored: " << studentIDNode->scoreQ3 << endl;
+			cout << "Total Score: " << studentIDNode->totalScore << endl;
+			cout << "---------------------------------" << endl;
+		}
+		else {
+			cout << "Student ID not found" << endl;
 		}
 	}
 
@@ -199,6 +219,49 @@ public:
 			}
 		}
 		cout << "Node with student ID " << studentId << " not found." << endl;
+	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//search the student and display their data
+	void searchStudentID( int studentIDinput, int size) {
+		int rank = 1;
+		
+		if (head == nullptr)
+		{
+			cout << "The " << this->linkedlistName << " Linked List is empty!" << endl;
+			return;
+		}
+		if (studentIDinput == head->studentID) {
+			DisplaySingleStudentResponsesForAutoExecution(head, rank);
+			return;
+		}
+		else if (studentIDinput == tail->studentID) {
+			rank = size;
+			DisplaySingleStudentResponsesForAutoExecution(tail, rank);
+			return;
+		}
+		else {
+			StudentResponseNode* current = head;
+			while (current != nullptr) {
+				if (current->studentID == studentIDinput) {
+					DisplaySingleStudentResponsesForAutoExecution(current, rank);
+					return;
+				}
+				rank++;
+				current = current->nextAddress;
+			}
+		}
+		cout << "Student ID not found!" << endl;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//search function
+	void searchStudentIDInSortedList() {
+		int studentIDinput;
+		cout << "Enter the student ID to display their data: ";
+		cin >> studentIDinput;
+		searchStudentID(studentIDinput,size);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

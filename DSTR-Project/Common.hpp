@@ -490,30 +490,36 @@ void executeManual(int numOfStudents)
     }
 
     //creating two arrays
-    StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
-    
-    //copying the linked list, studentResult in the arrays
-    int i = 0;
-    for (auto node = studentResult.getHead(); node != nullptr; node = node->next) {
-        sortingArr[i].studentID = node->studentId;
-        sortingArr[i].question1 = node->question1;
-        sortingArr[i].question2 = node->question2;
-        sortingArr[i].question3 = node->question3;
-        sortingArr[i].scoreQ1 = node->scoreQ1;
-        sortingArr[i].scoreQ2 = node->scoreQ2;
-        sortingArr[i].scoreQ3 = node->scoreQ3;
-        sortingArr[i].totalScore = node->totalScore;
-        i++;
-    }
+    //StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
+    //
+    ////copying the linked list, studentResult in the arrays
+    //int i = 0;
+    //for (auto node = studentResult.getHead(); node != nullptr; node = node->next) {
+    //    sortingArr[i].studentID = node->studentId;
+    //    sortingArr[i].question1 = node->question1;
+    //    sortingArr[i].question2 = node->question2;
+    //    sortingArr[i].question3 = node->question3;
+    //    sortingArr[i].scoreQ1 = node->scoreQ1;
+    //    sortingArr[i].scoreQ2 = node->scoreQ2;
+    //    sortingArr[i].scoreQ3 = node->scoreQ3;
+    //    sortingArr[i].totalScore = node->totalScore;
+    //    i++;
+    //}
 
-    QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
+    /*QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
     appendRank(sortingArr, numOfStudents);
     DisplayArr(sortingArr, numOfStudents);
     searchStudentID(sortingArr, numOfStudents);
-    QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);
+    QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);*/
+
+    studentResult.quickSort(studentResult); //sorts based on total score
 
     //call the ranking tree report
     studentResult.AnnounceTop30Winners();
+
+    studentResult.DisplayStudentResponsesForAutoExecution(); //displaying the nodes of the list
+    
+    studentResult.searchStudentIDInSortedList();
 }
 
 // method to run auto by doing it own function
@@ -843,41 +849,43 @@ void executeAuto()
     }
 
     //creating two arrays
-    StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
+    //StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
 
-    //copying the linked list, autoStudentResponse in the arrays
-    int i = 0;
-    for (auto node = autoStudentResponse.getHead(); node != nullptr; node = node->nextAddress) {
-        sortingArr[i].studentID = node->studentID;
-        sortingArr[i].question1 = node->question1;
-        sortingArr[i].question2 = node->question2;
-        sortingArr[i].question3 = node->question3;
-        sortingArr[i].scoreQ1 = node->scoreQ1;
-        sortingArr[i].scoreQ2 = node->scoreQ2;
-        sortingArr[i].scoreQ3 = node->scoreQ3;
-        sortingArr[i].totalScore = node->totalScore;
-        i++;
-    }
+    ////copying the linked list, autoStudentResponse in the arrays
+    //int i = 0;
+    //for (auto node = autoStudentResponse.getHead(); node != nullptr; node = node->nextAddress) {
+    //    sortingArr[i].studentID = node->studentID;
+    //    sortingArr[i].question1 = node->question1;
+    //    sortingArr[i].question2 = node->question2;
+    //    sortingArr[i].question3 = node->question3;
+    //    sortingArr[i].scoreQ1 = node->scoreQ1;
+    //    sortingArr[i].scoreQ2 = node->scoreQ2;
+    //    sortingArr[i].scoreQ3 = node->scoreQ3;
+    //    sortingArr[i].totalScore = node->totalScore;
+    //    i++;
+    //}
 
     //function to sort the linked list
-    autoStudentResponse.quickSort(autoStudentResponse);
-
-    //sort the array based on total score
-    QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
-
-    //adding the rank after sorting
-    appendRank(sortingArr, numOfStudents);
-
-    //autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
-    DisplayArr(sortingArr, numOfStudents);
-
-    //function to sort the array based on student ID use the search function
-    QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);
-
-    //function to search the student ID
-    searchStudentID(sortingArr, numOfStudents);
+    autoStudentResponse.quickSort(autoStudentResponse); //sorts based on total score
 
     autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
+
+    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); //displaying the nodes of the list
+
+    ////sort the array based on total score
+    //QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
+
+    ////adding the rank after sorting
+    //appendRank(sortingArr, numOfStudents);
+
+    ////autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
+    //DisplayArr(sortingArr, numOfStudents);
+
+    ////function to sort the array based on student ID use the search function
+    //QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);
+
+    //function to search the student ID
+    autoStudentResponse.searchStudentIDInSortedList();
 
 }
 
