@@ -290,11 +290,20 @@ public:
 		string input;
 		cout << "Do you want to check if you are one of the Top 30 Winners? (Y/N)";
 		cin >> input;
-		if (input == "Y" || input == "y") {
-			cout << "Enter Student ID: ";
-			cin >> studentID;
-			tree.Search(studentID, 30);
-		}
+
+        while (input != "n" && input != "N")
+        {
+            if (input == "Y" || input == "y")
+            {
+                cout << "Enter Student ID: ";
+                cin >> studentID;
+                tree.Search(studentID, count);
+            }
+            cout << "Do you want to check if you are one of the Top 30 Winners? (Y/N)";
+            cin >> input;
+        }
+
+        cout << endl << endl;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
