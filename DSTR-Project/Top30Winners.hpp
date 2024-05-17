@@ -29,6 +29,10 @@ public:
 		front = nullptr;
 		rear = nullptr;
 	}
+	~Queue()
+	{
+		cout << endl << "Queue for Tree Structure is reset!" << endl;;
+	}
 
 	void enqueue(TreeNode* data)
 	{
@@ -80,6 +84,10 @@ public:
 	BinaryTree()
 	{
 		root = nullptr;
+	}
+	~BinaryTree()
+	{
+		cout << endl << "Binary Tree is reset!" << endl;;
 	}
 
 	TreeNode* createNewNode(int studentID) {

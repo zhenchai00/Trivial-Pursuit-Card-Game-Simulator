@@ -35,6 +35,12 @@ public:
 		size = 0;
 	}
 
+	// deconstructor
+	~DiscardedCardLinkedList()
+	{
+		cout << endl << this->listname << " is reset!" << endl;;
+	}
+
 	DiscardedCardLinkedListNode *createNewNode(string question, AnswerTypeTF answer, double marks)
 	{
 		DiscardedCardLinkedListNode *newnode = new DiscardedCardLinkedListNode;

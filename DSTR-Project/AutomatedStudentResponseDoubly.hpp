@@ -43,6 +43,11 @@ public:
 		size = 0;
 	}
 
+	~AutomatedStudentResponseDoubly()
+	{
+		cout << endl << this->linkedlistName << " is reset!" << endl;;
+	}
+
 	// function to create a new node for the linked list;
 	StudentResponseNode* createNewNode(int studentID, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
 	{

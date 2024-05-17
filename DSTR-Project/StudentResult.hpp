@@ -39,6 +39,12 @@ public:
         head = tail = nullptr;
         size = 0;
     }
+    
+    // destructor to destroy the list
+    ~StudentResultLinkedList()
+    {
+        cout << endl << this->listName << " is reset!" << endl;;
+    }
 
     // create a new node for a student linked list
     StudentResultNode *createNewNode(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)

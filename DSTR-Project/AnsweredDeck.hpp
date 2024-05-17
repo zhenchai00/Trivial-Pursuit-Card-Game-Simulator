@@ -34,6 +34,11 @@ public:
 		size = 0;
 	}
 
+	~AnsweredDeck()
+	{
+		cout << endl << this->linkedlistName << " is reset!" << endl;;
+	}
+
 	// function to create a new node for the linked list;
 	AnsweredDeckNode *createNewNode(string myQuestion, AnswerTypeTF myAnswer, int myScore)
 	{
