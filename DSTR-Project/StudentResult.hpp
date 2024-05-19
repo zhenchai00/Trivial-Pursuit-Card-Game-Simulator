@@ -419,13 +419,17 @@ public:
     //https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
 
     //getting the last node of the list
-    StudentResultNode* getLastNode(StudentResultNode* current) {
+    StudentResultNode* getLastNode(StudentResultNode* current)
+    {
         while (current != nullptr && current->next != nullptr)
+        {
             current = current->next;
+        }
         return current;
     }
 
-    StudentResultNode* partition(StudentResultNode* head, StudentResultNode* end, StudentResultNode** newHead, StudentResultNode** newEnd) {
+    StudentResultNode* partition(StudentResultNode* head, StudentResultNode* end, StudentResultNode** newHead, StudentResultNode** newEnd)
+    {
 
         StudentResultNode* pivot = end; //setting the pivot as the last node of the list
 
@@ -433,76 +437,98 @@ public:
         StudentResultNode* current = head;
         StudentResultNode* tail = pivot;
 
-        while (current != pivot) {
-            if (current->totalScore > pivot->totalScore) {
-                if ((*newHead) == NULL)
-                    (*newHead) = current;
-
+        while (current != pivot)
+        {
+            if (current->totalScore > pivot->totalScore)
+            {
+                if (*newHead == nullptr)
+                {
+                    *newHead = current;
+                }
                 prev = current;
                 current = current->next;
             }
+
             //condition when the node's total score is greater than the pivot's total score
             else
             {
                 if (prev)
+                {
                     prev->next = current->next;
+                }
+                if (current->next)
+                {
+                    current->next->prev = prev;
+                }
+
                 StudentResultNode* temp = current->next;
                 current->next = nullptr;
                 tail->next = current;
+                current->prev = tail;
                 tail = current;
                 current = temp;
             }
         }
 
-        if ((*newHead) == nullptr)
-            (*newHead) = pivot;
-
-        (*newEnd) = tail;
+        if (*newHead == nullptr)
+        {
+            *newHead = pivot;
+        }
+        *newEnd = tail;
 
         return pivot;
     }
 
-    //function to sort the list
+    // function to sort the list
     StudentResultNode* sortingFunction(StudentResultNode* head, StudentResultNode* end)
     {
-        //checking if the list is empty
+        // checking if the list is empty
         if (!head || head == end)
+        {
             return head;
+        }
 
-        //creating pointers to track the sublist's elements
+        // creating pointers to track the sublist's elements
         StudentResultNode* newHead = nullptr, * newEnd = nullptr;
 
-        //creating the pivot node to compare the nodes for sorting the list
+        // creating the pivot node to compare the nodes for sorting the list
         StudentResultNode* pivot = partition(head, end, &newHead, &newEnd);
 
-        //block of code to sort the sublist that contain total score lesser than or equal to the pivot
-        if (newHead != pivot) {
+        // block of code to sort the sublist that contain total score lesser than or equal to the pivot
+        if (newHead != pivot)
+        {
             StudentResultNode* temp = newHead;
-            while (temp->next != pivot) {
+            while (temp->next != pivot)
+            {
                 temp = temp->next;
             }
             temp->next = nullptr;
 
-            //sorting the sublist using the recursive function
+            // sorting the sublist using the recursive function
             newHead = sortingFunction(newHead, temp);
 
-            //setting back the pivot to be the last node
+            // setting back the pivot to be the last node
             temp = getLastNode(newHead);
             temp->next = pivot;
+            pivot->prev = temp;
         }
 
-        //sorting the node that is greater than the pivot in the list
+        // sorting the node that is greater than the pivot in the list
         pivot->next = sortingFunction(pivot->next, newEnd);
+        if (pivot->next)
+        {
+            pivot->next->prev = pivot;
+        }
 
         return newHead;
     }
 
-    //function to perform the sorting operation
+    // function to perform the sorting operation
     void quickSort(StudentResultLinkedList& list)
     {
-        //updating the head to the new head of the sorted list
+        // updating the head to the new head of the sorted list
         list.head = list.sortingFunction(list.head, list.getLastNode(list.head));
-        //updating the tail to the new tail of the sorted list
+        // updating the tail to the new tail of the sorted list
         list.tail = list.getLastNode(list.head);
     }
 

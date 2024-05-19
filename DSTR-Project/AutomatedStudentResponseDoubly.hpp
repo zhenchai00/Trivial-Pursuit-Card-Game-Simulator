@@ -350,7 +350,7 @@ public:
 	//https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
 
 	//getting the last node of the list
-	StudentResponseNode* getLastNode(StudentResponseNode* current) 
+	StudentResponseNode* getLastNode(StudentResponseNode* current)
 	{
 		while (current != nullptr && current->nextAddress != nullptr)
 		{
@@ -359,7 +359,7 @@ public:
 		return current;
 	}
 
-	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd) 
+	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd)
 	{
 
 		StudentResponseNode* pivot = end; //setting the pivot as the last node of the list
@@ -368,17 +368,18 @@ public:
 		StudentResponseNode* current = head;
 		StudentResponseNode* tail = pivot;
 
-		while (current != pivot) 
+		while (current != pivot)
 		{
-			if (current->totalScore > pivot->totalScore) 
+			if (current->totalScore > pivot->totalScore)
 			{
-				if ((*newHead) == NULL) 
+				if (*newHead == nullptr)
 				{
-					(*newHead) = current;
+					*newHead = current;
 				}
 				prev = current;
 				current = current->nextAddress;
 			}
+
 			//condition when the node's total score is greater than the pivot's total score
 			else
 			{
@@ -386,19 +387,25 @@ public:
 				{
 					prev->nextAddress = current->nextAddress;
 				}
+				if (current->nextAddress)
+				{
+					current->nextAddress->prevAddress = prev;
+				}
+
 				StudentResponseNode* temp = current->nextAddress;
 				current->nextAddress = nullptr;
 				tail->nextAddress = current;
+				current->prevAddress = tail;
 				tail = current;
 				current = temp;
 			}
 		}
 
-		if ((*newHead) == nullptr)
+		if (*newHead == nullptr)
 		{
-			(*newHead) = pivot;
+			*newHead = pivot;
 		}
-		(*newEnd) = tail;
+		*newEnd = tail;
 
 		return pivot;
 	}
@@ -419,7 +426,7 @@ public:
 		StudentResponseNode* pivot = partition(head, end, &newHead, &newEnd);
 
 		// block of code to sort the sublist that contain total score lesser than or equal to the pivot
-		if (newHead != pivot) 
+		if (newHead != pivot)
 		{
 			StudentResponseNode* temp = newHead;
 			while (temp->nextAddress != pivot)
@@ -434,10 +441,15 @@ public:
 			// setting back the pivot to be the last node
 			temp = getLastNode(newHead);
 			temp->nextAddress = pivot;
+			pivot->prevAddress = temp;
 		}
 
 		// sorting the node that is greater than the pivot in the list
 		pivot->nextAddress = sortingFunction(pivot->nextAddress, newEnd);
+		if (pivot->nextAddress)
+		{
+			pivot->nextAddress->prevAddress = pivot;
+		}
 
 		return newHead;
 	}
