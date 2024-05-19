@@ -36,7 +36,7 @@ public:
 
 	~AnsweredDeck()
 	{
-		cout << endl << this->linkedlistName << " is reset!" << endl;;
+		cout << endl << this->linkedlistName << " is destroyed!" << endl;;
 	}
 
 	// function to create a new node for the linked list;

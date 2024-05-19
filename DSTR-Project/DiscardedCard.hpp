@@ -38,7 +38,7 @@ public:
 	// deconstructor
 	~DiscardedCardLinkedList()
 	{
-		cout << endl << this->listname << " is reset!" << endl;;
+		cout << endl << this->listname << " is destroyed!" << endl;;
 	}
 
 	DiscardedCardLinkedListNode *createNewNode(string question, AnswerTypeTF answer, double marks)

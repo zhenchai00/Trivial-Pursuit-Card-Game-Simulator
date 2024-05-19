@@ -43,7 +43,7 @@ public:
     // destructor to destroy the list
     ~StudentResultLinkedList()
     {
-        cout << endl << this->listName << " is reset!" << endl;;
+        cout << endl << this->listName << " is destroyed!" << endl;;
     }
 
     // create a new node for a student linked list

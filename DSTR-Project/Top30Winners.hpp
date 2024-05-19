@@ -35,7 +35,7 @@ public:
 	// Destructor
 	~Queue()
 	{
-		cout << endl << "Queue for Tree Structure is reset!" << endl;;
+		cout << endl << "Queue for Tree Structure is destroy!" << endl;;
 	}
 
 	// Function to add a new node to the rear of the queue
@@ -102,7 +102,7 @@ public:
 	// destructor
 	~BinaryTree()
 	{
-		cout << endl << "Binary Tree is reset!" << endl;;
+		cout << endl << "Binary Tree is destroyed!" << endl;;
 	}
 
 	// Function to create a new TreeNode and initialize its data
