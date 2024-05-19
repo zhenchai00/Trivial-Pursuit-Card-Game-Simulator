@@ -10,7 +10,6 @@
 #include "AnsweredDeck.hpp"
 #include "Top30Winners.hpp"
 #include "AutomatedStudentResponseDoubly.hpp"
-#include "SortAndSearchArr.hpp"
 
 using namespace std;
 
@@ -489,35 +488,12 @@ void executeManual(int numOfStudents)
         cout << endl << endl;
     }
 
-    //creating two arrays
-    //StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
-    //
-    ////copying the linked list, studentResult in the arrays
-    //int i = 0;
-    //for (auto node = studentResult.getHead(); node != nullptr; node = node->next) {
-    //    sortingArr[i].studentID = node->studentId;
-    //    sortingArr[i].question1 = node->question1;
-    //    sortingArr[i].question2 = node->question2;
-    //    sortingArr[i].question3 = node->question3;
-    //    sortingArr[i].scoreQ1 = node->scoreQ1;
-    //    sortingArr[i].scoreQ2 = node->scoreQ2;
-    //    sortingArr[i].scoreQ3 = node->scoreQ3;
-    //    sortingArr[i].totalScore = node->totalScore;
-    //    i++;
-    //}
-
-    /*QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
-    appendRank(sortingArr, numOfStudents);
-    DisplayArr(sortingArr, numOfStudents);
-    searchStudentID(sortingArr, numOfStudents);
-    QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);*/
-
     studentResult.quickSort(studentResult); //sorts based on total score
 
     //call the ranking tree report
     studentResult.AnnounceTop30Winners();
 
-    studentResult.DisplayStudentResponsesForAutoExecution(); //displaying the nodes of the list
+    studentResult.DisplayStudentResponsesForManualExecution(); //displaying the nodes of the list
     
     studentResult.searchStudentIDInSortedList();
 }
@@ -848,41 +824,14 @@ void executeAuto()
         }
     }
 
-    //creating two arrays
-    //StudentResponseNodeArr* sortingArr = new StudentResponseNodeArr[numOfStudents]; //used for sorting based on total score
+    //function to sort the linked list based on the total score
+    autoStudentResponse.quickSort(autoStudentResponse);
 
-    ////copying the linked list, autoStudentResponse in the arrays
-    //int i = 0;
-    //for (auto node = autoStudentResponse.getHead(); node != nullptr; node = node->nextAddress) {
-    //    sortingArr[i].studentID = node->studentID;
-    //    sortingArr[i].question1 = node->question1;
-    //    sortingArr[i].question2 = node->question2;
-    //    sortingArr[i].question3 = node->question3;
-    //    sortingArr[i].scoreQ1 = node->scoreQ1;
-    //    sortingArr[i].scoreQ2 = node->scoreQ2;
-    //    sortingArr[i].scoreQ3 = node->scoreQ3;
-    //    sortingArr[i].totalScore = node->totalScore;
-    //    i++;
-    //}
+    // Announce top 30 winners
+    autoStudentResponse.AnnounceTop30Winners();
 
-    //function to sort the linked list
-    autoStudentResponse.quickSort(autoStudentResponse); //sorts based on total score
-
-    autoStudentResponse.AnnounceTop30Winners();                    // Announce top 30 winners
-
-    autoStudentResponse.DisplayStudentResponsesForAutoExecution(); //displaying the nodes of the list
-
-    ////sort the array based on total score
-    //QuickSortTotalScoreArr(sortingArr, 0, numOfStudents - 1);
-
-    ////adding the rank after sorting
-    //appendRank(sortingArr, numOfStudents);
-
-    ////autoStudentResponse.DisplayStudentResponsesForAutoExecution(); // to print all student responses for testing purposes
-    //DisplayArr(sortingArr, numOfStudents);
-
-    ////function to sort the array based on student ID use the search function
-    //QuickSortStudentIDArr(sortingArr, 0, numOfStudents - 1);
+    //displaying the nodes of the list
+    autoStudentResponse.DisplayStudentResponsesForAutoExecution();
 
     //function to search the student ID
     autoStudentResponse.searchStudentIDInSortedList();

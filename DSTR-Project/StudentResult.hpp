@@ -414,7 +414,6 @@ public:
         cout << endl << endl;
     }
 
-    //haven't changed any code before this line
 
     //Quick sort logic 
     //https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
@@ -507,8 +506,10 @@ public:
         list.tail = list.getLastNode(list.head);
     }
 
-    // function to display the contents of the linked list nodes
-    void DisplayStudentResponsesForAutoExecution()
+ 
+    // searching and displaying logic
+    // function to display all the nodes of the list
+    void DisplayStudentResponsesForManualExecution()
     {
         // begin with the head node
         StudentResultNode* current = head;
@@ -540,9 +541,11 @@ public:
         }
     }
 
-    void DisplaySingleStudentResponsesForAutoExecution(StudentResultNode* studentIDNode, int rank)
+    // function to display the node of a single student
+    void DisplaySingleStudentResponsesForManualExecution(StudentResultNode* studentIDNode, int rank)
     {
-        if (studentIDNode != nullptr) {
+        if (studentIDNode != nullptr) 
+        {
             cout << "---------------------------------" << endl;
             cout << "Rank: " << rank << endl;
             cout << "Student ID: " << studentIDNode->studentId << endl;
@@ -552,50 +555,82 @@ public:
             cout << "Total Score: " << studentIDNode->totalScore << endl;
             cout << "---------------------------------" << endl;
         }
-        else {
+        else
+        {
             cout << "Student ID not found" << endl;
         }
     }
 
+    // searching logic
+    // function to search the student and display their data using linear search
+    // Big O notation: 
+    // Best case: O(1)
+    // Worst case: O(n)
+    void searchAndDisplayStudentID(int studentIDinput, int size)
+    {
+        int rank = 1; // initializing rank to 1
 
-    //search the student and display their data
-    void searchStudentID(int studentIDinput) {
-        int rank = 1;
-
+        // checking whether the list is empty
         if (head == nullptr)
         {
             cout << "The " << this->listName << " Linked List is empty!" << endl;
             return;
         }
-        if (studentIDinput == head->studentId) {
-            DisplaySingleStudentResponsesForAutoExecution(head, rank);
+
+        // checking whether the head node contains the studentID that is being searched
+        if (studentIDinput == head->studentId)
+        {
+            DisplaySingleStudentResponsesForManualExecution(head, rank);
             return;
         }
-        else if (studentIDinput == tail->studentId) {
-            rank = size;
-            DisplaySingleStudentResponsesForAutoExecution(tail, rank);
+        
+        // checking whether the tail node contains the studentID that is being searched
+        else if (studentIDinput == tail->studentId)
+        {
+            rank = size;// rank set to the last node based on the size
+            DisplaySingleStudentResponsesForManualExecution(tail, rank);
             return;
         }
-        else {
+        
+        // checking whether the middle node contains the studentID that is being searched
+        else
+        {
             StudentResultNode* current = head;
-            while (current != nullptr) {
-                if (current->studentId == studentIDinput) {
-                    DisplaySingleStudentResponsesForAutoExecution(current, rank);
+            while (current != nullptr)
+            {
+                if (current->studentId == studentIDinput)
+                {
+                    DisplaySingleStudentResponsesForManualExecution(current, rank);
                     return;
                 }
-                rank++;
+                rank++; // incrementing the rank based on the number of nodes searched
                 current = current->next;
             }
         }
         cout << "Student ID not found!" << endl;
     }
 
-    //search function
-    void searchStudentIDInSortedList() {
+    // search function to be used in the common file
+    void searchStudentIDInSortedList() 
+    {
+        string choice; // declaring a variable to input whether or not to display the student's game details
+        cout << "Do you want to check a student's attempted questions and scores obtained? (Y/N)";
+        cin >> choice;
+
         int studentIDinput;
-        cout << "Enter the student ID to display their data: ";
-        cin >> studentIDinput;
-        searchStudentID(studentIDinput);
+
+        // condition when the input is 'Y' or 'y'
+        while (choice != "N" && choice != "n")
+        {
+            if (choice == "Y" || choice == "y")
+            {
+                cout << "Enter the student ID to display their data: ";
+                cin >> studentIDinput;
+                searchAndDisplayStudentID(studentIDinput, size); // calling searchStudentID function 
+            }
+            cout << "Do you want to check a student's attempted questions and scores obtained? (Y/N)";
+            cin >> choice;
+        }
     }
 };
 #endif // STUDENT_RESULT_HPP

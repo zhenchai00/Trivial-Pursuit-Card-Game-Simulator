@@ -22,8 +22,8 @@ struct StudentResponseNode
 	int totalScore;
 
 	// link of the node
-	StudentResponseNode* nextAddress;
-	StudentResponseNode* prevAddress; // useful for doubly linked list
+	StudentResponseNode* nextAddress; // next address of the node
+	StudentResponseNode* prevAddress; // previous address of the node
 };
 
 class AutomatedStudentResponseDoubly
@@ -62,7 +62,6 @@ public:
 		newNode->scoreQ1 = scoreQ1;
 		newNode->scoreQ2 = scoreQ2;
 		newNode->scoreQ3 = scoreQ3;
-		// newNode->totalScore = scoreQ1+scoreQ2+scoreQ3;
 		newNode->totalScore = totalScore;
 
 		newNode->nextAddress = nullptr;
@@ -72,17 +71,16 @@ public:
 		return newNode;
 	}
 
-	//function to get the head of the list
+	// function to get the head of the list
 	StudentResponseNode* getHead() {
 		return head;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// function to insert to the end of the list
 	// insert student node to end of the list, time complexity o(1)
 	void insertToEnd(int studentId, string question1, string question2, string question3, int scoreQ1, int scoreQ2, int scoreQ3, int totalScore)
 	{
+		// creating a new node using the createNewNode function
 		StudentResponseNode* newNode = createNewNode(studentId, question1, question2, question3, scoreQ1, scoreQ2, scoreQ3, totalScore);
 
 		if (head == nullptr)
@@ -98,9 +96,10 @@ public:
 		size++;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// function to display the contents of the linked list nodes
+	// functions to display the list
+	
+	// function to display all the nodes of the list
 	void DisplayStudentResponsesForAutoExecution()
 	{
 		// begin with the head node
@@ -118,7 +117,7 @@ public:
 		cout << "Displaying student responses:" << endl;
 		while (current != nullptr)
 		{
-			// Print the details of the current node
+			// displaying the rank, studentID, questions answered by the student and their respective scores along with the total score
 			cout << "Rank: " << rank << endl;
 			cout << "Student ID: " << current->studentID << endl;
 			cout << "Question 1: " << current->question1 << " - Scored: " << current->scoreQ1 << endl;
@@ -133,9 +132,12 @@ public:
 		}
 	}
 
+	// function to display the node of a single student
 	void DisplaySingleStudentResponsesForAutoExecution(StudentResponseNode* studentIDNode, int rank)
 	{
-		if (studentIDNode != nullptr) {
+		if (studentIDNode != nullptr) // checking whether the node is empty
+		{ 
+			// displaying the rank, studentID, questions answered by the student and their respective scores along with the total score
 			cout << "---------------------------------" << endl;
 			cout << "Rank: " << rank << endl;
 			cout << "Student ID: " << studentIDNode->studentID << endl;
@@ -145,13 +147,15 @@ public:
 			cout << "Total Score: " << studentIDNode->totalScore << endl;
 			cout << "---------------------------------" << endl;
 		}
-		else {
+		else
+		{
+			// displayed when student ID is not in the list
 			cout << "Student ID not found" << endl;
 		}
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//updating question and answer logic
+	
 	// function to search for a node based on studentID and update its attributes for either round 2 and 3
 	void getStudentIDAndUpdateNode(int studentId, string question, int score, int totalScore, int round)
 	{
@@ -225,52 +229,84 @@ public:
 		}
 		cout << "Node with student ID " << studentId << " not found." << endl;
 	}
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//search the student and display their data
-	void searchStudentID( int studentIDinput, int size) {
-		int rank = 1;
+
+	// searching logic
+	
+	// function to search the student and display their data using linear search
+	// Big O notation: 
+	// Best case: O(1)
+	// Worst case: O(n)
+	void searchAndDisplayStudentID(int studentIDinput, int size) 
+	{
+		int rank = 1; // initializing rank to 1
 		
-		if (head == nullptr)
+		// checking whether the list is empty
+		if (head == nullptr) 
 		{
-			cout << "The " << this->linkedlistName << " Linked List is empty!" << endl;
+			cout << "The " << this->linkedlistName << " List is empty!" << endl;
 			return;
 		}
-		if (studentIDinput == head->studentID) {
+
+		// checking whether the head node contains the studentID that is being searched
+		if (studentIDinput == head->studentID)
+		{
 			DisplaySingleStudentResponsesForAutoExecution(head, rank);
 			return;
 		}
-		else if (studentIDinput == tail->studentID) {
-			rank = size;
+
+		// checking whether the tail node contains the studentID that is being searched
+		else if (studentIDinput == tail->studentID)
+		{
+			rank = size; // rank set to the last node based on the size
 			DisplaySingleStudentResponsesForAutoExecution(tail, rank);
 			return;
 		}
-		else {
+
+		// checking whether the middle node contains the studentID that is being searched
+		else
+		{
 			StudentResponseNode* current = head;
-			while (current != nullptr) {
-				if (current->studentID == studentIDinput) {
+			while (current != nullptr) 
+			{
+				if (current->studentID == studentIDinput) 
+				{
 					DisplaySingleStudentResponsesForAutoExecution(current, rank);
 					return;
 				}
-				rank++;
+				rank++; // incrementing the rank based on the number of nodes searched
 				current = current->nextAddress;
 			}
 		}
+		// displayed when student ID is not in the list
 		cout << "Student ID not found!" << endl;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// search function to be used in the common file
+	void searchStudentIDInSortedList()
+	{
+		string choice; // declaring a variable to input whether or not to display the student's game details
+		cout << "Do you want to check a student's attempted questions and scores obtained? (Y/N)";
+		cin >> choice;
 
-	//search function
-	void searchStudentIDInSortedList() {
 		int studentIDinput;
-		cout << "Enter the student ID to display their data: ";
-		cin >> studentIDinput;
-		searchStudentID(studentIDinput,size);
+
+		// condition when the input is 'Y' or 'y'
+		while (choice != "N" && choice != "n")
+		{
+			if (choice == "Y" || choice == "y")
+			{
+				cout << "Enter the student ID to display their data: ";
+				cin >> studentIDinput;
+				searchAndDisplayStudentID(studentIDinput, size); // calling searchStudentID function 
+			} 
+			cout << "Do you want to check a student's attempted questions and scores obtained? (Y/N)";
+			cin >> choice;
+		}
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	// Binary tree logic
+	
 	// Function to display the top 30 winners using a binary tree
 	void AnnounceTop30Winners()
 	{
@@ -309,19 +345,22 @@ public:
         cout << endl << endl;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//Quick sort logic 
 	//https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
 
 	//getting the last node of the list
-	StudentResponseNode* getLastNode(StudentResponseNode* current) {
+	StudentResponseNode* getLastNode(StudentResponseNode* current) 
+	{
 		while (current != nullptr && current->nextAddress != nullptr)
+		{
 			current = current->nextAddress;
+		}
 		return current;
 	}
 
-	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd) {
+	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd) 
+	{
 
 		StudentResponseNode* pivot = end; //setting the pivot as the last node of the list
 
@@ -329,11 +368,14 @@ public:
 		StudentResponseNode* current = head;
 		StudentResponseNode* tail = pivot;
 
-		while (current != pivot) {
-			if (current->totalScore > pivot->totalScore) {
-				if ((*newHead) == NULL)
+		while (current != pivot) 
+		{
+			if (current->totalScore > pivot->totalScore) 
+			{
+				if ((*newHead) == NULL) 
+				{
 					(*newHead) = current;
-
+				}
 				prev = current;
 				current = current->nextAddress;
 			}
@@ -341,7 +383,9 @@ public:
 			else
 			{
 				if (prev)
+				{
 					prev->nextAddress = current->nextAddress;
+				}
 				StudentResponseNode* temp = current->nextAddress;
 				current->nextAddress = nullptr;
 				tail->nextAddress = current;
@@ -351,61 +395,67 @@ public:
 		}
 
 		if ((*newHead) == nullptr)
+		{
 			(*newHead) = pivot;
-
+		}
 		(*newEnd) = tail;
 
 		return pivot;
 	}
 
-	//function to sort the list
+	// function to sort the list
 	StudentResponseNode* sortingFunction(StudentResponseNode* head, StudentResponseNode* end)
 	{
-		//checking if the list is empty
+		// checking if the list is empty
 		if (!head || head == end)
+		{
 			return head;
+		}
 
-		//creating pointers to track the sublist's elements
+		// creating pointers to track the sublist's elements
 		StudentResponseNode* newHead = nullptr, * newEnd = nullptr;
 
-		//creating the pivot node to compare the nodes for sorting the list
+		// creating the pivot node to compare the nodes for sorting the list
 		StudentResponseNode* pivot = partition(head, end, &newHead, &newEnd);
 
-		//block of code to sort the sublist that contain total score lesser than or equal to the pivot
-		if (newHead != pivot) {
+		// block of code to sort the sublist that contain total score lesser than or equal to the pivot
+		if (newHead != pivot) 
+		{
 			StudentResponseNode* temp = newHead;
-			while (temp->nextAddress != pivot) {
+			while (temp->nextAddress != pivot)
+			{
 				temp = temp->nextAddress;
 			}
 			temp->nextAddress = nullptr;
 
-			//sorting the sublist using the recursive function
+			// sorting the sublist using the recursive function
 			newHead = sortingFunction(newHead, temp);
 
-			//setting back the pivot to be the last node
+			// setting back the pivot to be the last node
 			temp = getLastNode(newHead);
 			temp->nextAddress = pivot;
 		}
 
-		//sorting the node that is greater than the pivot in the list
+		// sorting the node that is greater than the pivot in the list
 		pivot->nextAddress = sortingFunction(pivot->nextAddress, newEnd);
 
 		return newHead;
 	}
 
-	//function to perform the sorting operation
+	// function to perform the sorting operation
 	void quickSort(AutomatedStudentResponseDoubly& list)
 	{
-		//updating the head to the new head of the sorted list
+		// updating the head to the new head of the sorted list
 		list.head = list.sortingFunction(list.head, list.getLastNode(list.head));
-		//updating the tail to the new tail of the sorted list
+		// updating the tail to the new tail of the sorted list
 		list.tail = list.getLastNode(list.head);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//Binary search algorithm
-	StudentResponseNode* middleNode(StudentResponseNode* head, StudentResponseNode* tail) {
+	StudentResponseNode* middleNode(StudentResponseNode* head, StudentResponseNode* tail) 
+	{
 
 		StudentResponseNode* pointer1 = head;
 		StudentResponseNode* pointer2 = head->nextAddress;
@@ -425,7 +475,8 @@ public:
 		return pointer2;
 	}
 
-	StudentResponseNode* binarySearch(StudentResponseNode* head, int studentID) {
+	StudentResponseNode* binarySearch(StudentResponseNode* head, int studentID) 
+	{
 		StudentResponseNode* firstNode = head;
 		StudentResponseNode* lastNode = nullptr;
 
@@ -456,8 +507,8 @@ public:
 		return nullptr;
 	}
 
-	void displaySingleStudent(StudentResponseNode* studentIDNode) {
-
+	void displaySingleStudent(StudentResponseNode* studentIDNode) 
+	{
 		if (studentIDNode != nullptr) {
 			cout << "---------------------------------" << endl;
 			cout << "Student ID: " << studentIDNode->studentID << endl;
@@ -472,7 +523,8 @@ public:
 		}
 	}
 
-	void searchStudentID(AutomatedStudentResponseDoubly& studentList, int studentID) {
+	void searchStudentID2(AutomatedStudentResponseDoubly& studentList, int studentID) 
+	{
 		StudentResponseNode* studentNode = studentList.binarySearch(studentList.head, studentID);
 
 		if (studentNode != nullptr) {
