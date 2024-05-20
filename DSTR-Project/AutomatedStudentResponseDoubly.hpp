@@ -359,10 +359,44 @@ public:
 		return current;
 	}
 
+	//getting the median for the pivot
+	StudentResponseNode* getMedian(StudentResponseNode* left, StudentResponseNode* mid, StudentResponseNode* right) 
+	{
+		if (left->totalScore < mid->totalScore) 
+		{
+			if (mid->totalScore < right->totalScore) {
+				return mid;
+			}
+			else if (left->totalScore < right->totalScore) {
+				return right;
+			}
+			else {
+				return left;
+			}
+		}
+		else
+		{
+			if (left->totalScore < right->totalScore) {
+				return left;
+			}
+			else if (mid->totalScore < right->totalScore) {
+				return right;
+			}
+			else {
+				return mid;
+			}
+		}
+	}
+
 	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd)
 	{
 
-		StudentResponseNode* pivot = end; //setting the pivot as the last node of the list
+		StudentResponseNode* pivot = getMedian(head, head->nextAddress, end);
+		if (pivot != end) {
+			StudentResponseNode* temp = pivot;
+			pivot = end;
+			end = temp;
+		}
 
 		StudentResponseNode* prev = nullptr;
 		StudentResponseNode* current = head;
