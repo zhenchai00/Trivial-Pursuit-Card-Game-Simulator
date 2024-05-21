@@ -35,7 +35,7 @@ public:
 	// Destructor
 	~Queue()
 	{
-		cout << endl << "Queue for Tree Structure is destroy!" << endl;;
+		cout << endl << "Queue for Tree Structure is destroyed!" << endl;;
 	}
 
 	// Function to add a new node to the rear of the queue
