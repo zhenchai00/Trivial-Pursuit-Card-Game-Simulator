@@ -416,7 +416,6 @@ public:
 
 
     //Quick sort logic 
-    //https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
 
     //getting the last node of the list
     StudentResultNode* getLastNode(StudentResultNode* current)
@@ -428,17 +427,65 @@ public:
         return current;
     }
 
+    // getting the median node for the pivot
+    StudentResultNode* getMedian(StudentResultNode* left, StudentResultNode* mid, StudentResultNode* right)
+    {
+        // condition when the left node is lesser than the middle node
+        if (left->totalScore < mid->totalScore)
+        {
+            // condition when the middle node is lesser than the right node
+            if (mid->totalScore < right->totalScore) {
+                return mid;
+            }
+            // condition when the left node is lesser than the right node
+            else if (left->totalScore < right->totalScore) {
+                return right;
+            }
+            // condition when neither middle and left node are lesser than right node
+            else {
+                return left;
+            }
+        }
+        // condition when the left node is not lesser than the middle node
+        else
+        {
+            // condition when the left node is lesser than the right node
+            if (left->totalScore < right->totalScore) {
+                return left;
+            }
+            // condition when the middle node is lesser than the right node
+            else if (mid->totalScore < right->totalScore) {
+                return right;
+            }
+            // condition when neither middle and left node are lesser than right node
+            else {
+                return mid;
+            }
+        }
+    }
+
+    // partitioning the linked list based on the median
     StudentResultNode* partition(StudentResultNode* head, StudentResultNode* end, StudentResultNode** newHead, StudentResultNode** newEnd)
     {
-
+        // getting the median node for the linked list
         StudentResultNode* pivot = end; //setting the pivot as the last node of the list
 
+        // making the pivot as the last node in the list if it is not already
+        if (pivot != end) {
+            StudentResultNode* temp = pivot;
+            pivot = end;
+            end = temp;
+        }
+
+        // declaring pointers to use for partitioning the list
         StudentResultNode* prev = nullptr;
         StudentResultNode* current = head;
         StudentResultNode* tail = pivot;
 
+        // code to partition the list around the pivot
         while (current != pivot)
         {
+            // condition when the current node's total score is greater than the pivot's total score
             if (current->totalScore > pivot->totalScore)
             {
                 if (*newHead == nullptr)
@@ -449,7 +496,7 @@ public:
                 current = current->next;
             }
 
-            //condition when the node's total score is greater than the pivot's total score
+            // condition when the current node's total score is lesser than or equal to the pivot's total score
             else
             {
                 if (prev)
@@ -472,9 +519,9 @@ public:
 
         if (*newHead == nullptr)
         {
-            *newHead = pivot;
+            *newHead = pivot; // if newHead is not updated, set to the pivot
         }
-        *newEnd = tail;
+        *newEnd = tail; // updating newEnd to the tail
 
         return pivot;
     }
@@ -482,7 +529,7 @@ public:
     // function to sort the list
     StudentResultNode* sortingFunction(StudentResultNode* head, StudentResultNode* end)
     {
-        // checking if the list is empty
+        // checking if the list is empty or contains one element
         if (!head || head == end)
         {
             return head;
@@ -494,7 +541,7 @@ public:
         // creating the pivot node to compare the nodes for sorting the list
         StudentResultNode* pivot = partition(head, end, &newHead, &newEnd);
 
-        // block of code to sort the sublist that contain total score lesser than or equal to the pivot
+        // block of code to sort the sublist that contain total score lesser than the pivot
         if (newHead != pivot)
         {
             StudentResultNode* temp = newHead;
@@ -504,7 +551,7 @@ public:
             }
             temp->next = nullptr;
 
-            // sorting the sublist using the recursive function
+            // sorting the sublist with nodes lesser than the pivot using the recursive function
             newHead = sortingFunction(newHead, temp);
 
             // setting back the pivot to be the last node
@@ -513,7 +560,7 @@ public:
             pivot->prev = temp;
         }
 
-        // sorting the node that is greater than the pivot in the list
+        // sorting the sublist with nodes greater than the pivot in the list using the recursive function
         pivot->next = sortingFunction(pivot->next, newEnd);
         if (pivot->next)
         {
@@ -589,9 +636,6 @@ public:
 
     // searching logic
     // function to search the student and display their data using linear search
-    // Big O notation: 
-    // Best case: O(1)
-    // Worst case: O(n)
     void searchAndDisplayStudentID(int studentIDinput, int size)
     {
         int rank = 1; // initializing rank to 1

@@ -234,9 +234,6 @@ public:
 	// searching logic
 	
 	// function to search the student and display their data using linear search
-	// Big O notation: 
-	// Best case: O(1)
-	// Worst case: O(n)
 	void searchAndDisplayStudentID(int studentIDinput, int size) 
 	{
 		int rank = 1; // initializing rank to 1
@@ -346,10 +343,9 @@ public:
 	}
 
 
-	//Quick sort logic 
-	//https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
+	// Quick sort logic 
 
-	//getting the last node of the list
+	// getting the last node of the list
 	StudentResponseNode* getLastNode(StudentResponseNode* current)
 	{
 		while (current != nullptr && current->nextAddress != nullptr)
@@ -359,51 +355,65 @@ public:
 		return current;
 	}
 
-	//getting the median for the pivot
+	// getting the median node for the pivot
 	StudentResponseNode* getMedian(StudentResponseNode* left, StudentResponseNode* mid, StudentResponseNode* right) 
 	{
+		// condition when the left node is lesser than the middle node
 		if (left->totalScore < mid->totalScore) 
 		{
+			// condition when the middle node is lesser than the right node
 			if (mid->totalScore < right->totalScore) {
 				return mid;
 			}
+			// condition when the left node is lesser than the right node
 			else if (left->totalScore < right->totalScore) {
 				return right;
 			}
+			// condition when neither middle and left node are lesser than right node
 			else {
 				return left;
 			}
 		}
+		// condition when the left node is not lesser than the middle node
 		else
 		{
+			// condition when the left node is lesser than the right node
 			if (left->totalScore < right->totalScore) {
 				return left;
 			}
+			// condition when the middle node is lesser than the right node
 			else if (mid->totalScore < right->totalScore) {
 				return right;
 			}
+			// condition when neither middle and left node are lesser than right node
 			else {
 				return mid;
 			}
 		}
 	}
 
+	// partitioning the linked list based on the median
 	StudentResponseNode* partition(StudentResponseNode* head, StudentResponseNode* end, StudentResponseNode** newHead, StudentResponseNode** newEnd)
 	{
-
+		// getting the median node for the linked list
 		StudentResponseNode* pivot = getMedian(head, head->nextAddress, end);
+
+		// making the pivot as the last node in the list if it is not already
 		if (pivot != end) {
 			StudentResponseNode* temp = pivot;
 			pivot = end;
 			end = temp;
 		}
 
+		// declaring pointers to use for partitioning the list
 		StudentResponseNode* prev = nullptr;
 		StudentResponseNode* current = head;
 		StudentResponseNode* tail = pivot;
 
+		// code to partition the list around the pivot
 		while (current != pivot)
 		{
+			// condition when the current node's total score is greater than the pivot's total score
 			if (current->totalScore > pivot->totalScore)
 			{
 				if (*newHead == nullptr)
@@ -414,7 +424,7 @@ public:
 				current = current->nextAddress;
 			}
 
-			//condition when the node's total score is greater than the pivot's total score
+			// condition when the current node's total score is lesser than or equal to the pivot's total score
 			else
 			{
 				if (prev)
@@ -437,9 +447,9 @@ public:
 
 		if (*newHead == nullptr)
 		{
-			*newHead = pivot;
+			*newHead = pivot; // if newHead is not updated, set to the pivot
 		}
-		*newEnd = tail;
+		*newEnd = tail; // updating newEnd to the tail
 
 		return pivot;
 	}
@@ -447,7 +457,7 @@ public:
 	// function to sort the list
 	StudentResponseNode* sortingFunction(StudentResponseNode* head, StudentResponseNode* end)
 	{
-		// checking if the list is empty
+		// checking if the list is empty or contains one element
 		if (!head || head == end)
 		{
 			return head;
@@ -456,10 +466,10 @@ public:
 		// creating pointers to track the sublist's elements
 		StudentResponseNode* newHead = nullptr, * newEnd = nullptr;
 
-		// creating the pivot node to compare the nodes for sorting the list
+		// partitioning the list and getting the pivot node
 		StudentResponseNode* pivot = partition(head, end, &newHead, &newEnd);
 
-		// block of code to sort the sublist that contain total score lesser than or equal to the pivot
+		// block of code to sort the sublist that contain total score lesser than the pivot
 		if (newHead != pivot)
 		{
 			StudentResponseNode* temp = newHead;
@@ -469,16 +479,16 @@ public:
 			}
 			temp->nextAddress = nullptr;
 
-			// sorting the sublist using the recursive function
+			// sorting the sublist with nodes lesser than the pivot using the recursive function
 			newHead = sortingFunction(newHead, temp);
 
-			// setting back the pivot to be the last node
+			// setting the pivot to be the last node
 			temp = getLastNode(newHead);
 			temp->nextAddress = pivot;
 			pivot->prevAddress = temp;
 		}
 
-		// sorting the node that is greater than the pivot in the list
+		// sorting the sublist with nodes greater than the pivot in the list using the recursive function
 		pivot->nextAddress = sortingFunction(pivot->nextAddress, newEnd);
 		if (pivot->nextAddress)
 		{
@@ -497,85 +507,5 @@ public:
 		list.tail = list.getLastNode(list.head);
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//Binary search algorithm
-	StudentResponseNode* middleNode(StudentResponseNode* head, StudentResponseNode* tail) 
-	{
-
-		StudentResponseNode* pointer1 = head;
-		StudentResponseNode* pointer2 = head->nextAddress;
-
-		if (head == nullptr) {
-			return nullptr;
-		}
-
-		while (pointer1 != tail) {
-			pointer1 = pointer1->nextAddress;
-			if (pointer1 != tail) {
-				pointer2 = pointer2->nextAddress;
-				pointer1 = pointer1->nextAddress;
-			}
-		}
-
-		return pointer2;
-	}
-
-	StudentResponseNode* binarySearch(StudentResponseNode* head, int studentID) 
-	{
-		StudentResponseNode* firstNode = head;
-		StudentResponseNode* lastNode = nullptr;
-
-		while (lastNode != firstNode)
-		{
-			StudentResponseNode* midNode = middleNode(firstNode, lastNode);
-
-			if (midNode == nullptr) {
-				return nullptr;
-			}
-
-			if (midNode->studentID == studentID)
-			{
-				return midNode;
-			}
-
-			else if (midNode->studentID > studentID)
-			{
-				lastNode = midNode;
-			}
-			else
-			{
-				firstNode = midNode->nextAddress;
-			}
-		}
-		//student ID is not in the list
-		cout << "Student ID " << studentID << " does not exist!" << endl;
-		return nullptr;
-	}
-
-	void displaySingleStudent(StudentResponseNode* studentIDNode) 
-	{
-		if (studentIDNode != nullptr) {
-			cout << "---------------------------------" << endl;
-			cout << "Student ID: " << studentIDNode->studentID << endl;
-			cout << "Question 1: " << studentIDNode->question1 << " - Scored: " << studentIDNode->scoreQ1 << endl;
-			cout << "Question 2: " << studentIDNode->question2 << " - Scored: " << studentIDNode->scoreQ2 << endl;
-			cout << "Question 3: " << studentIDNode->question3 << " - Scored: " << studentIDNode->scoreQ3 << endl;
-			cout << "Total Score: " << studentIDNode->totalScore << endl;
-			cout << "---------------------------------" << endl;
-		}
-		else {
-			cout << "Student ID not found" << endl;
-		}
-	}
-
-	void searchStudentID2(AutomatedStudentResponseDoubly& studentList, int studentID) 
-	{
-		StudentResponseNode* studentNode = studentList.binarySearch(studentList.head, studentID);
-
-		if (studentNode != nullptr) {
-			studentList.displaySingleStudent(studentNode);
-		}
-	}
 };
 #endif // AUTOMATED_STUDENT_RESPONSE_HPP
