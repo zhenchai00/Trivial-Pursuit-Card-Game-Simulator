@@ -489,6 +489,8 @@ void executeManual(int numOfStudents)
     }
 
     studentResult.quickSort(studentResult); //sorts based on total score
+    // studentResult.mergeSort();               // much faster than the insertion sort 
+    // studentResult.insertionSort();           // slower than merge sort
 
     //call the ranking tree report
     studentResult.AnnounceTop30Winners();
