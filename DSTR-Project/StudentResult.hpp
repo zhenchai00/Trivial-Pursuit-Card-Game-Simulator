@@ -3,10 +3,12 @@
 #define STUDENT_RESULT_HPP
 #include <iostream>
 #include <iomanip>
+#include <chrono>
 #include "Enum.hpp"
 #include "Top30Winners.hpp"
 
 using namespace std;
+using namespace std::chrono; // use time library
 
 struct StudentResultNode
 {
@@ -242,6 +244,23 @@ public:
         }
     }
 
+    void mergeSortLinkedList()
+    {
+        auto start = high_resolution_clock::now();
+        head = mergeSort(head);
+
+        // Update the tail pointer
+        StudentResultNode* temp = head;
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+        }
+        tail = temp;
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start);
+        cout << "Time taken for merge sort - " << duration.count() << " microseconds" << endl;
+    }
+
     // Merge two sorted doubly linked lists
     StudentResultNode* merge(StudentResultNode* left, StudentResultNode* right)
     {
@@ -253,8 +272,8 @@ public:
         // Create a new head pointer for the merged list
         StudentResultNode* merged = nullptr;
 
-        // Choose the smaller value between left and right
-        if (left->totalScore <= right->totalScore)
+        // Choose the larger value between left and right
+        if (left->totalScore >= right->totalScore)
         {
             merged = left;
             merged->next = merge(left->next, right);
@@ -273,25 +292,23 @@ public:
     }
 
     // Merge sort for doubly linked list
-    void mergeSort(StudentResultNode** headRef)
+    StudentResultNode* mergeSort(StudentResultNode* head)
     {
-        StudentResultNode* head = *headRef;
-        StudentResultNode* left;
-        StudentResultNode* right;
-
-        // Base case: If the list is empty or has only one node
         if (head == nullptr || head->next == nullptr)
-            return;
+            return head;
+
+        StudentResultNode* left = nullptr;
+        StudentResultNode* right = nullptr;
 
         // Split the list into two halves
         split(head, &left, &right);
 
         // Recursively sort the two halves
-        mergeSort(&left);
-        mergeSort(&right);
+        left = mergeSort(left);
+        right = mergeSort(right);
 
         // Merge the sorted halves
-        *headRef = merge(left, right);
+        return merge(left, right);
     }
 
     // Function to split a doubly linked list into two halves
@@ -323,6 +340,7 @@ public:
 
     void insertionSort()
     {
+        auto start = high_resolution_clock::now();
         if (head == nullptr || head->next == nullptr)
             return;
 
@@ -374,6 +392,9 @@ public:
         {
             tail = tail->next;
         }
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start);
+        cout << "Time taken for insertion sort - " << duration.count() << " microseconds" << endl;
     }
 
     // Function to display the top winners/ top 30 winners using a binary tree
@@ -573,10 +594,14 @@ public:
     // function to perform the sorting operation
     void quickSort(StudentResultLinkedList& list)
     {
+        auto start = high_resolution_clock::now();
         // updating the head to the new head of the sorted list
         list.head = list.sortingFunction(list.head, list.getLastNode(list.head));
         // updating the tail to the new tail of the sorted list
         list.tail = list.getLastNode(list.head);
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start);
+        cout << "Time taken for quick sort - " << duration.count() << " microseconds" << endl;
     }
 
  
