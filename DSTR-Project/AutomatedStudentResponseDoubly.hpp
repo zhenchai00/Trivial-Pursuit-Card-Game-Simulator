@@ -8,6 +8,9 @@
 
 using namespace std;
 
+// doubly Linked List to store between 70 - 100 student responses consisting of questions answered/skipped and the scores obtained
+// for the automated card game mode
+
 struct StudentResponseNode
 {
 

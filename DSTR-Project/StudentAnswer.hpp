@@ -9,7 +9,7 @@
 
 using namespace std;
 
-// to create an Array of Struct to store the 100 student responses from the 100-student-answer.csv file
+// to create an Array of Struct to store the 100 student decisions from the 100-student-answer.csv file (ANSWER new/discarded question or SKIP the round)
 
 // declaration of a struct to be used to create an array of structs
 struct StudentAnswer
