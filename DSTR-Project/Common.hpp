@@ -488,8 +488,8 @@ void executeManual(int numOfStudents)
         cout << endl << endl;
     }
     // to call an sorting algorithm once all students have manually completed the card game for comparison
-
-    studentResult.quickSort(studentResult);     //sorts based on total score
+    //sorts based on total score
+    studentResult.quickSort(studentResult);         // faster if there are more players
     // studentResult.mergeSortLinkedList();        // much faster than the insertion sort 
     // studentResult.insertionSort();              // slower than merge sort
 
