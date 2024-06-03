@@ -346,6 +346,159 @@ public:
 	}
 
 
+    void mergeSortLinkedList()
+    {
+        auto start = high_resolution_clock::now();
+        head = mergeSort(head);
+
+        // Update the tail pointer
+        StudentResponseNode* temp = head;
+        while (temp->nextAddress != nullptr)
+        {
+            temp = temp->nextAddress;
+        }
+        tail = temp;
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start);
+        cout << "Time taken for merge sort - " << duration.count() << " microseconds" << endl;
+    }
+
+    // Merge two sorted doubly linked lists
+    StudentResponseNode* merge(StudentResponseNode* left, StudentResponseNode* right)
+    {
+        if (left == nullptr)
+            return right;
+        if (right == nullptr)
+            return left;
+
+        // Create a new head pointer for the merged list
+        StudentResponseNode* merged = nullptr;
+
+        // Choose the larger value between left and right
+        if (left->totalScore >= right->totalScore)
+        {
+            merged = left;
+            merged->nextAddress = merge(left->nextAddress, right);
+            if (merged->nextAddress)
+                merged->nextAddress->prevAddress = merged;
+        }
+        else
+        {
+            merged = right;
+            merged->nextAddress = merge(left, right->nextAddress);
+            if (merged->nextAddress)
+                merged->nextAddress->prevAddress = merged;
+        }
+
+        return merged;
+    }
+
+    // Merge sort for doubly linked list
+    StudentResponseNode* mergeSort(StudentResponseNode* head)
+    {
+        if (head == nullptr || head->nextAddress == nullptr)
+            return head;
+
+        StudentResponseNode* left = nullptr;
+        StudentResponseNode* right = nullptr;
+
+        // Split the list into two halves
+        split(head, &left, &right);
+
+        // Recursively sort the two halves
+        left = mergeSort(left);
+        right = mergeSort(right);
+
+        // Merge the sorted halves
+        return merge(left, right);
+    }
+
+    // Function to split a doubly linked list into two halves
+    void split(StudentResponseNode* head, StudentResponseNode** leftRef, StudentResponseNode** rightRef)
+    {
+        StudentResponseNode* slow = head;
+        StudentResponseNode* fast = head->nextAddress;
+
+        // Move 'fast' two nodes and 'slow' one node
+        while (fast != nullptr)
+        {
+            fast = fast->nextAddress;
+            if (fast != nullptr)
+            {
+                slow = slow->nextAddress;
+                fast = fast->nextAddress;
+            }
+        }
+
+        // 'slow' is before the midpoint of the list
+        *leftRef = head;
+        *rightRef = slow->nextAddress;
+
+        // Splitting the list
+        slow->nextAddress = nullptr;
+        if (*rightRef)
+            (*rightRef)->prevAddress = nullptr;
+    }
+
+    void insertionSort()
+    {
+        auto start = high_resolution_clock::now();
+        if (head == nullptr || head->nextAddress == nullptr)
+            return;
+
+        // Initialize sorted linked list
+        StudentResponseNode* sorted = nullptr;
+
+        // Traverse the original list
+        StudentResponseNode* current = head;
+        while (current != nullptr)
+        {
+            // Store the next node
+            StudentResponseNode* nextNode = current->nextAddress;
+
+            // Insert current node into sorted linked list
+            if (sorted == nullptr || sorted->totalScore < current->totalScore)
+            {
+                // Insert at the beginning of sorted list
+                current->prevAddress = nullptr;
+                current->nextAddress = sorted;
+                if (sorted)
+                    sorted->prevAddress = current;
+                sorted = current;
+            }
+            else
+            {
+                // Traverse the sorted list to find the correct position
+                StudentResponseNode* temp = sorted;
+                while (temp->nextAddress != nullptr && temp->nextAddress->totalScore >= current->totalScore)
+                {
+                    temp = temp->nextAddress;
+                }
+
+                // Insert current node after temp
+                current->prevAddress = temp;
+                current->nextAddress = temp->nextAddress;
+                if (temp->nextAddress)
+                    temp->nextAddress->prevAddress = current;
+                temp->nextAddress = current;
+            }
+
+            // Move to the next node in the original list
+            current = nextNode;
+        }
+
+        // Update head and tail pointers
+        head = sorted;
+        tail = sorted;
+        while (tail->nextAddress != nullptr)
+        {
+            tail = tail->nextAddress;
+        }
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start);
+        cout << "Time taken for insertion sort - " << duration.count() << " microseconds" << endl;
+    }
+
 	// Quick sort logic 
 
 	// getting the last node of the list
@@ -504,10 +657,14 @@ public:
 	// function to perform the sorting operation
 	void quickSort(AutomatedStudentResponseDoubly& list)
 	{
+		auto start = high_resolution_clock::now();
 		// updating the head to the new head of the sorted list
 		list.head = list.sortingFunction(list.head, list.getLastNode(list.head));
 		// updating the tail to the new tail of the sorted list
 		list.tail = list.getLastNode(list.head);
+		auto end = high_resolution_clock::now();
+		auto duration = duration_cast<microseconds>(end - start);
+		cout << "Time taken for quick sort - " << duration.count() << " microseconds" << endl;
 	}
 
 };

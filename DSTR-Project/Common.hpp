@@ -487,11 +487,12 @@ void executeManual(int numOfStudents)
         }
         cout << endl << endl;
     }
+
     // to call an sorting algorithm once all students have manually completed the card game for comparison
     //sorts based on total score
-    studentResult.quickSort(studentResult);         // faster if there are more players
+    // studentResult.quickSort(studentResult);     // faster if there are more players
     // studentResult.mergeSortLinkedList();        // much faster than the insertion sort 
-    // studentResult.insertionSort();              // slower than merge sort
+    studentResult.insertionSort();              // slower than merge sort
 
     //call the ranking tree report
     studentResult.AnnounceTop30Winners();
@@ -827,8 +828,11 @@ void executeAuto()
         }
     }
 
-    //function to sort the linked list based on the total score
-    autoStudentResponse.quickSort(autoStudentResponse);
+    // to call an sorting algorithm once all students have manually completed the card game for comparison
+    //sorts based on total score
+    // autoStudentResponse.quickSort(autoStudentResponse);         // faster if there are more players
+    // autoStudentResponse.mergeSortLinkedList();                  // much faster than the insertion sort 
+    autoStudentResponse.insertionSort();                        // slower than merge sort
 
     // Announce top 30 winners
     autoStudentResponse.AnnounceTop30Winners();
