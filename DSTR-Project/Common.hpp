@@ -490,9 +490,9 @@ void executeManual(int numOfStudents)
 
     // to call an sorting algorithm once all students have manually completed the card game for comparison
     //sorts based on total score
-    // studentResult.quickSort(studentResult);     // faster if there are more players
-    // studentResult.mergeSortLinkedList();        // much faster than the insertion sort 
-    studentResult.insertionSort();              // slower than merge sort
+    // studentResult.quickSort(studentResult);     // least efficient
+    // studentResult.mergeSortLinkedList();        // more efficient 
+    studentResult.insertionSort();              //  most efficient 
 
     //call the ranking tree report
     studentResult.AnnounceTop30Winners();
@@ -830,9 +830,9 @@ void executeAuto()
 
     // to call an sorting algorithm once all students have manually completed the card game for comparison
     //sorts based on total score
-    // autoStudentResponse.quickSort(autoStudentResponse);         // faster if there are more players
-    // autoStudentResponse.mergeSortLinkedList();                  // much faster than the insertion sort 
-    autoStudentResponse.insertionSort();                        // slower than merge sort
+    // autoStudentResponse.quickSort(autoStudentResponse);         // least efficient
+    // autoStudentResponse.mergeSortLinkedList();                  // more efficient
+    autoStudentResponse.insertionSort();                        // most efficient
 
     // Announce top 30 winners
     autoStudentResponse.AnnounceTop30Winners();
