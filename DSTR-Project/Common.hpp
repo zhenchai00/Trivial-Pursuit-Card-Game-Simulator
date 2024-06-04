@@ -71,7 +71,9 @@ void executeManual(int numOfStudents)
                     cout << "***You may enter 4 to answer the discarded card below which only get 80% of mark after correct answering***" << endl;
                     cout << "4. " << DiscardedCard.top() << endl;
                 }
+                cout << "Your Answer: ";
                 cin >> input;
+                cout << endl;
 
                 // to handle the invalid input of normal question
                 while (input != 1 && input != 2 && input != 3 && (DiscardedCard.isEmpty() || input != 4))
@@ -141,7 +143,9 @@ void executeManual(int numOfStudents)
                     cout << "Please enter the respective number state below to answer the question (1-2):" << endl;
                     cout << "1. True" << endl;
                     cout << "2. False" << endl;
+                    cout << "Your Answer: ";
                     cin >> disInput;
+                    cout << endl;
 
                     // handle invalid input for discarded card question
                     while (disInput != 1 && disInput != 2)
